@@ -1,7 +1,15 @@
 #pragma once
 #include "Item.h"
-class CTower :
-	public CItem
+#include "XmlNode.h"
+#include <memory>
+class CTower : public CItem
 {
+public:
+	CTower() = delete;
+
+	CTower(const CTower&) = delete;
+
+	virtual std::shared_ptr<xmlnode::CXmlNode>
+		XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
 };
 
