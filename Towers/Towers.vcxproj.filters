@@ -48,6 +48,9 @@
     <ClInclude Include="Balloon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BalloonRed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Balloon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalloonRed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

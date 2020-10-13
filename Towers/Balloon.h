@@ -10,7 +10,6 @@
  */
 
 
-
 #pragma once
 #include <string>
 #include "Item.h"
@@ -18,7 +17,7 @@
 class CGame;
  /**
   * Base class for a balloon
-  * This applies to all of the ballon
+  * This applies to all of the balloon
   * items in the game.
   */
 class CBalloon : public CItem

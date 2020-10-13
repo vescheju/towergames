@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Balloon.h" />
+    <ClInclude Include="BalloonRed.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Item.h" />
@@ -197,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balloon.cpp" />
+    <ClCompile Include="BalloonRed.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainFrm.cpp" />
