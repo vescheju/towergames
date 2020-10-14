@@ -186,8 +186,12 @@
     <ClInclude Include="Balloon.h" />
     <ClInclude Include="BalloonRed.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="Dart.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemHouse.h" />
+    <ClInclude Include="ItemRoad.h" />
+    <ClInclude Include="ItemTree.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -200,7 +204,11 @@
     <ClCompile Include="Balloon.cpp" />
     <ClCompile Include="BalloonRed.cpp" />
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Dart.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemHouse.cpp" />
+    <ClCompile Include="ItemRoad.cpp" />
+    <ClCompile Include="ItemTree.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
