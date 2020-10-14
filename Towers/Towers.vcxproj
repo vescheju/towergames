@@ -189,6 +189,7 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Dart.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHouse.h" />
     <ClInclude Include="ItemRoad.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="BombTower.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Dart.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
     <ClCompile Include="ItemRoad.cpp" />
