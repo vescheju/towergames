@@ -51,6 +51,15 @@
     <ClInclude Include="BalloonRed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TowerEight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RingTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BombTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -78,6 +87,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BalloonRed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerEight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RingTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BombTower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
