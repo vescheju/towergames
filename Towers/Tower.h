@@ -27,7 +27,7 @@ public:
 	CTower(CGame* game, const std::wstring& filename);
 
 private:
-	double mLocX;
-	double mLocY;
+	double mLocX = 0;
+	double mLocY = 0;
 };
 
