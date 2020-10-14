@@ -28,7 +28,7 @@ class CBalloon : public CItem
 	/// Copy construct disabled
 	CBalloon(const CBalloon&) = delete;
 
-	void Update(double elapsed);
+	// void Update(double elapsed);
 
 	/**
 	 * Set the speed of the balloon.

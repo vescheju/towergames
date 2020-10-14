@@ -7,19 +7,13 @@
 #include "pch.h"
 #include "Balloon.h"
 
- /**
-  * 
-  * add comment
-  */
-void CBalloon::Update(double elapsed)
-{
-}
+
 
 
 /**
  *
  * add comment
  */
-CBalloon::CBalloon(CGame* game, const std::wstring& filename)
+CBalloon::CBalloon(CGame* game, const std::wstring& filename) : CItem(game, filename)
 {
 }
