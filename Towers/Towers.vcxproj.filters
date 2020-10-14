@@ -51,16 +51,13 @@
     <ClInclude Include="BalloonRed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dart.h">
+    <ClInclude Include="TowerEight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ItemTree.h">
+    <ClInclude Include="RingTower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ItemRoad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemHouse.h">
+    <ClInclude Include="BombTower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,16 +89,13 @@
     <ClCompile Include="BalloonRed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dart.cpp">
+    <ClCompile Include="TowerEight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemTree.cpp">
+    <ClCompile Include="RingTower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemRoad.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemHouse.cpp">
+    <ClCompile Include="BombTower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
