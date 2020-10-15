@@ -28,9 +28,5 @@ public:
 	CTower(CGame* game);
 
 private:
-	/// location X of tower
-	double mLocX = 0;
-	/// location Y of tower
-	double mLocY = 0;
 };
 
