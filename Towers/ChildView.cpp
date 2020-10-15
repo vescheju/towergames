@@ -61,7 +61,9 @@ void CChildView::OnPaint()
 }
 
 
-
+/*
+* On pushing Level 0 Button in menu level 0 loads
+*/
 void CChildView::OnLevelLevel0()
 {
 	mGame.Load(L"level0.xml");
@@ -69,6 +71,9 @@ void CChildView::OnLevelLevel0()
 }
 
 
+/*
+* On pushing Level 1 Button in menu level 1 loads
+*/
 void CChildView::OnLevelLevel1()
 {
 	mGame.Load(L"level1.xml");
@@ -76,6 +81,9 @@ void CChildView::OnLevelLevel1()
 }
 
 
+/*
+* On pushing Level 2 Button in menu level 2 loads
+*/
 void CChildView::OnLevelLevel2()
 {
 	mGame.Load(L"level2.xml");
@@ -83,6 +91,9 @@ void CChildView::OnLevelLevel2()
 }
 
 
+/*
+* On pushing Level 3 Button in menu level 3 loads
+*/
 void CChildView::OnLevelLevel3()
 {
 	mGame.Load(L"level3.xml");
