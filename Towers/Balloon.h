@@ -37,7 +37,7 @@ public:
 	 */
 	void SetSpeed(double speed) { mSpeed = speed; }
 
-	CBalloon(CGame* game);
+	
 
 	/**
 	 * Getter for mT
@@ -53,6 +53,9 @@ public:
 	 */
 	double GetSpeed() const { return mSpeed; }
 
+protected:
+
+	CBalloon(CGame* game);
 private:
 	/// The scalar unit for the position of the balloon on a tile
 	double mT = 0;

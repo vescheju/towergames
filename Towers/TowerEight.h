@@ -1,5 +1,17 @@
+/**
+ * \file TowerEight.h
+ *
+ * \author Hithesh Yedlapati
+ *
+ * Tower 8 class derived from CTower
+ */
+
 #pragma once
 #include "Tower.h"
+
+/**
+* releases 8 darts
+*/
 class CTowerEight :
 	public CTower
 {

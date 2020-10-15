@@ -7,8 +7,16 @@
 #include "pch.h"
 #include "ItemTree.h"
 
-CItemTree::CItemTree(CGame* game) : CItem(game) //Check constructor 
-												//comment in Dart.cpp
+using namespace std;
+
+/// Item filename 
+//const wstring ItemTreeOneImageName = L"images/trees1.png";
+
+/**
+ * Constructor
+ * \param game The game this item belongs to
+ */
+CItemTree::CItemTree(CGame* game) : CItem(game)
 {
 }
 

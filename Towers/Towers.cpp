@@ -63,7 +63,7 @@ BOOL CTowersApp::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
-
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
 	// Initialize OLE libraries
 	if (!AfxOleInit())
@@ -112,6 +112,7 @@ BOOL CTowersApp::InitInstance()
 
 int CTowersApp::ExitInstance()
 {
+	Gdiplus::GdiplusShutdown(gdiplusToken);
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
 

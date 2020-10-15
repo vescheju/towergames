@@ -18,9 +18,6 @@ class CItem;
 class CGame
 {
 
-
-
-
 private:
 
 	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, 
@@ -29,6 +26,7 @@ private:
 	std::vector<std::shared_ptr<CItem> > mItems;
 
 public:
+	void OnDraw(Gdiplus::Graphics* graphics);
 
 	void Add(std::shared_ptr<CItem> item);
 	

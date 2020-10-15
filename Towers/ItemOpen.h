@@ -1,7 +1,19 @@
+/**
+ * \file ItemOpen.h
+ *
+ * \author Julius Eillya
+ *
+ * A class to represent an open spot in our game
+ */
+
 #pragma once
 #include "Item.h"
-class CItemOpen :
-    public CItem
+
+
+/**
+ * An open spot for any item
+ */
+class CItemOpen : public CItem
 {
 
 public:

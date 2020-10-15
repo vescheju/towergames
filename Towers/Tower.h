@@ -12,20 +12,25 @@
 #include <memory>
 
 class CGame;
-
+/**
+* Base Class for each of the different towers, derived from CItem
+*/
 class CTower : public CItem
 {
 public:
 	/// constructor disabled
 	CTower() = delete;
 
+	/// copy constructor
 	CTower(const CTower&) = delete;
 
-
+	/// constructor
 	CTower(CGame* game);
 
 private:
+	/// location X of tower
 	double mLocX = 0;
+	/// location Y of tower
 	double mLocY = 0;
 };
 
