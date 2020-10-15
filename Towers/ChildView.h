@@ -5,11 +5,14 @@
 
 #pragma once
 
-
+#include "Game.h"
 // CChildView window
 
 class CChildView : public CWnd
 {
+private:
+	/// An object that describes our game
+	CGame  mGame;
 // Construction
 public:
 	CChildView();

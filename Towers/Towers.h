@@ -16,6 +16,10 @@
 
 class CTowersApp : public CWinApp
 {
+private:
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	ULONG_PTR gdiplusToken = 0;
+
 public:
 	CTowersApp() noexcept;
 

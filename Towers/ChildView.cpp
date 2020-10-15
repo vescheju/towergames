@@ -7,6 +7,7 @@
 #include "Towers.h"
 #include "ChildView.h"
 
+using namespace Gdiplus;
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -51,33 +52,39 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 void CChildView::OnPaint() 
 {
 	CPaintDC dc(this); // device context for painting
-	
+	Graphics graphics(dc.m_hDC);    // Create GDI+ graphics context
+
 	// TODO: Add your message handler code here
 	
 	// Do not call CWnd::OnPaint() for painting messages
+	mGame.OnDraw(&graphics);
 }
 
 
 
 void CChildView::OnLevelLevel0()
 {
-	// TODO: Add your command handler code here
+	mGame.Load(L"level0.xml");
+	Invalidate();
 }
 
 
 void CChildView::OnLevelLevel1()
 {
-	// TODO: Add your command handler code here
+	mGame.Load(L"level1.xml");
+	Invalidate();
 }
 
 
 void CChildView::OnLevelLevel2()
 {
-	// TODO: Add your command handler code here
+	mGame.Load(L"level2.xml");
+	Invalidate();
 }
 
 
 void CChildView::OnLevelLevel3()
 {
-	// TODO: Add your command handler code here
+	mGame.Load(L"level3.xml");
+	Invalidate();
 }

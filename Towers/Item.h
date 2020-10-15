@@ -37,6 +37,8 @@ public:
 
 	void SetImage(const std::wstring filename);
 
+	void Draw(Gdiplus::Graphics* graphics);
+
 private:
 	/// The towers game the item is contained in
 	CGame* mGame;

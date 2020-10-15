@@ -9,6 +9,9 @@ using namespace std;
 using namespace xmlnode;
 using namespace Gdiplus;
 
+/// the folder that the levels exist in
+const wstring levelFolder = L"levels/";
+
 /**
  * Add an item to the game
  * \param item New item to add
@@ -16,6 +19,18 @@ using namespace Gdiplus;
 void CGame::Add(std::shared_ptr<CItem> item)
 {
     mItems.push_back(item);
+}
+
+/**
+  * Draw the aquarium
+  * \param graphics The GDI+ graphics context to draw on
+  */
+void CGame::OnDraw(Gdiplus::Graphics* graphics)
+{
+    for (auto item : mItems)
+    {
+        item->Draw(graphics);
+    }
 }
 
 void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& declNode, 
@@ -57,7 +72,7 @@ void CGame::Load(const std::wstring& filename)
     try
     {
         // Open the document to read
-        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
+        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(levelFolder + filename);
 
         // Once we know it is open, clear the existing data
         Clear();
@@ -66,9 +81,14 @@ void CGame::Load(const std::wstring& filename)
         // Traverse the items of the root node
         // and match them with a declaration and pass both
         // nodes to XmlItem
-        for (auto itemNode : root->GetChild(1)->GetChildren())
+
+        //get the declaration and item nodes
+        shared_ptr<CXmlNode> declarations = root->GetChild(0);
+        shared_ptr<CXmlNode> items = root->GetChild(1);
+        
+        for (auto itemNode : items->GetChildren())
         {
-            for (auto declNode : root->GetChild(0)->GetChildren())
+            for (auto declNode : declarations->GetChildren())
             {
                 if (itemNode->GetAttributeValue(L"id", L"") == declNode->GetAttributeValue(L"id", L""))
                 {
