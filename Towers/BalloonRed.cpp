@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const wstring redBalloonImage = L"red-balloon.png";
+const wstring RedBalloonImage = L"red-balloon.png";
 
 /**
  * Constructor for a red balloon
@@ -20,5 +20,5 @@ const wstring redBalloonImage = L"red-balloon.png";
 CBalloonRed::CBalloonRed(CGame* game) : 
 	CBalloon(game)
 {
-	SetImage(redBalloonImage);
+	SetImage(RedBalloonImage);
 }
