@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const wstring RedBalloonImage = L"red-balloon.png";
+const wstring RedBalloonImage = L"images/red-balloon.png";
 
 /**
  * Constructor for a red balloon

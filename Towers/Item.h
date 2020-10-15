@@ -44,6 +44,14 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
+	/** The X location of the item
+	 * \returns X location in pixels */
+	double GetX() const { return mX; }
+
+	/** The Y location of the item
+	* \returns Y location in pixels */
+	double GetY() const { return mY; }
+
 private:
 	/// The towers game the item is contained in
 	CGame* mGame;
