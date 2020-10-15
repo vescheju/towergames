@@ -32,7 +32,7 @@ public:
         const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
 
 private:
-    std::wstring mRoadDirection;
+    std::wstring mRoadDirection;    ///< The direction the road is going
 
 };
 

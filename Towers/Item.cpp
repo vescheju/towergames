@@ -29,6 +29,11 @@ CItem::~CItem()
 {
 }
 
+
+/**
+ * Set the image to the specific item
+ * \param filename The file for the item image
+ */
 void CItem::SetImage(const wstring filename) 
 {
     mItemImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
@@ -41,6 +46,25 @@ void CItem::SetImage(const wstring filename)
     }
 }
 
+/**  Test this item to see if it has been clicked on
+* \param x X location in the game to test
+* \param y Y location in the game to test
+* \return true if clicked on */
+bool CItem::HitTest(int x, int y)
+{
+    return false;
+}
+
+
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ * \param declNode The decleration for a single object
+ * \param itemNode The node that is now labeled
+ */
 void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
     const std::shared_ptr<xmlnode::CXmlNode>& itemNode) 
 {

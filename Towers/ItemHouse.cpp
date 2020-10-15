@@ -7,8 +7,12 @@
 #include "pch.h"
 #include "ItemHouse.h"
 
-CItemHouse::CItemHouse(CGame* game) : CItem(game) //Check constructor 
-												//comment in Dart.cpp
+
+/**
+ * Constructor
+ * \param game The game the item is a part of
+ */
+CItemHouse::CItemHouse(CGame* game) : CItem(game)
 {
 }
 

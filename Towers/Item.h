@@ -14,6 +14,9 @@
 
 class CGame;
 
+/**
+ * Base class for any item in our game
+ */
 class CItem
 {
 public:
@@ -31,6 +34,8 @@ public:
 	/// \param x X location
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
+
+	virtual bool HitTest(int x, int y);
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
 		const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
@@ -54,6 +59,6 @@ private:
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 
 protected:
-	const int mTileLength = 64;
+	const int mTileLength = 64;		///< The length of a tile space
 };
 
