@@ -2,11 +2,12 @@
 #include "TowerEight.h"
 #include <string>
 
-const std::wstring TowerEightName = L"images/tower8.png";
+const std::wstring towerEightName = L"images/tower8.png";
 
 CTowerEight::CTowerEight(CGame* game) :
-	CTower(game, TowerEightName)
+	CTower(game)
 {
+	SetImage(towerEightName);
 }
 
 /**

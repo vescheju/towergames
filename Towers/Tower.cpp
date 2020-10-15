@@ -4,7 +4,7 @@
 
 class CGame;
 
-CTower::CTower(CGame* game, const std::wstring& filename) : CItem(game, filename)
+CTower::CTower(CGame* game) : CItem(game)
 {
 
 }

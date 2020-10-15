@@ -4,7 +4,7 @@
  * \author Julius Eillya
  */
 
-#include "phc.h"
+#include "pch.h"
 #include "ItemTree.h"
 
 CItemTree::CItemTree(CGame* game) : CItem(game) //Check constructor 
@@ -18,3 +18,4 @@ CItemTree::CItemTree(CGame* game) : CItem(game) //Check constructor
 CItemTree::~CItemTree()
 {
 }
+

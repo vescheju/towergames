@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <string>
+#include "XmlNode.h"
 
 class CGame;
 
@@ -22,12 +23,19 @@ public:
 	/// Copy constructor (disabled)
 	CItem(const CItem&) = delete;
 
+	CItem(CGame* game);
+
 	~CItem();
 
-protected:
-	/// Pass through a pointer to the game and the filename
-	/// \param filename The name of the file
-	CItem(CGame* game, const std::wstring& filename);
+	/// Set the item location
+	/// \param x X location
+	/// \param y Y location
+	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
+
+	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
+		const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
+
+	void SetImage(const std::wstring filename);
 
 private:
 	/// The towers game the item is contained in
@@ -42,5 +50,8 @@ private:
 
 	/// The image of an item
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
+
+protected:
+	const int mTileLength = 64;
 };
 

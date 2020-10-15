@@ -17,6 +17,7 @@
  */
 class CItemRoad : public CItem
 {
+public:
     CItemRoad(CGame* game);
 
     ///  Default constructor (disabled)
@@ -26,5 +27,12 @@ class CItemRoad : public CItem
     CItemRoad(const CItemRoad&) = delete;
 
     ~CItemRoad();
+
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
+        const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
+
+private:
+    std::wstring mRoadDirection;
+
 };
 

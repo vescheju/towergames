@@ -2,11 +2,12 @@
 #include "RingTower.h"
 #include <string>
 
-const std::wstring RingTowerName = L"images/tower-rings.png";
+const std::wstring ringTowerName = L"images/tower-rings.png";
 
 CRingTower::CRingTower(CGame* game) :
-	CTower(game, RingTowerName)
+	CTower(game)
 {
+	SetImage(ringTowerName);
 }
 
 /**

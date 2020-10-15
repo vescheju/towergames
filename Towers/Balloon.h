@@ -22,6 +22,7 @@ class CGame;
   */
 class CBalloon : public CItem
 {
+public:
 	/// Default construct disabled
 	CBalloon() = delete;
 
@@ -36,8 +37,7 @@ class CBalloon : public CItem
 	 */
 	void setSpeed(double speed) { mSpeed = speed; }
 
-protected:
-	CBalloon(CGame* game, const std::wstring& filename);
+	CBalloon(CGame* game);
 
 
 private:

@@ -2,16 +2,11 @@
 #include "BombTower.h"
 #include <string>
 
-const std::wstring BombTowerName = L"images/tower-bomb.png";
+const std::wstring bombTowerName = L"images/tower-bomb.png";
 
 CBombTower::CBombTower(CGame* game) :
-	CTower(game, BombTowerName)
+	CTower(game)
 {
+	SetImage(bombTowerName);
 }
 
-/**
-std::shared_ptr<xmlnode::CXmlNode>
-CBombTower::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
-{
-}
-*/

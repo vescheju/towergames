@@ -10,13 +10,10 @@
 
 using namespace std;
 
-const wstring RedBalloonImage = L"red-balloon.png";
-/**
- *
- * comment
- */
+const wstring redBalloonImage = L"red-balloon.png";
+
 CBalloonRed::CBalloonRed(CGame* game) : 
-	CBalloon(game, RedBalloonImage)
+	CBalloon(game)
 {
-	// add speed 
+	SetImage(redBalloonImage);
 }

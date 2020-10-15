@@ -21,10 +21,8 @@ public:
 
 	CTower(const CTower&) = delete;
 
-	virtual std::shared_ptr<xmlnode::CXmlNode>
-		XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-	CTower(CGame* game, const std::wstring& filename);
+	CTower(CGame* game);
 
 private:
 	double mLocX = 0;
