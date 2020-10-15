@@ -11,8 +11,9 @@
 
 
 /**
- *
- * add comment
+ * Constructor for balloon
+ * 
+ * \param game the game that holds everything.
  */
 CBalloon::CBalloon(CGame* game) : CItem(game)
 {
