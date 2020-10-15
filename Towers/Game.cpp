@@ -105,6 +105,26 @@ void CGame::Load(const std::wstring& filename)
 }
 
 /**
+ * Obtain information of the item clicked on.
+ *
+ * \param x An int of the x location
+ * \param y an int of the y location
+ * \return share_ptr of the object located at the location
+ */
+std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+{
+    for (auto item : *this)
+    {
+        if (item->HitTest(x, y))
+        {
+            return item;
+        }
+    }
+
+    return  nullptr;
+}
+
+/**
  * Clear the aquarium data.
  *
  * Deletes all known items in the aquarium.
