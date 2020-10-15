@@ -15,6 +15,7 @@
  */
 class CItemHouse : public CItem
 {
+public:
     CItemHouse(CGame* game);
 
     ///  Default constructor (disabled)

@@ -22,6 +22,7 @@ class CGame;
   */
 class CBalloon : public CItem
 {
+public:
 	/// Default construct disabled
 	CBalloon() = delete;
 
@@ -34,19 +35,31 @@ class CBalloon : public CItem
 	 * Set the speed of the balloon.
 	 * \param speed the speed to be set.
 	 */
-	void setSpeed(double speed) { mSpeed = speed; }
+	void SetSpeed(double speed) { mSpeed = speed; }
 
-protected:
-	CBalloon(CGame* game, const std::wstring& filename);
+	CBalloon(CGame* game);
 
+	/**
+	 * Getter for mT
+	 * 
+	 * \return mT or the scalar position of the balloon on a tile.
+	 */
+	double GetT() const { return mT; }
+
+	/**
+	 * Getter for mSpeed
+	 *
+	 * \return mSpeed or speed of the balloon.
+	 */
+	double GetSpeed() const { return mSpeed; }
 
 private:
 	/// The scalar unit for the position of the balloon on a tile
-	double mT;
-	/// health of a balloon.
-	int mHealth;
-	/// speed of the balloon.
-	double mSpeed;
+	double mT = 0;
+	/// health of a balloon (default is 1 hp).
+	int mHealth = 1;
+	/// speed of the balloon in pixels per second (default at 128 p/s).
+	double mSpeed = 128;
 
 };
 

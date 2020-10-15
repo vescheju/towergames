@@ -192,6 +192,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHouse.h" />
+    <ClInclude Include="ItemOpen.h" />
     <ClInclude Include="ItemRoad.h" />
     <ClInclude Include="ItemTree.h" />
     <ClInclude Include="MainFrm.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
+    <ClCompile Include="ItemOpen.cpp" />
     <ClCompile Include="ItemRoad.cpp" />
     <ClCompile Include="ItemTree.cpp" />
     <ClCompile Include="MainFrm.cpp" />

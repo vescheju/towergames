@@ -1,37 +1,95 @@
 #include "pch.h"
 #include "Game.h"
+#include "ItemRoad.h"
+#include "ItemHouse.h"
+#include "ItemTree.h"
+#include "ItemOpen.h"
 
-CGame::CGame()
-{
-}
+using namespace std;
+using namespace xmlnode;
+using namespace Gdiplus;
 
-CGame::~CGame()
-{
-}
-
-
-/** Add an item to the game
- * 
- * \param item Item to add to game's mItems vector
+/**
+ * Add an item to the game
+ * \param item New item to add
  */
 void CGame::Add(std::shared_ptr<CItem> item)
 {
-	mItems.push_back(item);
+    mItems.push_back(item);
 }
 
-
-/** Load game from level XML file
- *  
- * \param filename Name of file to load game from
- */
-void CGame::Load(const std::wstring& filename)
+void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& declNode, 
+    const std::shared_ptr<xmlnode::CXmlNode>& itemNode)
 {
+    // pointer for the item we are loading
+    shared_ptr<CItem> item;
+
+    // get the type of the item
+    wstring name = declNode->GetName();
+
+    if (name == L"road")
+    {
+        item = make_shared<CItemRoad>(this);
+    }
+    else if (name == L"open")
+    {
+        item = make_shared<CItemOpen>(this);
+    }
+    else if (name == L"house") 
+    {
+        item = make_shared<CItemHouse>(this);
+    }
+    else if (name == L"trees")
+    {
+        item = make_shared<CItemTree>(this);
+    }
+
+    if (item != nullptr)
+    {
+        item->XmlLoad(declNode, itemNode);
+        Add(item);
+    }
+}
+
+void CGame::Load(const std::wstring& filename) 
+{
+    // We surround with a try/catch to handle errors
+    try
+    {
+        // Open the document to read
+        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
+
+        // Once we know it is open, clear the existing data
+        Clear();
+
+        //
+        // Traverse the items of the root node
+        // and match them with a declaration and pass both
+        // nodes to XmlItem
+        for (auto itemNode : root->GetChild(1)->GetChildren())
+        {
+            for (auto declNode : root->GetChild(0)->GetChildren())
+            {
+                if (itemNode->GetAttributeValue(L"id", L"") == declNode->GetAttributeValue(L"id", L""))
+                {
+                    XmlItem(declNode, itemNode);
+                }
+            }
+        }
+
+    }
+    catch (CXmlNode::Exception ex)
+    {
+        AfxMessageBox(ex.Message().c_str());
+    }
 }
 
 /**
-*  Handle an item node.
-* \param node Pointer to XML node we are handling
-*/
-void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
+ * Clear the aquarium data.
+ *
+ * Deletes all known items in the aquarium.
+ */
+void CGame::Clear()
 {
+    mItems.clear();
 }

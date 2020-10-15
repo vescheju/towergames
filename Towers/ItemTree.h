@@ -16,6 +16,7 @@
  */
 class CItemTree : public CItem
 {
+public:
     CItemTree(CGame* game);
 
     ///  Default constructor (disabled)
@@ -25,4 +26,5 @@ class CItemTree : public CItem
     CItemTree(const CItemTree&) = delete;
 
     ~CItemTree();
+
 };

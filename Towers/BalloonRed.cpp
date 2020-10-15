@@ -10,13 +10,15 @@
 
 using namespace std;
 
-const wstring RedBalloonImage = L"red-balloon.png";
+const wstring redBalloonImage = L"red-balloon.png";
+
 /**
+ * Constructor for a red balloon
  *
- * comment
+ * \param game the game that holds everything.
  */
 CBalloonRed::CBalloonRed(CGame* game) : 
-	CBalloon(game, RedBalloonImage)
+	CBalloon(game)
 {
-	// add speed 
+	SetImage(redBalloonImage);
 }

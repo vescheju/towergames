@@ -11,9 +11,10 @@
 
 
 /**
- *
- * add comment
+ * Constructor for balloon
+ * 
+ * \param game the game that holds everything.
  */
-CBalloon::CBalloon(CGame* game, const std::wstring& filename) : CItem(game, filename)
+CBalloon::CBalloon(CGame* game) : CItem(game)
 {
 }
