@@ -59,7 +59,31 @@ namespace Testing
 		}
 		TEST_METHOD(TestCGameIterator)
 		{
+			// Construct a game object
+			CGame game;
 
+			// Add some tiles
+			auto tile1 = make_shared<CItemHouse>(&game);
+			auto tile2 = make_shared<CItemHouse>(&game);
+			auto tile3 = make_shared<CItemHouse>(&game);
+
+			game.Add(tile1);
+			game.Add(tile2);
+			game.Add(tile3);
+
+			// Begin points to the first item
+			auto iter1 = game.begin();
+
+			// End points after the last item
+			auto iter2 = game.end();
+
+			Assert::IsTrue(tile1 == *iter1, L"First item correct");
+			++iter1;
+			Assert::IsTrue(tile2 == *iter1, L"Second item correct");
+			++iter1;
+			Assert::IsTrue(tile3 == *iter1, L"Third item correct");
+			++iter1;
+			Assert::IsFalse(iter1 != iter2);
 
 		}
 
