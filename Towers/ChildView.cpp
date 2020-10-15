@@ -58,25 +58,36 @@ void CChildView::OnPaint()
 }
 
 
-
+/*
+* On pushing Level 0 Button in menu level 0 loads
+*/
 void CChildView::OnLevelLevel0()
 {
 	// TODO: Add your command handler code here
 }
 
 
+/*
+* On pushing Level 1 Button in menu level 1 loads
+*/
 void CChildView::OnLevelLevel1()
 {
 	// TODO: Add your command handler code here
 }
 
 
+/*
+* On pushing Level 2 Button in menu level 2 loads
+*/
 void CChildView::OnLevelLevel2()
 {
 	// TODO: Add your command handler code here
 }
 
 
+/*
+* On pushing Level 3 Button in menu level 3 loads
+*/
 void CChildView::OnLevelLevel3()
 {
 	// TODO: Add your command handler code here
