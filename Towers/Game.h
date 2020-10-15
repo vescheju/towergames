@@ -23,7 +23,7 @@ class CGame
 
 private:
 
-	void XmlTile(const std::shared_ptr<xmlnode::CXmlNode>& node);
+	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	std::vector<std::shared_ptr<CItem> > mItems;
 

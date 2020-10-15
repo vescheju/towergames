@@ -32,5 +32,10 @@ public:
 protected:
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLevelLevel0();
+	afx_msg void OnLevelLevel1();
+	afx_msg void OnLevelLevel2();
+	afx_msg void OnLevelLevel3();
 };
 
