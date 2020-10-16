@@ -77,6 +77,13 @@ void CGame::Load(const std::wstring& filename)
         // Once we know it is open, clear the existing data
         Clear();
 
+        // intitialize level information in the Game
+        mStartX = root->GetAttributeIntValue(L"start-x", 0);
+        mStartY = root->GetAttributeIntValue(L"start-y", 0);
+
+        mLevelWidth = root->GetAttributeIntValue(L"width", 0);
+        mLevelHeight = root->GetAttributeIntValue(L"height", 0);
+
         //
         // Traverse the items of the root node
         // and match them with a declaration and pass both
@@ -132,4 +139,12 @@ std::shared_ptr<CItem> CGame::HitTest(int x, int y)
 void CGame::Clear()
 {
     mItems.clear();
+}
+
+void CGame::Update(double elapsed)
+{
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
 }

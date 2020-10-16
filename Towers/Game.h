@@ -23,7 +23,19 @@ private:
 	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, 
 		const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
 
+    /// the collection of items in the game
 	std::vector<std::shared_ptr<CItem> > mItems;
+
+    /// the starting column of the game
+    int mStartX;
+    /// the starting row of the game
+    int mStartY;
+    /// the number of columns in the game
+    int mLevelWidth;
+    /// the number of rows in the game
+    int mLevelHeight;
+
+
 
 public:
 	void OnDraw(Gdiplus::Graphics* graphics);
@@ -33,6 +45,8 @@ public:
 	void Clear();
 
 	void Load(const std::wstring& filename);
+
+    void Update(double elapsed);
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 

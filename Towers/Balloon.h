@@ -13,6 +13,7 @@
 #pragma once
 #include <string>
 #include "Item.h"
+#include "ItemRoad.h"
 
 class CGame;
  /**
@@ -37,14 +38,6 @@ public:
 	 */
 	void SetSpeed(double speed) { mSpeed = speed; }
 
-	
-
-	/**
-	 * Getter for mT
-	 * 
-	 * \return mT or the scalar position of the balloon on a tile.
-	 */
-	double GetT() const { return mT; }
 
 	/**
 	 * Getter for mSpeed
@@ -53,12 +46,21 @@ public:
 	 */
 	double GetSpeed() const { return mSpeed; }
 
+	void UpdateLocation(double elapsed);
+
+	void UpdateHeading();
+
+	virtual void Update(double elapsed) override;
+
+
 protected:
 
 	CBalloon(CGame* game);
 private:
-	/// The scalar unit for the position of the balloon on a tile
-	double mT = 0;
+	/// the direction that the balloon is moving in
+	std::wstring mHeading;
+	/// pointer to the road that the balloon is currently on
+	CItemRoad* mRoad = nullptr;
 	/// health of a balloon (default is 1 hp).
 	int mHealth = 1;
 	/// speed of the balloon in pixels per second (default at 128 p/s).
