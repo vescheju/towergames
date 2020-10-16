@@ -188,6 +188,7 @@
     <ClInclude Include="BombTower.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Dart.h" />
+    <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />

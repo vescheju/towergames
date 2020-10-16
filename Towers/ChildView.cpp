@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "Towers.h"
 #include "ChildView.h"
+#include "DoubleBufferDC.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -30,6 +31,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
 	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
 	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -51,7 +53,8 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CChildView::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
+	CPaintDC paintDC(this);     // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
 	Graphics graphics(dc.m_hDC);    // Create GDI+ graphics context
 
 	// TODO: Add your message handler code here
@@ -98,4 +101,17 @@ void CChildView::OnLevelLevel3()
 {
 	mGame.Load(L"level3.xml");
 	Invalidate();
+}
+
+
+/**
+ * Erase the background
+ *
+ * This is disabled to eliminate flicker
+ * \param pDC Device context
+ * \returns FALSE
+ */
+BOOL CChildView::OnEraseBkgnd(CDC* pDC)
+{
+	return FALSE;
 }
