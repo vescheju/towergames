@@ -40,3 +40,25 @@ void CItemRoad::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
     mRoadDirection = declNode->GetAttributeValue(L"type", L"");
 }
 
+CItemRoad* CItemRoad::GetNeighbor(wstring direction) 
+{
+    if (direction == L"N")
+    {
+        return mNorth;
+    }
+    else if (direction == L"E")
+    {
+        return mEast;
+    }
+    else if (direction == L"S")
+    {
+        return mSouth;
+    }
+    else if (direction == L"W")
+    {
+        return mWest;
+    }
+    
+    return nullptr;
+}
+
