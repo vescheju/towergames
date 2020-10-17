@@ -39,4 +39,3 @@ void CItemRoad::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
     CItem::XmlLoad(declNode, itemNode);
     mRoadDirection = declNode->GetAttributeValue(L"type", L"");
 }
-
