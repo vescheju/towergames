@@ -15,7 +15,7 @@
 */
 class CDart : public CItem
 {
-	CDart(CGame* game);
+public:
 
     ///  Default constructor (disabled)
     CDart() = delete;
@@ -23,9 +23,19 @@ class CDart : public CItem
     ///  Copy constructor (disabled)
     CDart(const CDart&) = delete;
 
+    CDart(CGame* game, int angle);
+
     ~CDart();
 
     void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
+
+    void Fire();
+
+    void Draw(Gdiplus::Graphics* graphics) override;
+
+private:
+
+    int mAngle;
 
 };
 

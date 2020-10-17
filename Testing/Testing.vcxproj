@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;Dart</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

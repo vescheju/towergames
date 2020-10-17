@@ -31,6 +31,10 @@ public:
 
 	void Fire();
 
+	void Update(double elapsed);
+
+	void SetLocation(double x, double y) override;
+
 private:
 
 	double mTimeTillFire = 5;

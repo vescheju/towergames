@@ -49,7 +49,7 @@ public:
 	*/
 	void SetImagePtr(std::shared_ptr<Gdiplus::Bitmap> itemImage) { mItemImage = itemImage; }
 
-	void Draw(Gdiplus::Graphics* graphics);
+	virtual void Draw(Gdiplus::Graphics* graphics);
 
 	/** The X location of the item
 	 * \returns X location in pixels */
