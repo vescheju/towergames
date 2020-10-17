@@ -32,10 +32,23 @@ private:
     /// the number of rows in the game
     int mLevelHeight;
 
+    /// Game area in virtual pixels
+    const static int Width = 1224;
 
+    /// Game area height in virtual pixels
+    const static int Height = 1024;
+
+    /// the scaling factor of the game
+    float mScale = 1;
+
+    /// the x offset of the game
+    float mXOffset = 0;
+
+    /// the y offset of the game
+    float mYOffset = 0;
 
 public:
-	void OnDraw(Gdiplus::Graphics* graphics);
+	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
 	void Add(std::shared_ptr<CItem> item);
 	

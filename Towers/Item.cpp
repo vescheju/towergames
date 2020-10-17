@@ -109,6 +109,6 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
         double hit = mItemImage->GetHeight();
         graphics->DrawImage(mItemImage.get(),
             float(mX - wid / 2), float(mY - hit / 2),
-            (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+            (float)mItemImage->GetWidth()+1, (float)mItemImage->GetHeight()+1);
     }
 }

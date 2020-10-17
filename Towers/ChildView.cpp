@@ -24,6 +24,9 @@ using namespace Gdiplus;
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
+/// Maximum amount of time to allow for elapsed
+const double MaxElapsed = 0.050;
+
 // CChildView
 
 CChildView::CChildView()
@@ -98,16 +101,30 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
-	mGame.Update(elapsed);
+	//
+	// Prevent tunnelling
+	//
+	while (elapsed > MaxElapsed)
+	{
+		mGame.Update(MaxElapsed);
 
-	CPaintDC paintDC(this);     // device context for painting
+		elapsed -= MaxElapsed;
+	}
+
+	// Consume any remaining time
+	if (elapsed > 0)
+	{
+		mGame.Update(elapsed);
+	}
+
+	CPaintDC paintDC(this);
 	CDoubleBufferDC dc(&paintDC); // device context for painting
-	Graphics graphics(dc.m_hDC);    // Create GDI+ graphics context
+	Graphics graphics(dc.m_hDC);
 
-	// TODO: Add your message handler code here
-	
-	// Do not call CWnd::OnPaint() for painting messages
-	mGame.OnDraw(&graphics);
+	CRect rect;
+	GetClientRect(&rect);
+
+	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 
 	Pen pen(Color(0, 128, 0), 3);
 	// graphics.DrawEllipse(&pen, 100, 125, 400, 50);
