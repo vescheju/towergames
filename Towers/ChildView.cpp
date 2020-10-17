@@ -13,6 +13,7 @@
 #include "Towers.h"
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
+#include "TowerEight.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -87,6 +88,9 @@ void CChildView::OnPaint()
 void CChildView::OnLevelLevel0()
 {
 	mGame.Load(L"level0.xml");
+	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
+	tower->SetLocation(160,160);
+	mGame.Add(tower);
 	Invalidate();
 }
 

@@ -8,6 +8,10 @@
 
 #pragma once
 #include "Tower.h"
+#include "Dart.h"
+
+#include <vector>
+#include <memory>
 
 /**
 * releases 8 darts
@@ -25,7 +29,13 @@ public:
 	/// Copy constructor (disabled)
 	CTowerEight(const CTowerEight&) = delete;
 
+	void Fire();
+
 private:
+
+	double mTimeTillFire = 5;
+
+	std::vector<std::shared_ptr<CDart> > mDarts;
 
 };
 

@@ -15,6 +15,10 @@ CTowerEight::CTowerEight(CGame* game) :
 	SetImage(towerEightName);
 }
 
+void CTowerEight::Fire()
+{
+}
+
 /**
 std::shared_ptr<xmlnode::CXmlNode>
 CTowerEight::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)

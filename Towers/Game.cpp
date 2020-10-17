@@ -23,7 +23,7 @@ void CGame::Add(std::shared_ptr<CItem> item)
 }
 
 /**
-  * Draw the aquarium
+  * Draw the game
   * \param graphics The GDI+ graphics context to draw on
   */
 void CGame::OnDraw(Gdiplus::Graphics* graphics)

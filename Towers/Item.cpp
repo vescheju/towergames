@@ -46,6 +46,16 @@ void CItem::SetImage(const wstring filename)
     }
 }
 
+
+/**
+ * Getter function for Item's image
+ * \return Pointer to Bitmap of Item's image
+ */
+std::shared_ptr<Gdiplus::Bitmap> CItem::GetImage()
+{
+    return mItemImage;
+}
+
 /**  Test this item to see if it has been clicked on
 * \param x X location in the game to test
 * \param y Y location in the game to test

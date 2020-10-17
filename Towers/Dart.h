@@ -25,5 +25,7 @@ class CDart : public CItem
 
     ~CDart();
 
+    void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
+
 };
 

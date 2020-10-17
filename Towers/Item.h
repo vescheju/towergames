@@ -40,6 +40,8 @@ public:
 
 	void SetImage(const std::wstring filename);
 
+	std::shared_ptr<Gdiplus::Bitmap> GetImage();
+
 	/**
 	* sets the image directly using a pointer
 	* 
