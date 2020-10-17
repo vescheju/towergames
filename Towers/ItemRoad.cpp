@@ -28,18 +28,10 @@ CItemRoad::~CItemRoad()
 
 
 /**
- * This is the road class version that loads the attributes common
- * to all road items
- * \param declNode The decleration for a single object
- * \param itemNode The node that is now labeled
+ * returns the neighbor of the road in a certain direction
+ * \param direction the direction of the neighbor
+ * \returns a pointer to the neighbor
  */
-void CItemRoad::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
-    const std::shared_ptr<xmlnode::CXmlNode>& itemNode)
-{
-    CItem::XmlLoad(declNode, itemNode);
-    mRoadDirection = declNode->GetAttributeValue(L"type", L"");
-}
-
 CItemRoad* CItemRoad::GetNeighbor(wstring direction) 
 {
     if (direction == L"N")

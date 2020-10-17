@@ -1,3 +1,11 @@
+/**
+ * \file Towers.h
+ *
+ * \author Ian Masterson
+ *
+ * 
+ */
+
 
 // Towers.h : main header file for the Towers application
 //
@@ -14,6 +22,7 @@
 // See Towers.cpp for the implementation of this class
 //
 
+/// The Towers Application
 class CTowersApp : public CWinApp
 {
 private:
@@ -36,4 +45,5 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
+/// The Towers App
 extern CTowersApp theApp;

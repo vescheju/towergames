@@ -4,6 +4,7 @@
 #include "ItemHouse.h"
 #include "ItemTree.h"
 #include "ItemOpen.h"
+#include "XmlLoader.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -33,82 +34,27 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics)
     }
 }
 
-void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& declNode, 
-    const std::shared_ptr<xmlnode::CXmlNode>& itemNode)
+/**
+ * Load the level from an XML file.
+ *
+ * passes the filename to the Xml Loader
+ *
+ * \param filename The filename of the level to load the level from.
+ */
+void CGame::Load(const std::wstring& filename)
 {
-    // pointer for the item we are loading
-    shared_ptr<CItem> item;
 
-    // get the type of the item
-    wstring name = declNode->GetName();
+    // Open the document with the xml loader class
+    CXmlLoader xmlLoader(this);
+    xmlLoader.Load(filename);
 
-    if (name == L"road")
-    {
-        item = make_shared<CItemRoad>(this);
-    }
-    else if (name == L"open")
-    {
-        item = make_shared<CItemOpen>(this);
-    }
-    else if (name == L"house") 
-    {
-        item = make_shared<CItemHouse>(this);
-    }
-    else if (name == L"trees")
-    {
-        item = make_shared<CItemTree>(this);
-    }
+    // Once we know it is open, clear the existing items
+    Clear();
 
-    if (item != nullptr)
-    {
-        item->XmlLoad(declNode, itemNode);
-        Add(item);
-    }
-}
+    // Set the mItems to the new ones from the file
+    mItems = xmlLoader.GetItems();
 
-void CGame::Load(const std::wstring& filename) 
-{
-    // We surround with a try/catch to handle errors
-    try
-    {
-        // Open the document to read
-        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(levelFolder + filename);
-
-        // Once we know it is open, clear the existing data
-        Clear();
-
-        // intitialize level information in the Game
-        mStartX = root->GetAttributeIntValue(L"start-x", 0);
-        mStartY = root->GetAttributeIntValue(L"start-y", 0);
-
-        mLevelWidth = root->GetAttributeIntValue(L"width", 0);
-        mLevelHeight = root->GetAttributeIntValue(L"height", 0);
-
-        //
-        // Traverse the items of the root node
-        // and match them with a declaration and pass both
-        // nodes to XmlItem
-
-        //get the declaration and item nodes
-        shared_ptr<CXmlNode> declarations = root->GetChild(0);
-        shared_ptr<CXmlNode> items = root->GetChild(1);
-        
-        for (auto itemNode : items->GetChildren())
-        {
-            for (auto declNode : declarations->GetChildren())
-            {
-                if (itemNode->GetAttributeValue(L"id", L"") == declNode->GetAttributeValue(L"id", L""))
-                {
-                    XmlItem(declNode, itemNode);
-                }
-            }
-        }
-
-    }
-    catch (CXmlNode::Exception ex)
-    {
-        AfxMessageBox(ex.Message().c_str());
-    }
+    // ADD BALOONS AND START ROADS TO ITEMS
 }
 
 /**
@@ -141,6 +87,9 @@ void CGame::Clear()
     mItems.clear();
 }
 
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
 void CGame::Update(double elapsed)
 {
     for (auto item : mItems)

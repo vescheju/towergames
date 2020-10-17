@@ -10,19 +10,15 @@
 
 #include <vector>
 #include <memory>
-
 #include "XmlNode.h"
 
 class CItem;
 
+/// implements a game
 class CGame
 {
 
 private:
-
-	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, 
-		const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
-
     /// the collection of items in the game
 	std::vector<std::shared_ptr<CItem> > mItems;
 
@@ -50,6 +46,37 @@ public:
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 
+    /// setter for the start x
+    /// \param x the start x
+    void SetStartX(int x) { mStartX = x; }
+
+    /// setter for the start y
+    /// \param y the start y
+    void SetStartY(int y) { mStartY = y; }
+
+    /// setter for the level width
+    /// \param width the number of tiles
+    void SetLevelWidth(int width) { mLevelWidth = width; }
+
+    /// setter for the level width
+    /// \param height the number of tiles
+    void SetLevelHeight(int height) { mLevelHeight = height; }
+
+    /// getter for the start x
+    /// \return the start x
+    int GetStartX() { return mStartX; }
+
+    /// getter for the start y
+    /// \return the start y
+    int GetStartY() { return mStartY; }
+
+    /// getter for the level width
+    /// \return the number of tiles
+    int GetLevelWidth() { return mLevelWidth; }
+
+    /// getter for the level height
+    /// \return the number of tiles
+    int GetLevelHeight() { return mLevelHeight; }
 
 
     /** Iterator that iterates over the game items */
