@@ -40,5 +40,6 @@ public:
 	afx_msg void OnLevelLevel1();
 	afx_msg void OnLevelLevel2();
 	afx_msg void OnLevelLevel3();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 

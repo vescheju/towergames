@@ -77,6 +77,13 @@ void CGame::Load(const std::wstring& filename)
         // Once we know it is open, clear the existing data
         Clear();
 
+        // intitialize level information in the Game
+        mStartX = root->GetAttributeIntValue(L"start-x", 0);
+        mStartY = root->GetAttributeIntValue(L"start-y", 0);
+
+        mLevelWidth = root->GetAttributeIntValue(L"width", 0);
+        mLevelHeight = root->GetAttributeIntValue(L"height", 0);
+
         //
         // Traverse the items of the root node
         // and match them with a declaration and pass both
@@ -105,6 +112,26 @@ void CGame::Load(const std::wstring& filename)
 }
 
 /**
+ * Obtain information of the item clicked on.
+ *
+ * \param x An int of the x location
+ * \param y an int of the y location
+ * \return share_ptr of the object located at the location
+ */
+std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+{
+    for (auto item : *this)
+    {
+        if (item->HitTest(x, y))
+        {
+            return item;
+        }
+    }
+
+    return  nullptr;
+}
+
+/**
  * Clear the aquarium data.
  *
  * Deletes all known items in the aquarium.
@@ -112,4 +139,12 @@ void CGame::Load(const std::wstring& filename)
 void CGame::Clear()
 {
     mItems.clear();
+}
+
+void CGame::Update(double elapsed)
+{
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
 }

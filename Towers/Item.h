@@ -44,6 +44,18 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
+	/** The X location of the item
+	 * \returns X location in pixels */
+	double GetX() const { return mX; }
+
+	/** The Y location of the item
+	* \returns Y location in pixels */
+	double GetY() const { return mY; }
+
+	/// Handle updates for animation
+	/// \param elapsed The time since the last update
+	virtual void Update(double elapsed) {}
+
 private:
 	/// The towers game the item is contained in
 	CGame* mGame;
@@ -56,7 +68,7 @@ private:
 	std::wstring mFile;
 
 	/// The image of an item
-	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
+	std::shared_ptr<Gdiplus::Bitmap> mItemImage;
 
 protected:
 	const int mTileLength = 64;		///< The length of a tile space
