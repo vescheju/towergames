@@ -5,6 +5,7 @@
 #include "ItemTree.h"
 #include "ItemOpen.h"
 #include "XmlLoader.h"
+#include "RoadLinker.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -55,6 +56,11 @@ void CGame::Load(const std::wstring& filename)
     mItems = xmlLoader.GetItems();
 
     // ADD BALOONS AND START ROADS TO ITEMS
+
+    // link all of the roads together
+    CRoadLinker linker;
+    Accept(&linker);
+    linker.LinkRoads();
 }
 
 /**
@@ -96,4 +102,25 @@ void CGame::Update(double elapsed)
     {
         item->Update(elapsed);
     }
+}
+
+/** Accept a visitor for the collection
+ * \param visitor The visitor for the collection
+ */
+void CGame::Accept(CItemVisitor* visitor)
+{
+    for (auto tile : mItems)
+    {
+        tile->Accept(visitor);
+    }
+}
+
+
+/**
+ * Links the roads together in the game by collecting the roads,
+ * and then iterating through them and setting pointers to neighboring roads
+ */
+void CGame::LinkRoads()
+{
+    
 }

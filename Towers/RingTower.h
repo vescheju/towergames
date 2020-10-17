@@ -25,6 +25,9 @@ public:
 	/// Copy constructor (disabled)
 	CRingTower(const CRingTower&) = delete;
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRingTower(this); }
 
 private:
 };

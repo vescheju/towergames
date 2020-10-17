@@ -27,5 +27,9 @@ class CDart : public CItem
 
     void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
 
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); }
+
 };
 

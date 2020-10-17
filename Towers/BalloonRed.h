@@ -29,6 +29,9 @@ public:
 	/// Copy consturctor (disbabled)
 	CBalloonRed(const CBalloonRed&) = delete;
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBalloonRed(this); }
 
 };
 

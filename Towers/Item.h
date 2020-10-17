@@ -11,6 +11,7 @@
 #include <memory>
 #include <string>
 #include "XmlNode.h"
+#include "ItemVisitor.h"
 
 class CGame;
 
@@ -62,6 +63,10 @@ public:
 	/// Handle updates for animation
 	/// \param elapsed The time since the last update
 	virtual void Update(double elapsed) {}
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) = 0;
 
 private:
 	/// The towers game the item is contained in

@@ -25,5 +25,9 @@ public:
     CItemHouse(const CItemHouse&) = delete;
 
     ~CItemHouse();
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitHouse(this); }
 };
 

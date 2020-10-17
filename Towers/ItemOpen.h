@@ -26,5 +26,9 @@ public:
     CItemOpen(const CItemOpen&) = delete;
 
     ~CItemOpen();
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitOpen(this); }
 };
 

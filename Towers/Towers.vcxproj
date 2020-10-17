@@ -197,11 +197,13 @@
     <ClInclude Include="ItemOpen.h" />
     <ClInclude Include="ItemRoad.h" />
     <ClInclude Include="ItemTree.h" />
+    <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Ring.h" />
     <ClInclude Include="RingTower.h" />
+    <ClInclude Include="RoadLinker.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerEight.h" />
@@ -222,6 +224,7 @@
     <ClCompile Include="ItemOpen.cpp" />
     <ClCompile Include="ItemRoad.cpp" />
     <ClCompile Include="ItemTree.cpp" />
+    <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -231,6 +234,7 @@
     </ClCompile>
     <ClCompile Include="Ring.cpp" />
     <ClCompile Include="RingTower.cpp" />
+    <ClCompile Include="RoadLinker.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerEight.cpp" />
     <ClCompile Include="Towers.cpp" />

@@ -31,6 +31,10 @@ public:
 
 	void Fire();
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTowerEight(this); }
+
 private:
 
 	double mTimeTillFire = 5;

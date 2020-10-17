@@ -11,6 +11,7 @@
 #include <vector>
 #include <memory>
 #include "XmlNode.h"
+#include "ItemVisitor.h"
 
 class CItem;
 
@@ -43,6 +44,10 @@ public:
 	void Load(const std::wstring& filename);
 
     void Update(double elapsed);
+
+    void Accept(CItemVisitor* visitor);
+
+    void LinkRoads();
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 

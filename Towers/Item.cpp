@@ -103,9 +103,12 @@ bool CItem::HitTest(int x, int y)
  */
 void CItem::Draw(Gdiplus::Graphics* graphics)
 {
-    double wid = mItemImage->GetWidth();
-    double hit = mItemImage->GetHeight();
-    graphics->DrawImage(mItemImage.get(),
-        float(mX - wid / 2), float(mY - hit / 2),
-        (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+    if (mItemImage != nullptr)
+    {
+        double wid = mItemImage->GetWidth();
+        double hit = mItemImage->GetHeight();
+        graphics->DrawImage(mItemImage.get(),
+            float(mX - wid / 2), float(mY - hit / 2),
+            (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+    }
 }

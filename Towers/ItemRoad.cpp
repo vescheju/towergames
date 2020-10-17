@@ -54,3 +54,68 @@ CItemRoad* CItemRoad::GetNeighbor(wstring direction)
     return nullptr;
 }
 
+
+/**
+ * Sets the appropriate location pointers of this and road
+ * if they are adjacent in the cardinal directions
+ * \param road the road to try and set as the neighbor
+ * \returns true if they were neighbors and set as so
+ */
+bool CItemRoad::SetNeighbor(CItemRoad* road)
+{
+    // convert the Roads location to the column row coordinate
+    int rowThis = (GetY() - mTileLength / 2) / mTileLength;
+    int colThis = (GetX() - mTileLength / 2) / mTileLength;
+
+    // convert the potential neighbors location to column row coordinates
+    int rowRoad = (road->GetY() - mTileLength / 2) / mTileLength;
+    int colRoad = (road->GetX() - mTileLength / 2) / mTileLength;
+
+    // make sure we arent comparing the same road
+    if (rowThis == rowRoad && colThis == colRoad) return false;
+    
+    if (rowThis == rowRoad)
+    {
+        // they are in the same row
+        if (abs(colThis - colRoad) == 1)
+        {
+            // they are neighbors
+            if (colThis > colRoad) 
+            {
+                // road is west of this
+                mWest = road;
+            }
+            else
+            {
+                // road is east of this
+                mEast = road;
+            }
+            return true;
+        }
+    }
+    else if (colThis == colRoad)
+    {
+        // they are in the same column
+        if (abs(rowThis - rowRoad) == 1)
+        {
+            // they are neighbors
+            if (rowThis > rowRoad)
+            {
+                // road is north of this
+                mNorth = road;
+            }
+            else
+            {
+                // road is south of this
+                mSouth = road;
+            }
+            return true;
+
+        }
+
+    }
+
+    // they arent neighbors
+    return false;
+}
+

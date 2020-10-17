@@ -25,6 +25,10 @@ public:
 	/// copy constructor
 	CRing(const CRing&) = delete;
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRing(this); }
+
 private:
 	/// radius or ring, initialized to 10 pixels
 	double mRadius = 10;

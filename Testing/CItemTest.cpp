@@ -21,6 +21,12 @@ namespace Testing
 			SetImage(L"images/red-balloon.png");
 		}
 
+		/** Accept a visitor
+		* a dummy function to make sure the class is not abstract
+		* \param visitor The visitor we accept 
+		*/
+		virtual void Accept(CItemVisitor* visitor) override {}
+
 	};
 
 	TEST_CLASS(CItemTest)

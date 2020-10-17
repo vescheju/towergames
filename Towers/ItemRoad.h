@@ -36,6 +36,8 @@ public:
     */
     std::wstring GetRoadDirection() { return mRoadDirection; }
 
+    
+
     /**
     * sets the directions this road has
     *
@@ -44,6 +46,12 @@ public:
     void SetRoadDirection(std::wstring direction) { mRoadDirection = direction; }
 
     CItemRoad* GetNeighbor(std::wstring direction);
+
+    bool SetNeighbor(CItemRoad* road);
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRoad(this); }
 
 private:
     std::wstring mRoadDirection;    ///< The direction the road is going
