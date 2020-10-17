@@ -19,7 +19,15 @@ class CChildView : public CWnd
 {
 private:
 	/// An object that describes our game
-	CGame  mGame;
+	CGame mGame;
+
+	/// True until the first time we draw
+	bool mFirstDraw = true;
+
+	long long mLastTime = 0;    ///< Last time we read the timer
+	double mTimeFreq = 0;       ///< Rate the timer updates
+
+
 // Construction
 public:
 	CChildView();
@@ -48,5 +56,6 @@ public:
 	afx_msg void OnLevelLevel2();
 	afx_msg void OnLevelLevel3();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 

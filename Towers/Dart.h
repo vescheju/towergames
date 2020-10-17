@@ -15,13 +15,15 @@
 */
 class CDart : public CItem
 {
-	CDart(CGame* game);
+public:
 
     ///  Default constructor (disabled)
     CDart() = delete;
 
     ///  Copy constructor (disabled)
     CDart(const CDart&) = delete;
+
+    CDart(CGame* game, int angle);
 
     ~CDart();
 
@@ -30,6 +32,14 @@ class CDart : public CItem
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); }
+
+    void Fire();
+
+    void Draw(Gdiplus::Graphics* graphics) override;
+
+private:
+
+    int mAngle;
 
 };
 
