@@ -61,8 +61,10 @@ void CChildView::OnPaint()
 	
 	// Do not call CWnd::OnPaint() for painting messages
 	mGame.OnDraw(&graphics);
-}
 
+	Pen pen(Color(0, 128, 0), 3);
+	// graphics.DrawEllipse(&pen, 100, 125, 400, 50);
+}
 
 /*
 * On pushing Level 0 Button in menu level 0 loads
