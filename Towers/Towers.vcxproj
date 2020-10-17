@@ -188,6 +188,7 @@
     <ClInclude Include="BombTower.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Dart.h" />
+    <ClInclude Include="DelcaredItem.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerEight.h" />
     <ClInclude Include="Towers.h" />
+    <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +215,7 @@
     <ClCompile Include="BombTower.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Dart.cpp" />
+    <ClCompile Include="DelcaredItem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerEight.cpp" />
     <ClCompile Include="Towers.cpp" />
+    <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,7 +126,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,7 +147,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -168,11 +168,19 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CGameTest.cpp" />
+    <ClCompile Include="CItemTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CXmlLoadingTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

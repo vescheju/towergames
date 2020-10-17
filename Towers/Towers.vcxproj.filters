@@ -84,6 +84,12 @@
     <ClInclude Include="Ring.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XmlLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DelcaredItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -141,6 +147,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DelcaredItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

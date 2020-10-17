@@ -37,10 +37,15 @@ public:
 
 	virtual bool HitTest(int x, int y);
 
-	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
-		const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
 
 	void SetImage(const std::wstring filename);
+
+	/**
+	* sets the image directly using a pointer
+	* 
+	* \param itemImage pointer to the image bitmap
+	*/
+	void SetImagePtr(std::shared_ptr<Gdiplus::Bitmap> itemImage) { mItemImage = itemImage; }
 
 	void Draw(Gdiplus::Graphics* graphics);
 

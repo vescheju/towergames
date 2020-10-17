@@ -28,8 +28,6 @@ public:
 
     ~CItemRoad();
 
-    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
-        const std::shared_ptr<xmlnode::CXmlNode>& itemNode);
 
     /**
     * Returns the directions this road has
@@ -37,6 +35,13 @@ public:
     * \returns the direction
     */
     std::wstring GetRoadDirection() { return mRoadDirection; }
+
+    /**
+    * sets the directions this road has
+    *
+    * \param direction the direction
+    */
+    void SetRoadDirection(std::wstring direction) { mRoadDirection = direction; }
 
     CItemRoad* GetNeighbor(std::wstring direction);
 

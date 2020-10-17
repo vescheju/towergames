@@ -88,27 +88,6 @@ bool CItem::HitTest(int x, int y)
 
 
 /**
- * Load the attributes for an item node.
- *
- * This is the  base class version that loads the attributes
- * common to all items. Override this to load custom attributes
- * for specific items.
- * \param declNode The decleration for a single object
- * \param itemNode The node that is now labeled
- */
-void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& declNode,
-    const std::shared_ptr<xmlnode::CXmlNode>& itemNode) 
-{
-    const wstring filename = L"images/" + declNode->GetAttributeValue(L"image", L"");
-
-    SetImage(filename);
-
-    SetLocation(itemNode->GetAttributeDoubleValue(L"x", 0) * mTileLength + mTileLength / 2,
-        itemNode->GetAttributeDoubleValue(L"y", 0) * mTileLength + mTileLength / 2);
-
-}
-
-/**
  * Draw our item
  * \param graphics The graphics context to draw on
  */

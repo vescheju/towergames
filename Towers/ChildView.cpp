@@ -1,3 +1,9 @@
+/**
+ * \file ChildView.cpp
+ *
+ * \author Ian Masterson
+ */
+
 
 // ChildView.cpp : implementation of the CChildView class
 //
@@ -51,6 +57,15 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
+
+
+/**
+ * This function is called to draw in the window.
+ *
+ * This function is called in response to a drawing message
+ * whenever we need to redraw the window on the screen.
+ * It is responsible for painting the window.
+ */
 void CChildView::OnPaint() 
 {
 	CPaintDC paintDC(this);     // device context for painting
@@ -66,7 +81,7 @@ void CChildView::OnPaint()
 	// graphics.DrawEllipse(&pen, 100, 125, 400, 50);
 }
 
-/*
+/**
 * On pushing Level 0 Button in menu level 0 loads
 */
 void CChildView::OnLevelLevel0()
@@ -76,7 +91,7 @@ void CChildView::OnLevelLevel0()
 }
 
 
-/*
+/**
 * On pushing Level 1 Button in menu level 1 loads
 */
 void CChildView::OnLevelLevel1()
@@ -86,7 +101,7 @@ void CChildView::OnLevelLevel1()
 }
 
 
-/*
+/**
 * On pushing Level 2 Button in menu level 2 loads
 */
 void CChildView::OnLevelLevel2()
@@ -96,7 +111,7 @@ void CChildView::OnLevelLevel2()
 }
 
 
-/*
+/**
 * On pushing Level 3 Button in menu level 3 loads
 */
 void CChildView::OnLevelLevel3()

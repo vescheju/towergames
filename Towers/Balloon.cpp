@@ -98,6 +98,12 @@ void CBalloon::UpdateLocation(double elapsed)
 	}
 }
 
+
+
+/**
+ * Updates the heading of the balloon based off of the road tile 
+ * that it is on
+ */
 void CBalloon::UpdateHeading()
 {
 	// make sure there is a road that the balloon is on

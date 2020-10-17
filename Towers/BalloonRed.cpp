@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/// the filename of the ballon image
 const wstring RedBalloonImage = L"images/red-balloon.png";
 
 /**
