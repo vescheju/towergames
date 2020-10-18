@@ -20,7 +20,6 @@ class CTowerEight :
 	public CTower
 {
 public:
-	/// constructor
 	CTowerEight(CGame* game);
 
 	/// Default constructor (disabled)
@@ -39,11 +38,7 @@ public:
 
 private:
 
-	double mTimeTillFire = 5;		///< Time in seconds until next firing of darts
-
 	std::vector<std::shared_ptr<CDart> > mDarts;		///< Vector of darts tower contains
-
-	bool mFire = false;			///< Boolean represents whether or not currently firing darts
 
 	double mT = 10;			///< Distance of darts from tower while firing
 
