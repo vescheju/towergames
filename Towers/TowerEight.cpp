@@ -4,12 +4,20 @@
 #include "Game.h"
 #include <string>
 
-/// towerEight filename
+/// TowerEight filename
 const std::wstring TowerEightName = L"images/tower8.png";
 
+/// Time between each firing of darts
 double TimeBetweenShots = 5;
 
+/// Vector of degrees to assign to darts contained by tower
 const std::vector<int> DegreesVector{ 0, 45, 90, 135, 180, 225, 270, 315 };
+
+/// Division constant for Degrees to Radians
+const double DtoR = 57.2957795;
+
+/// Speed in pixels per second for darts to travel
+const double DartSpeed = 200;
 
 /**
 * TowerEight Constructor
@@ -29,27 +37,50 @@ CTowerEight::CTowerEight(CGame* game) :
 }
 
 
-
-void CTowerEight::Fire()
-{
-	for (auto dart : mDarts)
-	{
-		dart->Fire();
-	}
-}
-
-
-
+/**
+ * Update function, shoots darts out if Fire attribute is true
+ * \param elapsed Time since the class call
+ */
 void CTowerEight::Update(double elapsed)
 {
 	mTimeTillFire -= elapsed;
 	if (mTimeTillFire <= 0)
 	{
 		mTimeTillFire += TimeBetweenShots;
-		Fire();
+		mFire = true;
+	}
+	if (mFire)
+	{
+		for (auto dart : mDarts)
+		{
+
+			double a = dart->GetAngle() / DtoR;
+			double sn = sin(a);
+			double cs = cos(a);
+
+			double x = GetX() + cs * mT;
+			double y = GetY() + sn * mT;
+			dart->SetLocation(x, y);
+		}
+		mT += elapsed * DartSpeed;
+		if (mT > 100)
+		{
+			mFire = false;
+			mT = 10;
+			for (auto dart : mDarts)
+			{
+				dart->SetLocation(GetX(), GetY());
+			}
+		}
 	}
 }
 
+
+/**
+* Set's location of Tower and its Darts
+* \param x X coordinate to set Tower and Darts at
+* \param y Y coordinate to set Tower and Darts at
+ */
 void CTowerEight::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);

@@ -27,19 +27,20 @@ public:
 
     ~CDart();
 
-    void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
-
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); }
 
-    void Fire();
+    /** Getter function for Dart's Angle
+     * \return int value of angle dart is rotated at
+     */
+    double GetAngle() const { return mAngle; }
 
     void Draw(Gdiplus::Graphics* graphics) override;
 
 private:
 
-    int mAngle;
+    int mAngle;         ///< Int representing angle at which to draw Dart.
 
 };
 
