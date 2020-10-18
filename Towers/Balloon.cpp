@@ -38,8 +38,10 @@ void CBalloon::UpdateLocation(double elapsed)
 		newY = GetY() - mSpeed * elapsed;
 
 		// make sure the ballon is centered on the y-axis of the road
+		// add any excess location to the y direction
 		if (mRoad != nullptr && newX != mRoad->GetX())
 		{
+			newY -= abs(newX - mRoad->GetX());
 			newX = mRoad->GetX();
 		}
 
@@ -56,8 +58,10 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX();
 		newY = GetY() + mSpeed * elapsed;
 		// make sure the ballon is centered on the y-axis of the road
+		// add any excess location to the y direction
 		if (mRoad != nullptr && newX != mRoad->GetX())
 		{
+			newY += abs(newX - mRoad->GetX());
 			newX = mRoad->GetX();
 		}
 		SetLocation(newX, newY);
@@ -73,8 +77,10 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX() + mSpeed * elapsed;
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
+		// add any excess location to the x direction
 		if (mRoad != nullptr && newX != mRoad->GetY())
 		{
+			newX += abs(newY - mRoad->GetY());
 			newY = mRoad->GetY();
 		}
 		SetLocation(newX, newY);
@@ -90,8 +96,10 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX() - mSpeed * elapsed;
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
+		// add any excess location to the X direction
 		if (mRoad != nullptr && newX != mRoad->GetY())
 		{
+			newX -= abs(newY - mRoad->GetY());
 			newY = mRoad->GetY();
 		}
 		SetLocation(newX, newY);

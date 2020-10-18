@@ -24,9 +24,24 @@ public:
 	/// copy constructor
 	CTower(const CTower&) = delete;
 
-	/// constructor
 	CTower(CGame* game);
 
+	void UpdateTimeTillFire(double elapsed);
+
+	/** Getter function for mFire member
+	 * \return Boolean of mFire
+	 */
+	bool GetFire() const { return mFire; }
+
+	/** Setter function for mFire member
+	 * \param fire Boolean to set mFire to
+	 */
+	void SetFire(bool fire) { mFire = fire; }
+
 private:
+
+	double mTimeTillFire = 5;		///< Time in seconds until next firing
+
+	bool mFire = false;			///< Boolean represents whether or not currently firing
 };
 

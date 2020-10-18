@@ -3,15 +3,11 @@
  *
  * \author Hithesh Yedlapati
  */
-
 #include "pch.h"
 #include "RingTower.h"
 #include "Ring.h"
 #include "Game.h"
 #include <string>
-
- /// Time between each firing of darts
-double TimeBetween = 5;
 
 /// ring tower png file
 const std::wstring ringTowerName = L"images/tower-rings.png";
@@ -28,8 +24,8 @@ CRingTower::CRingTower(CGame* game) :
 {
 	SetImage(ringTowerName);
 	std::shared_ptr<CRing> ring(new CRing(game));
-	game->Add(ring);
 	mRing = ring;
+	game->Add(ring);
 }
 
 
@@ -39,24 +35,22 @@ CRingTower::CRingTower(CGame* game) :
  */
 void CRingTower::Update(double elapsed)
 {
-	// calculate time until next fire
-	mTimeTillFire -= elapsed;
-	if (mTimeTillFire <= 0)
+	// Update time till firing
+	UpdateTimeTillFire(elapsed);
+	if (GetFire())
 	{
-		// if it's time to fire, reset timer and set fire attribute to true
-		mTimeTillFire += TimeBetween;
-		mFire = true;
-	}
-	if (mFire)
-	{
+		// Change radius of ring
 		mRing->SetRadius(mRing->GetRadius() + elapsed * RingSpeed);
 		if (mRing->GetRadius() > 100)
 		{
-			mFire = false;
+			// Reset fire and radius attributes if radius > 100
+			SetFire(false);
 			mRing->SetRadius(10);
 		}
+
 	}
 }
+
 
 /**
 * Set's location of Tower and its Ring
@@ -69,4 +63,3 @@ void CRingTower::SetLocation(double x, double y)
 	// set locations of ring with tower
 	mRing->SetLocation(x, y);
 }
-
