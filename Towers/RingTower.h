@@ -19,6 +19,10 @@ public:
 	/// constructor
 	CRingTower(CGame* game);
 
+	void Update(double elapsed) override;
+
+	void SetLocation(double x, double y);
+
 	/// Default constructor (disabled)
 	CRingTower() = delete;
 

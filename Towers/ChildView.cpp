@@ -14,6 +14,7 @@
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
 #include "TowerEight.h"
+#include "RingTower.h"
 #include "GoButton.h"
 
 using namespace Gdiplus;
@@ -143,6 +144,9 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CTowerEight> tower2(new CTowerEight(&mGame));
 	tower2->SetLocation(225, 425);
 	mGame.Add(tower2);
+	std::shared_ptr<CRingTower> tower3(new CRingTower(&mGame));
+	tower3->SetLocation(500, 400);
+	mGame.Add(tower3);
 	std::shared_ptr<CGoButton> button(new CGoButton(&mGame));
 	button->SetLocation(200, 200);
 	mGame.Add(button);
