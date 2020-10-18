@@ -47,6 +47,15 @@ private:
     /// the y offset of the game
     float mYOffset = 0;
 
+    /// the length of a item tile in the game
+    const int mTileLength = 64;
+
+    /// the number of balloons per level
+    int mLevelBalloons = 30;
+
+    /// the spacing of the balloons in the game
+    int mBalloonSpacing = 42;
+
 public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
@@ -60,9 +69,13 @@ public:
 
     void Accept(CItemVisitor* visitor);
 
-    void LinkRoads();
+    void InitializeStart();
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
+    
+    /// returns the width of the level in pixels
+    /// \return level width in pixels
+    double GetGameWidth() { return mTileLength * mLevelWidth; }
 
     /// setter for the start x
     /// \param x the start x

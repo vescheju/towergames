@@ -32,7 +32,7 @@ CDeclaredItem::CDeclaredItem(std::shared_ptr<xmlnode::CXmlNode> node, CGame * ga
 
 
 
-    mItemImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+    mItemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
 
     if (mItemImage->GetLastStatus() != Ok)
     {
