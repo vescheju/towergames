@@ -96,6 +96,9 @@
     <ClInclude Include="RoadLinker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GoButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -165,6 +168,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RoadLinker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GoButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

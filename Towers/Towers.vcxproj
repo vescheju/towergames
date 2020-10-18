@@ -192,6 +192,7 @@
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GoButton.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHouse.h" />
     <ClInclude Include="ItemOpen.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="Dart.cpp" />
     <ClCompile Include="DelcaredItem.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GoButton.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
     <ClCompile Include="ItemOpen.cpp" />
