@@ -145,6 +145,10 @@ void CGame::Accept(CItemVisitor* visitor)
     }
 }
 
+
+/**
+ * Sets all balloon and road items at the beginning of the level to start the game
+ */
 void CGame::InitializeStart()
 {
     // the starting y position of all starting roads

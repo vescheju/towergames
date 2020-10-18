@@ -20,6 +20,7 @@ class CTowerEight;
 class CRingTower;
 class CRing;
 class CDart;
+class CGoButton;
 
 /** Tile visitor base class */
 class CItemVisitor
@@ -86,6 +87,12 @@ public:
      * \param dart Dart we are visiting
      */
     virtual void VisitDart(CDart* dart) {}
+
+    /**
+     * Visit a CGoButton object
+     * \param button Button we are visiting
+     */
+    virtual void VisitGoButton(CGoButton* button) {}
 
 
 };
