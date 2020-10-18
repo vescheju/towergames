@@ -8,15 +8,19 @@
 #include "Balloon.h"
 
 
-
+using namespace std;
 
 /**
- * Constructor for balloon
- * 
+ * Constructor for a balloon
+ *
  * \param game the game that holds everything.
+ * \param road the road that the balloon exists on
+ * \param heading the initial direction of the road
  */
-CBalloon::CBalloon(CGame* game) : CItem(game)
+CBalloon::CBalloon(CGame* game, CItemRoad* road, std::wstring heading) : CItem(game)
 {
+	mRoad = road;
+	mHeading = heading;
 }
 
 /**
@@ -32,15 +36,17 @@ void CBalloon::UpdateLocation(double elapsed)
 	{
 		newX = GetX();
 		newY = GetY() - mSpeed * elapsed;
+
 		// make sure the ballon is centered on the y-axis of the road
-		if (mRoad != nullptr && newX != mRoad->GetX() + mTileLength / 2)
+		if (mRoad != nullptr && newX != mRoad->GetX())
 		{
-			newX = mRoad->GetX() + mTileLength / 2;
+			newX = mRoad->GetX();
 		}
+
 		SetLocation(newX, newY);
 
 		// update the road pointer if the balloon is on a new tile
-		if (newY <= mRoad->GetY())
+		if (mRoad != nullptr && newY < mRoad->GetY()- mTileLength / 2)
 		{
 			mRoad = mRoad->GetNeighbor(L"N");
 		}
@@ -50,14 +56,14 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX();
 		newY = GetY() + mSpeed * elapsed;
 		// make sure the ballon is centered on the y-axis of the road
-		if (mRoad != nullptr && newX != mRoad->GetX() + mTileLength / 2)
+		if (mRoad != nullptr && newX != mRoad->GetX())
 		{
-			newX = mRoad->GetX() + mTileLength / 2;
+			newX = mRoad->GetX();
 		}
 		SetLocation(newX, newY);
 
 		// update the road pointer if the balloon is on a new tile
-		if (newY >= mRoad->GetY())
+		if (mRoad != nullptr && newY > mRoad->GetY() + mTileLength/2)
 		{
 			mRoad = mRoad->GetNeighbor(L"S");
 		}
@@ -67,14 +73,14 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX() + mSpeed * elapsed;
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
-		if (mRoad != nullptr && newX != mRoad->GetY() + mTileLength / 2)
+		if (mRoad != nullptr && newX != mRoad->GetY())
 		{
-			newX = mRoad->GetY() + mTileLength / 2;
+			newY = mRoad->GetY();
 		}
 		SetLocation(newX, newY);
 
 		// update the road pointer if the balloon is on a new tile
-		if (newY >= mRoad->GetX())
+		if (mRoad != nullptr && newX > mRoad->GetX()+ mTileLength/2)
 		{
 			mRoad = mRoad->GetNeighbor(L"E");
 		}
@@ -84,14 +90,14 @@ void CBalloon::UpdateLocation(double elapsed)
 		newX = GetX() - mSpeed * elapsed;
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
-		if (mRoad != nullptr && newX != mRoad->GetY() + mTileLength / 2)
+		if (mRoad != nullptr && newX != mRoad->GetY())
 		{
-			newX = mRoad->GetY() + mTileLength / 2;
+			newY = mRoad->GetY();
 		}
 		SetLocation(newX, newY);
 
 		// update the road pointer if the balloon is on a new tile
-		if (newY <= mRoad->GetX())
+		if (mRoad != nullptr && newX < mRoad->GetX()- mTileLength / 2)
 		{
 			mRoad = mRoad->GetNeighbor(L"W");
 		}
@@ -109,32 +115,26 @@ void CBalloon::UpdateHeading()
 	// make sure there is a road that the balloon is on
 	if (mRoad != nullptr)
 	{
-		// heading gets updated whenever the ballon reaches the center of the road
-		if (GetX() == mRoad->GetX() + mTileLength / 2 &&
-			GetY() == mRoad->GetY() + mTileLength / 2)
+		// update the heading of the balloon based off of the directions of the road
+		if (mHeading == L"N" && GetY() <= mRoad->GetY())
 		{
-			// update the heading of the balloon based off of the directions of the road
-			if (mHeading == L"N")
-			{
-				if (mRoad->GetRoadDirection() == L"NE") mHeading == L"E";
-				else if (mRoad->GetRoadDirection() == L"NW") mHeading == L"W";
-			}
-			else if (mHeading == L"S")
-			{
-				if (mRoad->GetRoadDirection() == L"SE") mHeading == L"E";
-				else if (mRoad->GetRoadDirection() == L"SW") mHeading == L"W";
-			}
-			else if (mHeading == L"E")
-			{
-				if (mRoad->GetRoadDirection() == L"SE") mHeading == L"S";
-				else if (mRoad->GetRoadDirection() == L"NE") mHeading == L"N";
-			}
-			else if (mHeading == L"W")
-			{
-				if (mRoad->GetRoadDirection() == L"SW") mHeading == L"S";
-				else if (mRoad->GetRoadDirection() == L"NW") mHeading == L"N";
-			}
-
+			if (mRoad->GetRoadDirection() == L"SW") mHeading = L"W";
+			else if (mRoad->GetRoadDirection() == L"SE") mHeading = L"E";
+		}
+		else if (mHeading == L"S" && GetY() >= mRoad->GetY())
+		{
+			if (mRoad->GetRoadDirection() == L"NE") mHeading = L"E";
+			else if (mRoad->GetRoadDirection() == L"NW") mHeading = L"W";
+		}
+		else if (mHeading == L"E" && GetX() >= mRoad->GetX())
+		{
+			if (mRoad->GetRoadDirection() == L"NW") mHeading = L"N";
+			else if (mRoad->GetRoadDirection() == L"SW") mHeading = L"S";
+		}
+		else if (mHeading == L"W" && GetX() <= mRoad->GetX())
+		{
+			if (mRoad->GetRoadDirection() == L"NE") mHeading = L"N";
+			else if (mRoad->GetRoadDirection() == L"SE") mHeading = L"S";
 		}
 	}
 	

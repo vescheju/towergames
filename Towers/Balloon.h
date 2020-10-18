@@ -52,10 +52,23 @@ public:
 
 	virtual void Update(double elapsed) override;
 
+	/**
+	* returns the road member
+	* 
+	* \return the road that the balloon is on
+	*/
+	CItemRoad* GetRoad() { return mRoad; }
 
+	/**
+	* returns the heading
+	*
+	* \return the direction that the balloon is moving
+	*/
+	std::wstring GetHeading() { return mHeading; }
 protected:
 
-	CBalloon(CGame* game);
+	CBalloon(CGame* game, CItemRoad* road, std::wstring heading);
+
 private:
 	/// the direction that the balloon is moving in
 	std::wstring mHeading;

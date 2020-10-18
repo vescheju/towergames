@@ -21,7 +21,8 @@
 class CBalloonRed : public CBalloon
 {
 public:
-	CBalloonRed(CGame* game);
+
+	CBalloonRed(CGame* game, CItemRoad * road, std::wstring heading);
 
 	/// Default constructor (disabled)
 	CBalloonRed() = delete;
