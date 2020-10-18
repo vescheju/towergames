@@ -43,17 +43,20 @@ CTowerEight::CTowerEight(CGame* game) :
  */
 void CTowerEight::Update(double elapsed)
 {
+	// calculate time until next fire
 	mTimeTillFire -= elapsed;
 	if (mTimeTillFire <= 0)
 	{
+		// if it's time to fire, reset timer and set fire attribute to true
 		mTimeTillFire += TimeBetweenShots;
 		mFire = true;
 	}
+	// if currently firing
 	if (mFire)
 	{
+		// calculate new position of each dart
 		for (auto dart : mDarts)
 		{
-
 			double a = dart->GetAngle() / DtoR;
 			double sn = sin(a);
 			double cs = cos(a);
@@ -63,8 +66,10 @@ void CTowerEight::Update(double elapsed)
 			dart->SetLocation(x, y);
 		}
 		mT += elapsed * DartSpeed;
+		// if distance passed 100 pixels from tower
 		if (mT > 100)
 		{
+			// reset fire and mT attributes and dart locations
 			mFire = false;
 			mT = 10;
 			for (auto dart : mDarts)
@@ -84,15 +89,10 @@ void CTowerEight::Update(double elapsed)
 void CTowerEight::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);
+	// set locations of darts with tower
 	for (auto dart : mDarts)
 	{
 		dart->SetLocation(x, y);
 	}
 }
 
-/**
-std::shared_ptr<xmlnode::CXmlNode>
-CTowerEight::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
-{
-}
-*/

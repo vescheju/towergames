@@ -30,5 +30,13 @@ public:
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRingTower(this); }
 
 private:
+
+	double mTimeTillFire = 5;		///< Time in seconds until next firing of darts
+
+	std::shared_ptr<CRing> mRing;
+
+	bool mFire = false;			///< Boolean represents whether or not currently firing darts
+
+	double mT = 10;			/// Distance of darts from tower while firing
 };
 

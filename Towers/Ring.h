@@ -19,8 +19,12 @@ public:
 	/// constructor
 	CRing(CGame* game);
 
+	void Draw(Gdiplus::Graphics* graphics) override;
+
 	/// constructor disabled
 	CRing() = delete;
+
+	~CRing();
 
 	/// copy constructor
 	CRing(const CRing&) = delete;

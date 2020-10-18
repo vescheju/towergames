@@ -32,7 +32,7 @@ CDart::~CDart()
 
 
 /**
- * Draw our item
+ * Draw our dart
  * \param graphics The graphics context to draw on
  */
 void CDart::Draw(Gdiplus::Graphics* graphics)
