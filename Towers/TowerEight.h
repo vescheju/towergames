@@ -45,7 +45,7 @@ private:
 
 	bool mFire = false;			///< Boolean represents whether or not currently firing darts
 
-	double mT = 10;			/// Distance of darts from tower while firing
+	double mT = 10;			///< Distance of darts from tower while firing
 
 };
 

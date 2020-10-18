@@ -1,7 +1,19 @@
+/**
+ * \file GoButton.h
+ *
+ * \author Julius Eillya
+ *
+ * A class that implements a Go button
+ */
+
 #pragma once
 
 #include "Item.h"
 
+
+/**
+ * The class for the game's Go button
+ */
 class CGoButton : public CItem
 {
 public:
