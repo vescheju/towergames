@@ -9,6 +9,8 @@
 #pragma once
 #include "Item.h"
 
+using namespace Gdiplus;
+
 /**
 * CRing class creates ring that increases over time
 * derived from CItem
@@ -28,6 +30,10 @@ public:
 
 	/// copy constructor
 	CRing(const CRing&) = delete;
+
+	void SetRadius(double radius) { mRadius = radius; }
+	
+	double GetRadius() const { return mRadius; }
 
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */

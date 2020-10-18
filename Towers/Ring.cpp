@@ -9,8 +9,6 @@
 
 using namespace Gdiplus;
 
-//std::shared_ptr<Pen> RedPen(Color.Red, 1);
-
 /**
 * Ring Constructor function
 *\param game representing the game as a whole
@@ -35,7 +33,8 @@ CRing::~CRing()
  */
 void CRing::Draw(Gdiplus::Graphics* graphics)
 {
-	Pen pen(Color(0, 128, 0), 3);
-	//graphics.DrawEllipse(pen, 200, 200, 20, 20);
+	Pen pen(Color(128, 0, 0), 3);
+	graphics->DrawEllipse(&pen, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
+		mRadius * 2, mRadius * 2);
 }
 
