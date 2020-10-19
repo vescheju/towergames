@@ -9,6 +9,8 @@
 #pragma once
 #include "Tower.h"
 
+class CExplosion;
+
 /**
 * bomb explodes every 3 seconds
 */
@@ -17,7 +19,7 @@ class CBombTower :
 {
 public:
 	/// constructor
-	CBombTower(CGame* game);
+	CBombTower(CGame* game, double timeToDetonate);
 
 	/// Default constructor (disabled)
 	CBombTower() = delete;
@@ -30,7 +32,7 @@ public:
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBomb(this); }
 
 private:
-	/// time bomb tower
-	int mSeconds = 0;
+
+	std::shared_ptr<CExplosion> mExplosion;
 };
 

@@ -25,7 +25,7 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	ringtower->SetLocation(1100, 600);
 	game->Add(ringtower);
 
-	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
+	std::shared_ptr<CBombTower> bombtower(new CBombTower(game, 3));
 	mBomb = bombtower;
 	bombtower->SetLocation(1100, 500);
 	game->Add(bombtower);
