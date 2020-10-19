@@ -25,10 +25,12 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	ringtower->SetLocation(1100, 600);
 	game->Add(ringtower);
 
-	std::shared_ptr<CBombTower> bombtower(new CBombTower(game, 3));
+	/**
+	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
 	mBomb = bombtower;
 	bombtower->SetLocation(1100, 500);
 	game->Add(bombtower);
+	*/
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
