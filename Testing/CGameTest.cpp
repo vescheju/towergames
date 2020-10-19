@@ -52,6 +52,8 @@ namespace Testing
 
 			Assert::IsTrue(game.HitTest(100, 100) == tree, L"Testing tree");
 
+			Assert::IsTrue(game.HitTest(110, 110) == tree, L"Testing tree");
+
 			// Test an empty spot with both added
 
 			Assert::IsTrue(game.HitTest(300, 300) == nullptr, L"Testing empty spot");

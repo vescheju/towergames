@@ -102,9 +102,10 @@ void CGame::Load(const std::wstring& filename)
  */
 std::shared_ptr<CItem> CGame::HitTest(int x, int y)
 {
+
     for (auto item : *this)
     {
-        if (item->HitTest(x, y))
+        if (item->HitTest((x - mXOffset) / mScale, (y - mYOffset) / mScale))
         {
             return item;
         }
