@@ -13,7 +13,7 @@ using namespace Gdiplus;
 * Ring Constructor function
 *\param game representing the game as a whole
 */
-CRing::CRing(CGame* game) : CItem(game)
+CRing::CRing(CGame* game) : CWeapon(game)
 {
 
 }

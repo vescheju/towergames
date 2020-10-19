@@ -16,7 +16,7 @@ const std::wstring DartFileName = L"images/dart.png";
  * \param game The game this item is a member of
  * \param angle Int value of angle to set dart at
  */
-CDart::CDart(CGame* game, int angle) : CItem(game)
+CDart::CDart(CGame* game, int angle) : CWeapon(game)
 {
 	SetImage(DartFileName);
     mAngle = angle;

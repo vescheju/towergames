@@ -8,12 +8,13 @@
 
 #pragma once
 
-#include "Item.h"
+
+#include "Weapon.h"
 
 /**
 * A dart item
 */
-class CDart : public CItem
+class CDart : public CWeapon
 {
 public:
 
