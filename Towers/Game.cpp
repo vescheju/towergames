@@ -39,15 +39,15 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     //
     // Automatic Scaling
     //
-    float scaleX = float(width) / float(Width);
-    float scaleY = float(height) / float(Height);
+    float scaleX = float(width) / float(mWidth);
+    float scaleY = float(height) / float(mHeight);
     mScale = min(scaleX, scaleY);
 
     // Ensure it is centered horizontally
-    mXOffset = (float)((width - Width * mScale) / 2);
+    mXOffset = (float)((width - mWidth * mScale) / 2);
 
     // Ensure it is centered vertically
-    mYOffset = (float)((height - Height * mScale) / 2);
+    mYOffset = (float)((height - mHeight * mScale) / 2);
 
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
@@ -56,7 +56,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     for (auto item : mItems)
     {
         // only draw the item if it is with the dimensions of the level
-        if ((item->GetX() >= 0 && item->GetX() <= double(mTileLength) * mLevelWidth) &&
+        if ((item->GetX() >= 0 && item->GetX() <= mWidth) &&
             (item->GetY() >= 0 && item->GetY() <= double(mTileLength) * mLevelHeight))
         {
             item->Draw(graphics);
