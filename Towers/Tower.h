@@ -38,6 +38,12 @@ public:
 	 */
 	void SetFire(bool fire) { mFire = fire; }
 
+	/** Setter function for mTimeTillFire member
+	 * \param time double to set mTimeTillFire to
+	 */
+	void SetTimeTillFire(double time) { mTimeTillFire = time; }
+
+
 private:
 
 	double mTimeTillFire = 5;		///< Time in seconds until next firing
