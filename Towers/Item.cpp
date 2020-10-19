@@ -14,8 +14,6 @@ using namespace std;
 /// the length of a tile space in the game
 const int tileLength = 64;
 
-/// the tolerance of each tile
-const int InsideTolerance = 32;
 
  /** Constructor
  * \param game The game this item is a member of
@@ -75,7 +73,7 @@ bool CItem::HitTest(int x, int y)
     double testY = y - GetY() + hit / 2;
 
     // Test to see if x, y are in the image
-    if (abs(x - mX) > InsideTolerance || abs(y - mY) > InsideTolerance)
+    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
     {
         // We are outside the image
         return false;
