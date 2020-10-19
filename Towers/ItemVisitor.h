@@ -20,6 +20,7 @@ class CTowerEight;
 class CRingTower;
 class CRing;
 class CDart;
+class CExplosion;
 class CGoButton;
 class CGameMenu;
 
@@ -88,6 +89,12 @@ public:
      * \param dart Dart we are visiting
      */
     virtual void VisitDart(CDart* dart) {}
+
+    /**
+     * Visit a CExplosion object
+     * \param explosion Explosion we are visiting
+     */
+    virtual void VisitExplosion(CExplosion* explosion) {}
 
     /**
      * Visit a CGoButton object

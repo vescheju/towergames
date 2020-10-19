@@ -33,10 +33,10 @@ private:
     int mLevelHeight;
 
     /// Game area in virtual pixels
-    const static int Width = 1224;
+    const static int mWidth = 1224;
 
     /// Game area height in virtual pixels
-    const static int Height = 1024;
+    const static int mHeight = 1024;
 
     /// the scaling factor of the game
     float mScale = 1;
