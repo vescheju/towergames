@@ -21,6 +21,7 @@ class CRingTower;
 class CRing;
 class CDart;
 class CGoButton;
+class CGameMenu;
 
 /** Tile visitor base class */
 class CItemVisitor
@@ -93,6 +94,8 @@ public:
      * \param button Button we are visiting
      */
     virtual void VisitGoButton(CGoButton* button) {}
+
+	virtual void VisitMenu(CGameMenu* menu) {}
 
 
 };

@@ -7,7 +7,7 @@
  */
 
 #pragma once
-#include "Item.h"
+#include "Weapon.h"
 
 using namespace Gdiplus;
 
@@ -15,7 +15,7 @@ using namespace Gdiplus;
 * CRing class creates ring that increases over time
 * derived from CItem
 */
-class CRing : public CItem
+class CRing : public CWeapon
 {
 public:
 	/// constructor
