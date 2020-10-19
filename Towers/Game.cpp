@@ -7,6 +7,7 @@
 #include "BalloonRed.h"
 #include "XmlLoader.h"
 #include "RoadLinker.h"
+#include "GoButton.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -129,9 +130,12 @@ void CGame::Clear()
 */
 void CGame::Update(double elapsed)
 {
-    for (auto item : mItems)
+    if (mButtonPressed)
     {
-        item->Update(elapsed);
+        for (auto item : mItems)
+        {
+            item->Update(elapsed);
+        }
     }
 }
 
@@ -222,5 +226,11 @@ void CGame::InitializeStart()
         // update the next balloons location
         balloonXPos -= mBalloonSpacing;
     }
+
+    std::shared_ptr<CGoButton> button(new CGoButton(this));
+    button->SetLocation(1124, 949);
+    this->Add(button);
+    mButtonPressed = false;
+
 
 }

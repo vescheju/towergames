@@ -151,10 +151,6 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CRingTower> tower3(new CRingTower(&mGame));
 	tower3->SetLocation(500, 400);
 	mGame.Add(tower3);
-	std::shared_ptr<CGoButton> button(new CGoButton(&mGame));
-	button->SetLocation(200, 200);
-	mGame.Add(button);
-
 	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
 	mGame.Add(menu);
 	Invalidate();
