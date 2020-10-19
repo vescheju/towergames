@@ -22,17 +22,17 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 {
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
-	ringtower->SetLocation(1000, 600);
+	ringtower->SetLocation(1100, 600);
 	game->Add(ringtower);
 
 	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
 	mBomb = bombtower;
-	bombtower->SetLocation(1000, 500);
+	bombtower->SetLocation(1100, 500);
 	game->Add(bombtower);
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
-	eighttower->SetLocation(1000, 400);
+	eighttower->SetLocation(1100, 400);
 	game->Add(eighttower);
 }
 
