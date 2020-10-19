@@ -16,6 +16,9 @@ using namespace Gdiplus;
 /// the folder that the levels exist in
 const wstring levelFolder = L"levels/";
 
+const int ScoreX = 1124;
+const int ScoreY = 949;
+
 /**
  * Add an item to the game
  * \param item New item to add
@@ -130,7 +133,7 @@ void CGame::Clear()
 */
 void CGame::Update(double elapsed)
 {
-    if (mButtonPressed)
+    if (!mButtonPressed)
     {
         for (auto item : mItems)
         {
@@ -228,7 +231,7 @@ void CGame::InitializeStart()
     }
 
     std::shared_ptr<CGoButton> button(new CGoButton(this));
-    button->SetLocation(1124, 949);
+    button->SetLocation(ScoreX, ScoreY);
     this->Add(button);
     mButtonPressed = false;
 
