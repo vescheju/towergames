@@ -26,7 +26,6 @@ CRing::~CRing()
 
 }
 
-
 /**
  * Draw our ring
  * \param graphics The graphics context to draw on

@@ -16,6 +16,7 @@
 #include "TowerEight.h"
 #include "RingTower.h"
 #include "GoButton.h"
+#include "Menu.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -150,7 +151,11 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CGoButton> button(new CGoButton(&mGame));
 	button->SetLocation(200, 200);
 	mGame.Add(button);
+
+	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
+	mGame.Add(menu);
 	Invalidate();
+
 }
 
 

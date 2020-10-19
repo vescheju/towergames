@@ -29,16 +29,22 @@ public:
 
 	~CGameMenu();
 
+	void SetLocation(double x, double y);
+
+	void Draw(Gdiplus::Graphics* graphics);
+
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
+
 private:
 	/// pointer to Go button
 	CGoButton* mGoButton = nullptr;
 
 	/// pointer to Tower Eight
-	CTowerEight* mEight = nullptr;
+	std::shared_ptr<CTowerEight> mEight = nullptr;
 
 	/// pointer to Tower Bomb
-	CBombTower* mBomb = nullptr;
+	std::shared_ptr<CBombTower> mBomb = nullptr;
 
 	/// pointer to Tower Ring
-	CRingTower* mRing = nullptr;
+	std::shared_ptr<CRingTower> mRing = nullptr;
 };
