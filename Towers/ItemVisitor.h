@@ -23,6 +23,7 @@ class CDart;
 class CExplosion;
 class CGoButton;
 class CGameMenu;
+class CScoreboard;
 
 /** Tile visitor base class */
 class CItemVisitor
@@ -103,5 +104,9 @@ public:
     virtual void VisitGoButton(CGoButton* button) {}
 
 	virtual void VisitMenu(CGameMenu* menu) {}
+
+	virtual void VisitScoreBoard(CScoreboard* score) {}
+
+
 };
 

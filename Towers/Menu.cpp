@@ -57,12 +57,19 @@ CGameMenu::~CGameMenu()
 
 /**
 * draw boundary for Menu
+* add scoreboard text
 * \param graphics item to be drawn
 */
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
 	Pen pen(Color(255, 0, 0), 3);
 	graphics->DrawRectangle(&pen, 1020, 0, 800, 1020);
+
+	FontFamily fontFamily(L"Arial");
+	Gdiplus::Font font(&fontFamily, 32);
+	SolidBrush green(Color(0, 200, 0));
+	graphics->DrawString(L"Scoreboard: ", -1,
+		&font, PointF(1024, 100), &green);
 }
 
 void CGameMenu::SetLocation(double x, double y)
