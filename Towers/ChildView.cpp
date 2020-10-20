@@ -18,6 +18,7 @@
 #include "GoButton.h"
 #include "Menu.h"
 #include "Scoreboard.h"
+#include "Explosion.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -151,6 +152,10 @@ void CChildView::OnLevelLevel0()
 	mGame.Add(tower3);
 	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
 	mGame.Add(menu);
+	std::shared_ptr<CExplosion> explosion(new CExplosion(&mGame));
+	explosion->SetLocation(700, 700);
+	mGame.Add(explosion);
+
 	Invalidate();
 }
 

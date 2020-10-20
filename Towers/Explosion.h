@@ -22,8 +22,15 @@ public:
      */
     double GetRadius() const { return mRadius; }
 
+    void Draw(Gdiplus::Graphics* graphics) override;
+
+    /// Copy consturctor (disbabled)
+    CExplosion(const CExplosion&) = delete;
+
+    /// constructor disabled
+    CExplosion() = delete;
 private:
-    /// radius or ring, initialized to 10 pixels
-    double mRadius = 10;
+    /// radius of circle in pixels
+    double mRadius = 100;
 };
 
