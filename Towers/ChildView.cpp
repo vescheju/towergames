@@ -17,6 +17,7 @@
 #include "RingTower.h"
 #include "GoButton.h"
 #include "Menu.h"
+#include "Scoreboard.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -131,9 +132,6 @@ void CChildView::OnPaint()
 	GetClientRect(&rect);
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
-
-	Pen pen(Color(0, 128, 0), 3);
-	// graphics.DrawEllipse(&pen, 100, 125, 400, 50);
 }
 
 /**
