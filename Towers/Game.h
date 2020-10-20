@@ -56,6 +56,9 @@ private:
     /// the spacing of the balloons in the game
     int mBalloonSpacing = 42;
 
+    /// tells if the game should operate
+    bool mButtonPressed = false;
+
 public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 

@@ -7,6 +7,7 @@
 #include "BalloonRed.h"
 #include "XmlLoader.h"
 #include "RoadLinker.h"
+#include "GoButton.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -14,6 +15,9 @@ using namespace Gdiplus;
 
 /// the folder that the levels exist in
 const wstring levelFolder = L"levels/";
+
+const int ScoreX = 1124;
+const int ScoreY = 949;
 
 /**
  * Add an item to the game
@@ -129,9 +133,12 @@ void CGame::Clear()
 */
 void CGame::Update(double elapsed)
 {
-    for (auto item : mItems)
+    if (!mButtonPressed)
     {
-        item->Update(elapsed);
+        for (auto item : mItems)
+        {
+            item->Update(elapsed);
+        }
     }
 }
 
@@ -222,5 +229,11 @@ void CGame::InitializeStart()
         // update the next balloons location
         balloonXPos -= mBalloonSpacing;
     }
+
+    std::shared_ptr<CGoButton> button(new CGoButton(this));
+    button->SetLocation(ScoreX, ScoreY);
+    this->Add(button);
+    mButtonPressed = false;
+
 
 }
