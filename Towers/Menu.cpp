@@ -11,6 +11,7 @@
 #include "RingTower.h"
 #include "BombTower.h"
 #include "TowerEight.h"
+#include "GoButton.h"
 
 using namespace Gdiplus;
 
@@ -22,7 +23,7 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 {
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
-	ringtower->SetLocation(1100, 600);
+	ringtower->SetLocation(1200, 600);
 	game->Add(ringtower);
 
 	/**
@@ -34,8 +35,15 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
-	eighttower->SetLocation(1100, 400);
+	eighttower->SetLocation(1200, 400);
 	game->Add(eighttower);
+
+	
+	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
+	mGoButton = gobutton;
+	gobutton->SetLocation(1200, 900);
+	game->Add(gobutton);
+	
 }
 
 
