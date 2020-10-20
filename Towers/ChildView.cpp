@@ -143,7 +143,7 @@ void CChildView::OnLevelLevel0()
 {
 	mGame.Load(L"level0.xml");
 	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
-	tower->SetLocation(400,350);
+	tower->SetLocation(400, 350);
 	mGame.Add(tower);
 	std::shared_ptr<CTowerEight> tower2(new CTowerEight(&mGame));
 	tower2->SetLocation(225, 425);
@@ -154,7 +154,6 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
 	mGame.Add(menu);
 	Invalidate();
-
 }
 
 

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GoButton.h"
+#include "Game.h"
 
 /// Go button filename
 const std::wstring GoButtonFileName = L"images/button-go.png";

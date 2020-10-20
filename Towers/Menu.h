@@ -37,7 +37,7 @@ public:
 
 private:
 	/// pointer to Go button
-	CGoButton* mGoButton = nullptr;
+	std::shared_ptr<CGoButton> mGoButton = nullptr;
 
 	/// pointer to Tower Eight
 	std::shared_ptr<CTowerEight> mEight = nullptr;
