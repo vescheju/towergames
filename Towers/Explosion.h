@@ -29,8 +29,15 @@ public:
 
     /// constructor disabled
     CExplosion() = delete;
+
+    /** Getter function for mMaxRadius member
+     * \return double representing max radius
+     */
+    double GetMaxRadius() const { return mMaxRadius; }
+
 private:
     /// radius of circle in pixels
-    double mRadius = 100;
+    double mRadius = 10;
+    double mMaxRadius = 100;
 };
 

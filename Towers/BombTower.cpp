@@ -25,3 +25,16 @@ CBombTower::CBombTower(CGame* game, double timeToDetonate) : CTower(game)
 	mExplosion = explosion;
 	game->Add(explosion);
 }
+
+
+/**
+* Set's location of Tower and its explosion
+* \param x X coordinate to set Tower and explosion at
+* \param y Y coordinate to set Tower and explosion at
+ */
+void CBombTower::SetLocation(double x, double y)
+{
+	CItem::SetLocation(x, y);
+	// set locations of ring with tower
+	mExplosion->SetLocation(x, y);
+}

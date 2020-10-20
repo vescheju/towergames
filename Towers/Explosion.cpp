@@ -32,3 +32,5 @@ void CExplosion::Draw(Gdiplus::Graphics* graphics)
 		mRadius * 2, mRadius * 2);
 
 }
+
+
