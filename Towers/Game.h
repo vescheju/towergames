@@ -59,6 +59,9 @@ private:
     /// tells if the game should operate
     bool mButtonPressed = false;
 
+    /// Any item we are currently dragging
+    std::shared_ptr<CItem> mGrabbedItem;
+
 public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
@@ -75,6 +78,12 @@ public:
     void InitializeStart();
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
+
+    void OnLButtonDown(UINT nFlags, CPoint point);
+
+    void CGame::OnMouseMove(UINT nFlags, CPoint point);
+
+    void CGame::OnLButtonUp(UINT nFlags, CPoint point);
     
     /// returns the width of the level in pixels
     /// \return level width in pixels
@@ -112,7 +121,7 @@ public:
     /// \return the number of tiles
     int GetLevelHeight() { return mLevelHeight; }
 
-
+    
     /** Iterator that iterates over the game items */
     class Iter
     {

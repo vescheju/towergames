@@ -8,6 +8,7 @@
 #include "XmlLoader.h"
 #include "RoadLinker.h"
 #include "GoButton.h"
+#include "ButtonVisitor.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -133,7 +134,8 @@ void CGame::Clear()
 */
 void CGame::Update(double elapsed)
 {
-    if (!mButtonPressed)
+    // will be fixed
+    if (mButtonPressed)
     {
         for (auto item : mItems)
         {
@@ -162,7 +164,7 @@ void CGame::InitializeStart()
     // the starting y position of all starting roads
     int yStart = mStartY * mTileLength + mTileLength / 2;
     // the first starting x position
-    int xStart =  (mStartX - 1) * mTileLength + mTileLength / 2;
+    int xStart = (mStartX - 1) * mTileLength + mTileLength / 2;
 
     // create a vector of roads that will be added to the game
     vector<CItemRoad* > startRoads;
@@ -193,7 +195,7 @@ void CGame::InitializeStart()
     }
 
     // the initial x position to add the balloon at
-    int balloonXPos = xStart -2 * mTileLength;
+    int balloonXPos = xStart - 2 * mTileLength;
     // path to the image to use for all red balloons
     const wstring filename = L"images/red-balloon.png";
     // pointer to the image for all red balloons
@@ -216,7 +218,7 @@ void CGame::InitializeStart()
 
         //initial heading of the ballon
         wstring heading = L"E";
-        
+
         // create the balloon
         shared_ptr<CBalloonRed> balloon = make_shared<CBalloonRed>(this, road, heading);
         // set the image of the balloon
@@ -232,8 +234,56 @@ void CGame::InitializeStart()
 
     std::shared_ptr<CGoButton> button(new CGoButton(this));
     button->SetLocation(ScoreX, ScoreY);
-    this->Add(button);
+    Add(button);
     mButtonPressed = false;
 
 
 }
+
+
+
+/**
+ * Called when there is a left mouse button press
+ * \param nFlags Flags associated with the mouse button press
+ * \param point Where the button was pressed
+*/
+void CGame::OnLButtonDown(UINT nFlags, CPoint point)
+{
+    // Only use hit test if button has not yet been pressed.
+    if (mButtonPressed == false)
+    {
+        mGrabbedItem = HitTest(point.x, point.y);
+        if (mGrabbedItem != nullptr)
+        {
+            CButtonVisitor buttonVisit;
+            mGrabbedItem->Accept(&buttonVisit);
+
+            mButtonPressed = buttonVisit.IsButton();
+
+            mGrabbedItem = nullptr;
+        }
+    }
+}
+
+
+/**
+ * Called when the mouse is moved
+ * \param nFlags Flags associated with the mouse movement
+ * \param point Where the button was pressed
+ */
+void CGame::OnMouseMove(UINT nFlags, CPoint point)
+{
+    
+}
+
+
+/**
+ * Called when the left mouse button is released
+ * \param nFlags Flags associated with the mouse button release
+ * \param point Where the button was pressed
+ */
+void CGame::OnLButtonUp(UINT nFlags, CPoint point)
+{
+    
+}
+

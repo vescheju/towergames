@@ -186,6 +186,7 @@
     <ClInclude Include="Balloon.h" />
     <ClInclude Include="BalloonRed.h" />
     <ClInclude Include="BombTower.h" />
+    <ClInclude Include="ButtonVisitor.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Dart.h" />
     <ClInclude Include="DelcaredItem.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Balloon.cpp" />
     <ClCompile Include="BalloonRed.cpp" />
     <ClCompile Include="BombTower.cpp" />
+    <ClCompile Include="ButtonVisitor.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Dart.cpp" />
     <ClCompile Include="DelcaredItem.cpp" />

@@ -63,6 +63,10 @@ std::shared_ptr<Gdiplus::Bitmap> CItem::GetImage()
 * \return true if clicked on */
 bool CItem::HitTest(int x, int y)
 {
+    if (mItemImage == nullptr)
+    {
+        return false;
+    }
     double wid = mItemImage->GetWidth();
     double hit = mItemImage->GetHeight();
 
