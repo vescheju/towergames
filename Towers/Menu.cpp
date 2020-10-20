@@ -38,11 +38,12 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	eighttower->SetLocation(1200, 400);
 	game->Add(eighttower);
 
-	
+	/**
 	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
 	mGoButton = gobutton;
 	gobutton->SetLocation(1200, 900);
 	game->Add(gobutton);
+	*/
 	
 }
 

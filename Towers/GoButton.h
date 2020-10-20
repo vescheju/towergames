@@ -34,7 +34,5 @@ public:
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitGoButton(this); }
 
-private:
-	std::shared_ptr<CGoButton> mGo;
 };
 
