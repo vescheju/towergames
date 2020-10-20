@@ -8,6 +8,7 @@
 #include "XmlLoader.h"
 #include "RoadLinker.h"
 #include "GoButton.h"
+#include "ButtonVisitor.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -134,7 +135,7 @@ void CGame::Clear()
 void CGame::Update(double elapsed)
 {
     // will be fixed
-    if (!mButtonPressed)
+    if (mButtonPressed)
     {
         for (auto item : mItems)
         {
@@ -233,7 +234,7 @@ void CGame::InitializeStart()
 
     std::shared_ptr<CGoButton> button(new CGoButton(this));
     button->SetLocation(ScoreX, ScoreY);
-    this->Add(button);
+    Add(button);
     mButtonPressed = false;
 
 
@@ -248,11 +249,19 @@ void CGame::InitializeStart()
 */
 void CGame::OnLButtonDown(UINT nFlags, CPoint point)
 {
-
-    mGrabbedItem = HitTest(point.x, point.y);
-    if (mGrabbedItem != nullptr)
+    // Only use hit test if button has not yet been pressed.
+    if (mButtonPressed == false)
     {
+        mGrabbedItem = HitTest(point.x, point.y);
+        if (mGrabbedItem != nullptr)
+        {
+            CButtonVisitor buttonVisit;
+            mGrabbedItem->Accept(&buttonVisit);
 
+            mButtonPressed = buttonVisit.IsButton();
+
+            mGrabbedItem = nullptr;
+        }
     }
 }
 
