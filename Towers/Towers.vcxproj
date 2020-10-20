@@ -188,6 +188,7 @@
     <ClInclude Include="BombTower.h" />
     <ClInclude Include="ButtonVisitor.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="DamageVisitor.h" />
     <ClInclude Include="Dart.h" />
     <ClInclude Include="DelcaredItem.h" />
     <ClInclude Include="DoubleBufferDC.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHouse.h" />
     <ClInclude Include="ItemOpen.h" />
+    <ClInclude Include="ItemRemover.h" />
     <ClInclude Include="ItemRoad.h" />
     <ClInclude Include="ItemTree.h" />
     <ClInclude Include="ItemVisitor.h" />
@@ -223,6 +225,7 @@
     <ClCompile Include="BombTower.cpp" />
     <ClCompile Include="ButtonVisitor.cpp" />
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="DamageVisitor.cpp" />
     <ClCompile Include="Dart.cpp" />
     <ClCompile Include="DelcaredItem.cpp" />
     <ClCompile Include="Explosion.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
     <ClCompile Include="ItemOpen.cpp" />
+    <ClCompile Include="ItemRemover.cpp" />
     <ClCompile Include="ItemRoad.cpp" />
     <ClCompile Include="ItemTree.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />

@@ -43,6 +43,8 @@ public:
 
 	std::shared_ptr<Gdiplus::Bitmap> GetImage();
 
+	bool ImagesAreOverlapping(CItem* item);
+
 	/**
 	* sets the image directly using a pointer
 	* 

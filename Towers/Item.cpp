@@ -117,3 +117,94 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
             (float)mItemImage->GetWidth()+1, (float)mItemImage->GetHeight()+1);
     }
 }
+
+
+/**
+ * checks if the images are overlapping at all
+ * 
+ * \param item the item to compare its image too
+ * \returns true if the drawn images are overlapping
+ */
+bool CItem::ImagesAreOverlapping(CItem* item)
+{
+    double thisX = this->GetX();
+    double thisY = this->GetY();
+
+    double thisImageWidth = this->GetImage()->GetWidth();
+    double thisImageHeight = this->GetImage()->GetHeight();
+    
+    double itemX = item->GetX();
+    double itemY = item->GetY();
+
+    double itemImageWidth = item->GetImage()->GetWidth();
+    double itemImageHeight = item->GetImage()->GetHeight();
+
+    // see if the  images overlap
+    if (abs(itemX - thisX) <= itemImageWidth / 2 + thisImageWidth / 2 &&
+        abs(itemY - thisY) <= itemImageHeight / 2 + thisImageHeight / 2)
+    {
+        // get the bounds of the overlap
+        double overlapXLower = -1; // the lower bound of the overlap in the x direction
+        double overlapXUpper = -1; // the upper bound of the overlap in the x dicrection
+        double overlapYLower = -1; // the lower bound of the overlap in the y direction
+        double overlapYUpper = -1; // the upper bound of the overlap in the y dicrection
+        // the overlap in the x direction
+        if (itemX < thisX)
+        {
+            overlapXLower = thisX - thisImageWidth / 2;
+            overlapXUpper = itemX + itemImageWidth / 2;
+        }
+        else if (itemX > thisX)
+        {
+            overlapXLower = itemX - itemImageWidth / 2;
+            overlapXUpper = thisX + thisImageWidth / 2;
+        }
+        else
+        {
+            overlapXLower = itemX - itemImageWidth / 2;
+            overlapXUpper = itemX + itemImageHeight / 2;
+        }
+        // overlap int he y direction
+        if (itemY < thisY)
+        {
+            overlapYLower = thisY - thisImageHeight / 2;
+            overlapYUpper = itemY + itemImageHeight / 2;
+        }
+        else if (itemY > thisY)
+        {
+            overlapYLower = itemY - itemImageHeight / 2;
+            overlapYUpper = thisY + thisImageHeight / 2;
+        }
+        else
+        {
+            overlapYLower = itemY - itemImageHeight / 2;
+            overlapYUpper = itemY + itemImageHeight / 2;
+        }
+        // check all points in the overlap to see if any 2 visible pixels
+        // are overlapping
+        auto format1 = item->GetImage()->GetPixelFormat();
+        auto format2 = this->GetImage()->GetPixelFormat();
+        if ((format1 == PixelFormat32bppARGB || format1 == PixelFormat32bppPARGB) &&
+            (format2 == PixelFormat32bppARGB || format2 == PixelFormat32bppPARGB))
+        {
+            Color color1;
+            Color color2;
+            for (int x = overlapXLower; x <= overlapXUpper; ++x)
+            {
+                for (int y = overlapYLower; y <= overlapYUpper; ++y)
+                {
+                    item->GetImage()->GetPixel((int)x, (int)y, &color1);
+                    this->GetImage()->GetPixel((int)x, (int)y, &color1);
+                    return color1.GetAlpha() != 0 && color2.GetAlpha() != 0;
+
+                }
+            }
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    return false;
+}

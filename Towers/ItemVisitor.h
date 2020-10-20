@@ -103,7 +103,5 @@ public:
     virtual void VisitGoButton(CGoButton* button) {}
 
 	virtual void VisitMenu(CGameMenu* menu) {}
-
-
 };
 

@@ -13,5 +13,14 @@ class CWeapon :
 {
 public:
     CWeapon(CGame* game);
+
+    /**
+    * getter for mDamage
+    * \return the damage this weapon deals
+    */
+    int GetDamage() { return mDamage; }
+
+private:
+    int mDamage = 1; //<the damage the weapon deals
 };
 

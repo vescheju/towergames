@@ -65,6 +65,20 @@ public:
 	* \return the direction that the balloon is moving
 	*/
 	std::wstring GetHeading() { return mHeading; }
+
+	/**
+	* subtracts damage from the balloons health
+	* 
+	* \param damage the decrease in health
+	*/
+	void Damage(int damage) { mHealth -= damage; }
+
+	/**
+	* getter fot mHealth
+	* 
+	* \return the health of the balloon
+	*/
+	int GetHealth() { return mHealth; }
 protected:
 
 	CBalloon(CGame* game, CItemRoad* road, std::wstring heading);
