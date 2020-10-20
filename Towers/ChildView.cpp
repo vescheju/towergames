@@ -218,7 +218,7 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
  */
 void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	mGame.OnLButtonUp(nFlags, point);
 
 	CWnd::OnLButtonUp(nFlags, point);
 }
@@ -230,7 +230,7 @@ void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 */
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	mGame.OnLButtonDown(nFlags, point);
 
 	CWnd::OnLButtonDown(nFlags, point);
 }
@@ -242,7 +242,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
  */
 void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	mGame.OnMouseMove(nFlags, point);
 
 	CWnd::OnMouseMove(nFlags, point);
 }
