@@ -232,11 +232,7 @@ void CGame::InitializeStart()
         balloonXPos -= mBalloonSpacing;
     }
 
-    std::shared_ptr<CGoButton> button(new CGoButton(this));
-    button->SetLocation(ScoreX, ScoreY);
-    Add(button);
     mButtonPressed = false;
-
 
 }
 
