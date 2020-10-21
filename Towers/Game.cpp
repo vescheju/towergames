@@ -9,6 +9,7 @@
 #include "RoadLinker.h"
 #include "GoButton.h"
 #include "ButtonVisitor.h"
+#include "Menu.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -83,6 +84,7 @@ void CGame::Load(const std::wstring& filename)
     // Open the document with the xml loader class
     CXmlLoader xmlLoader(this);
     xmlLoader.Load(filename);
+    mLevelName = filename;
 
     // Once we know it is open, clear the existing items
     Clear();

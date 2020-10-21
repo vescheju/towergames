@@ -62,6 +62,9 @@ private:
     /// Any item we are currently dragging
     std::shared_ptr<CItem> mGrabbedItem;
 
+    /// Filename of the level
+    std::wstring mLevelName;
+
 public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
@@ -122,7 +125,6 @@ public:
     /// getter for the level height
     /// \return the number of tiles
     int GetLevelHeight() { return mLevelHeight; }
-
     
     /** Iterator that iterates over the game items */
     class Iter

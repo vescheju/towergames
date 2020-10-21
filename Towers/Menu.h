@@ -51,4 +51,10 @@ private:
 	std::shared_ptr<CRingTower> mRing = nullptr;
 
 	CGameMenu* menu;
+
+	int mTimeSecond = 0;
+
+	std::wstring mLevel;
+
+	CGame* mGame;
 };

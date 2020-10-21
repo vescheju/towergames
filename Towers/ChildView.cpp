@@ -156,7 +156,6 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CExplosion> explosion(new CExplosion(&mGame));
 	explosion->SetLocation(700, 700);
 	mGame.Add(explosion);
-
 	Invalidate();
 }
 

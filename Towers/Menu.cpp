@@ -60,6 +60,8 @@ CGameMenu::~CGameMenu()
 */
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
+	StringFormat centFormat;
+
 	Pen pen(Color(255, 0, 0), 3);
 	graphics->DrawRectangle(&pen, 1024, 0, 800, 1024);
 
@@ -71,12 +73,16 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 
 	Gdiplus::Font levelFont(&fontFamily, 100);
 	SolidBrush brown(Color(139, 69, 19));
-	graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+
+	if (mTimeSecond <= 50)
+	{
+		graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		mTimeSecond++;
+	}
 }
 
 void CGameMenu::Update(double elapsed)
 {
-	
 }
 
 void CGameMenu::SetLocation(double x, double y)
