@@ -154,7 +154,7 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
 	mGame.Add(menu);
 	std::shared_ptr<CBombTower> tower4(new CBombTower(&mGame, 3));
-	tower4->SetLocation(600, 500);
+	tower4->SetLocation(80, 520);
 	mGame.Add(tower4);
 
 	Invalidate();

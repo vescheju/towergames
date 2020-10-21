@@ -17,12 +17,17 @@ class CItemRemover :
 public:
     virtual void VisitBalloonRed(CBalloonRed* balloon) override;
 
+    virtual void VisitExplosion(CExplosion* explosion) override;
+
+    virtual void VisitBombTower(CBombTower* bomb) override;
+
     /**
     * getter fot mRemovedItems
     *
     * \return the items that need to be removed
     */
     std::vector<CItem*>& GetRemovedItems() { return mRemovedItems; }
+
 private:
     std::vector<CItem*> mRemovedItems; //< holds the items that need to be removed
 };

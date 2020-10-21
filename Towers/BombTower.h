@@ -12,7 +12,7 @@
 class CExplosion;
 
 /**
-* bomb explodes every 3 seconds
+* bomb explodes in certain time period given to constructor, then removed
 */
 class CBombTower :
 	public CTower
@@ -31,14 +31,19 @@ public:
 
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBomb(this); }
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBombTower(this); }
 
 	void CBombTower::SetLocation(double x, double y);
 
+	/** Getter function for mDetonated member
+	 * \return bool representing whether or not bomb's been detonated
+	 */
+	bool IsDetonated() const { return mDetonated; }
+
 private:
 
-	std::shared_ptr<CExplosion> mExplosion;
+	std::shared_ptr<CExplosion> mExplosion;			///< Explosion object that tower detonates
 
-	bool mDetonated = false;
+	bool mDetonated = false;		///< Bool value of whether or not bomb has been detonated
 };
 

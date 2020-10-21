@@ -11,6 +11,10 @@
 #include "Ring.h"
 #include "Explosion.h"
 
+
+/// Double representing how much time of detonation must be left for explosion to damage balloon
+const double MinTimeDetonatedLeft = 0.245;    
+
  /**
  * Visit a CBalloonRed object and add it to the
  * mLevelBalloons vector
@@ -48,7 +52,11 @@ void CDamageVisitor::VisitRing(CRing* ring)
 */
 void CDamageVisitor::VisitExplosion(CExplosion* explosion)
 {
-    mLevelExplosions.push_back(explosion);
+    // Only add explosion if its been detonated for a maximum for 0.005 seconds
+    if (explosion->isDetonated() && explosion->GetTimeDetonated() >= MinTimeDetonatedLeft)
+    {
+        mLevelExplosions.push_back(explosion);
+    }
 }
 
 

@@ -65,7 +65,7 @@ public:
      * Visit a CBombTower object
      * \param bomb Bomb tower we are visiting
      */
-    virtual void VisitBomb(CBombTower* bomb) {}
+    virtual void VisitBombTower(CBombTower* bomb) {}
 
     /**
      * Visit a CTowerEight object
