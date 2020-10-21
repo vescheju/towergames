@@ -27,6 +27,8 @@ public:
 	/// Copy constructor (disabled)
 	CBombTower(const CBombTower&) = delete;
 
+	void Update(double elapsed) override;
+
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBomb(this); }
@@ -36,5 +38,7 @@ public:
 private:
 
 	std::shared_ptr<CExplosion> mExplosion;
+
+	bool mDetonated = false;
 };
 

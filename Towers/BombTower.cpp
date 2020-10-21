@@ -28,6 +28,23 @@ CBombTower::CBombTower(CGame* game, double timeToDetonate) : CTower(game)
 
 
 /**
+ * Update function, explodes if Fire attribute is true
+ * \param elapsed Time since the class call
+ */
+void CBombTower::Update(double elapsed)
+{
+	// Update time till exploding
+	UpdateTimeTillFire(elapsed);
+	if (GetFire())
+	{
+		// Fire explosion, set detonated to true for cleanup
+		mExplosion->Detonate();
+		mDetonated = true;
+		SetFire(false);
+	}
+}
+
+/**
 * Set's location of Tower and its explosion
 * \param x X coordinate to set Tower and explosion at
 * \param y Y coordinate to set Tower and explosion at
