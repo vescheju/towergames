@@ -161,6 +161,8 @@ void CChildView::OnLevelLevel0()
 void CChildView::OnLevelLevel1()
 {
 	mGame.Load(L"level1.xml");
+	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
+	mGame.Add(menu);
 	Invalidate();
 }
 

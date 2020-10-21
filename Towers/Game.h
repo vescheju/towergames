@@ -77,6 +77,8 @@ public:
 
     void InitializeStart();
 
+	bool GetButtonPressed() { return mButtonPressed; };
+
 	std::shared_ptr<CItem> HitTest(int x, int y);
 
     void OnLButtonDown(UINT nFlags, CPoint point);

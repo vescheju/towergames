@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Tower.h"
+#include "Game.h"
 #include <string>
 
 class CGame;
@@ -19,7 +20,6 @@ double TimeBetweenShots = 5;
 */
 CTower::CTower(CGame* game) : CItem(game)
 {
-
 }
 
 

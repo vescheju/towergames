@@ -72,6 +72,11 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		&font, PointF(1100, 100), &green);
 }
 
+void CGameMenu::Update(double elapsed)
+{
+	
+}
+
 void CGameMenu::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);

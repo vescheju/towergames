@@ -1,5 +1,17 @@
+/**
+ * \file Scoreboard.h
+ *
+ * \author Hithesh Yedlapati
+ *
+ * Scoreboard Class to update when balloon gets popped
+ */
+
 #pragma once
 #include "Item.h"
+
+/**
+* Class shows the score in the menu
+*/
 class CScoreboard :
 	public CItem
 {
@@ -15,6 +27,7 @@ public:
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitScoreBoard(this); }
 
 private:
+	/// member variable for scoreboard
 	CScoreboard* mScoreboard;
 };
 

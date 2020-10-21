@@ -33,6 +33,8 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
+	void Update(double elapsed) override;
+
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
 private:
@@ -47,4 +49,6 @@ private:
 
 	/// pointer to Tower Ring
 	std::shared_ptr<CRingTower> mRing = nullptr;
+
+	CGameMenu* menu;
 };
