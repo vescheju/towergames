@@ -17,6 +17,17 @@ CExplosion::CExplosion(CGame* game) : CWeapon(game)
 {
 }
 
+/**
+ * Update function, if explosion has been detonated, subtract time from mTimeDetonated
+ * \param elapsed Time since the class call
+ */
+void CExplosion::Update(double elapsed)
+{
+	if (mDetonated)
+	{
+		mTimeDetonated -= elapsed;
+	}
+}
 
 /**
 * Draw overide function
@@ -24,13 +35,15 @@ CExplosion::CExplosion(CGame* game) : CWeapon(game)
 */
 void CExplosion::Draw(Gdiplus::Graphics* graphics)
 {
-	SolidBrush brush(Color(128, 0, 0));
-	graphics->FillEllipse(&brush, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
-		mRadius * 2, mRadius * 2);
-	Pen pen(Color(128, 0, 0), 3);
-	graphics->DrawEllipse(&pen, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
-		mRadius * 2, mRadius * 2);
-
+	if (mDetonated)
+	{
+		SolidBrush brush(Color(128, 0, 0));
+		graphics->FillEllipse(&brush, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
+			mRadius * 2, mRadius * 2);
+		Pen pen(Color(128, 0, 0), 3);
+		graphics->DrawEllipse(&pen, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
+			mRadius * 2, mRadius * 2);
+	}
 }
 
 
