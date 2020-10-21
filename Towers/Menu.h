@@ -40,7 +40,9 @@ public:
 	/** draw for menu border, scoreboard, and level display text
 	* \param graphics
 	*/
-	void Draw(Gdiplus::Graphics* graphics);
+	void Draw(Gdiplus::Graphics* graphics) override;
+
+	void Update(double elapsed) override;
 
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
@@ -60,5 +62,5 @@ private:
 	/// pointer to Scoreboard
 	std::shared_ptr<CScoreboard> mScore = nullptr;
 
-	int mTimeSec = 0; ///< Time elapsed in seconds
+	double mTimeSec = 0; ///< Time elapsed in seconds
 };

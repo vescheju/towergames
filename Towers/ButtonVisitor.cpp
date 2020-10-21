@@ -7,6 +7,7 @@
 
 #include "pch.h"
 #include "ButtonVisitor.h"
+#include "GoButton.h"
 
 /**
  * This function will set true if a button is clicked.
@@ -16,4 +17,5 @@
 void CButtonVisitor::VisitGoButton(CGoButton* button)
 {
 	mGoClicked = true;
+	button->SetPressed(true);
 }

@@ -24,25 +24,21 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
 	ringtower->SetLocation(1200, 600);
-	game->Add(ringtower);
 
 	
 	std::shared_ptr<CBombTower> bombtower(new CBombTower(game,0));
 	mBomb = bombtower;
 	bombtower->SetLocation(1200, 500);
-	game->Add(bombtower);
 	
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
 	eighttower->SetLocation(1200, 400);
-	game->Add(eighttower);
 
 	
 	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
 	mGoButton = gobutton;
 	gobutton->SetLocation(1200, 900);
-	game->Add(gobutton);
 }
 
 
@@ -71,11 +67,24 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 
 	Gdiplus::Font levelFont(&fontFamily, 100);
 	SolidBrush brown(Color(139, 69, 19));
-	if (mTimeSec < 50)
+
+	mRing->Draw(graphics);
+	mBomb->Draw(graphics);
+	mEight->Draw(graphics);
+
+	
+
+	if (mTimeSec < 2)
 	{
 		graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
-		mTimeSec++;
 	}
+	else if (mTimeSec > 2 && ! mGoButton->GetPressed())
+	{
+		mGoButton->Draw(graphics);
+	}
+
+	
+
 }
 
 /** set location of menu
@@ -86,3 +95,11 @@ void CGameMenu::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);
 }/**/
+
+
+/// Handle updates for animation
+/// \param elapsed The time since the last update
+void CGameMenu::Update(double elapsed)
+{
+	mTimeSec += elapsed;
+}

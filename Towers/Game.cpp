@@ -162,10 +162,12 @@ void CGame::Update(double elapsed)
     // will be fixed
     if (mButtonPressed)
     {
-        for (auto item : mItems)
-        {
-            item->Update(elapsed);
-        }
+       
+    }
+
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
     }
 
     CDamageVisitor damager;
@@ -288,7 +290,7 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
             mGrabbedItem->Accept(&buttonVisit);
 
             mButtonPressed = buttonVisit.IsButton();
-
+            
             mGrabbedItem = nullptr;
         }
     }
