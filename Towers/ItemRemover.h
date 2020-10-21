@@ -11,6 +11,10 @@
 #include "Item.h"
 #include<vector>
 
+
+/**
+ * A class that removes items
+ */
 class CItemRemover :
     public CItemVisitor
 {
@@ -29,6 +33,6 @@ public:
     std::vector<CItem*>& GetRemovedItems() { return mRemovedItems; }
 
 private:
-    std::vector<CItem*> mRemovedItems; //< holds the items that need to be removed
+    std::vector<CItem*> mRemovedItems; ///< holds the items that need to be removed
 };
 

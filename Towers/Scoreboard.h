@@ -26,6 +26,7 @@ public:
 	CScoreboard(CGame* game);
 
 	/// override accept function
+	/// \param visitor The visitor to accept
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitScoreBoard(this); }
 
 private:

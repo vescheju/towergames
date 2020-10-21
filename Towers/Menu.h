@@ -38,12 +38,14 @@ public:
 	void SetLocation(double x, double y);
 
 	/** draw for menu border, scoreboard, and level display text
-	* \param graphics
 	*/
 	void Draw(Gdiplus::Graphics* graphics) override;
 
 	void Update(double elapsed) override;
 
+	/** Accept a visitor
+	* \param visitor The visitor we accepted
+	*/
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
 private:

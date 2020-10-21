@@ -7,6 +7,10 @@
  */
 #pragma once
 #include "Weapon.h"
+
+/**
+ * A class that implements an explosion
+ */
 class CExplosion :
     public CWeapon
 {

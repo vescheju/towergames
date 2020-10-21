@@ -77,6 +77,8 @@ public:
 
     void InitializeStart();
 
+    /// boolean if Go button has been pushed
+    /// \return True if pressed
 	bool GetButtonPressed() { return mButtonPressed; };
 
 	std::shared_ptr<CItem> HitTest(int x, int y);

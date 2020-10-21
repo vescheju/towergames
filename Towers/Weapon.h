@@ -8,8 +8,11 @@
 
 #pragma once
 #include "Item.h"
-class CWeapon :
-    public CItem
+
+/**
+ * A class that implements weapons in the game
+ */
+class CWeapon : public CItem
 {
 public:
     CWeapon(CGame* game);
@@ -21,6 +24,6 @@ public:
     int GetDamage() { return mDamage; }
 
 private:
-    int mDamage = 1; //<the damage the weapon deals
+    int mDamage = 1; ///<the damage the weapon deals
 };
 

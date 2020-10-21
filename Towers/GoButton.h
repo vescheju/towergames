@@ -48,6 +48,6 @@ public:
 
 
 private:
-	bool mPressed = false;
+	bool mPressed = false; ///< To determine if the Go button has been pressed
 };
 

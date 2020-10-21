@@ -32,7 +32,7 @@ public:
 	CRing(const CRing&) = delete;
 
 	/** Setter function for mRadius member
-	 * \param fire double to set mRadius to
+	 * \param radius double to set mRadius to
 	 */
 	void SetRadius(double radius) { mRadius = radius; }
 	
