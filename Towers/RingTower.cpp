@@ -49,7 +49,6 @@ void CRingTower::Update(double elapsed)
 				SetFire(false);
 				mRing->SetRadius(10);
 			}
-
 		}
 	}
 }

@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;Weapon;Dart;Ring;Explosion;GoButton</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;DamageVisitor;ItemRemover;Weapon;Dart;Ring;Explosion;GoButton</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,7 +126,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;DamageVisitor;ItemRemover;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,7 +147,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;DamageVisitor;ItemRemover;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -168,10 +168,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Tower;TowerEight;BombTower;RingTower;Item;ItemRoad;ItemOpen;ItemTree;ItemHouse;XmlNode;XmlLoader;DelcaredItem;ItemVisitor;RoadLinker;BalloonRed;Balloon;GoButton;ButtonVisitor;DamageVisitor;ItemRemover;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BalloonPoppingTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CBalloonTest.cpp">
       <SubType>
       </SubType>

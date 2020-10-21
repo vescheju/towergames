@@ -15,7 +15,7 @@
  */
 void CItemRemover::VisitBalloonRed(CBalloonRed* balloon)
 {
-	if (balloon->GetHealth() <= 0)
+	if (balloon->GetHealth() <= 0 || balloon->GetRoad() == nullptr)
 	{
 		mRemovedItems.push_back(balloon);
 	}

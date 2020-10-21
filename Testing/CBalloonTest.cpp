@@ -56,6 +56,9 @@ namespace Testing
 			game.Add(balloon2);
 			game.Add(road2);
 
+			// start the game
+			game.SetButtonPressed(true);
+
 			// balloon1 should be on road 1 (nothing has changed)
 			Assert::IsTrue(balloon1->GetRoad() == &(*road1));
 
@@ -100,6 +103,9 @@ namespace Testing
 			// add the items to the game
 			game.Add(road1);
 			game.Add(balloon1);
+
+			// set the game to start
+			game.SetButtonPressed(true);
 
 			// update the game
 			game.Update(1);
