@@ -74,11 +74,10 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
 }
 
-void CGameMenu::Update(double elapsed)
-{
-	
-}
-
+/** set location of menu
+	* \param x location of item along x axis
+	* \param y location of item along y axis
+	*/
 void CGameMenu::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);
