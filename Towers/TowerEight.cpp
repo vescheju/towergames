@@ -42,32 +42,35 @@ CTowerEight::CTowerEight(CGame* game) :
  */
 void CTowerEight::Update(double elapsed)
 {
-	// Update time till firing
-	UpdateTimeTillFire(elapsed);
-	// if currently firing
-	if (GetFire())
+	if (mDarts[0]->GetX() < 1024)
 	{
-		// calculate new position of each dart
-		for (auto dart : mDarts)
+		// Update time till firing
+		UpdateTimeTillFire(elapsed);
+		// if currently firing
+		if (GetFire())
 		{
-			double a = dart->GetAngle() / DtoR;
-			double sn = sin(a);
-			double cs = cos(a);
-
-			double x = GetX() + cs * mT;
-			double y = GetY() + sn * mT;
-			dart->SetLocation(x, y);
-		}
-		mT += elapsed * DartSpeed;
-		// if distance passed 100 pixels from tower
-		if (mT > 100)
-		{
-			// reset fire and mT attributes and dart locations
-			SetFire(false);
-			mT = 10;
+			// calculate new position of each dart
 			for (auto dart : mDarts)
 			{
-				dart->SetLocation(GetX(), GetY());
+				double a = dart->GetAngle() / DtoR;
+				double sn = sin(a);
+				double cs = cos(a);
+
+				double x = GetX() + cs * mT;
+				double y = GetY() + sn * mT;
+				dart->SetLocation(x, y);
+			}
+			mT += elapsed * DartSpeed;
+			// if distance passed 100 pixels from tower
+			if (mT > 100)
+			{
+				// reset fire and mT attributes and dart locations
+				SetFire(false);
+				mT = 10;
+				for (auto dart : mDarts)
+				{
+					dart->SetLocation(GetX(), GetY());
+				}
 			}
 		}
 	}

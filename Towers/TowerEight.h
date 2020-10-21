@@ -42,5 +42,7 @@ private:
 
 	double mT = 10;			///< Distance of darts from tower while firing
 
+	CTowerEight* mTEight;
+
 };
 

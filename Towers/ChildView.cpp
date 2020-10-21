@@ -124,10 +124,11 @@ void CChildView::OnPaint()
 	{
 		mGame.Update(elapsed);
 	}
-
+	
 	CPaintDC paintDC(this);
 	CDoubleBufferDC dc(&paintDC); // device context for painting
 	Graphics graphics(dc.m_hDC);
+	
 
 	CRect rect;
 	GetClientRect(&rect);
