@@ -71,7 +71,11 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 
 	Gdiplus::Font levelFont(&fontFamily, 100);
 	SolidBrush brown(Color(139, 69, 19));
-	graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+	if (mTimeSec < 50)
+	{
+		graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		mTimeSec++;
+	}
 }
 
 /** set location of menu
@@ -81,4 +85,4 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 void CGameMenu::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);
-}
+}/**/

@@ -59,4 +59,6 @@ private:
 
 	/// pointer to Scoreboard
 	std::shared_ptr<CScoreboard> mScore = nullptr;
+
+	int mTimeSec = 0; ///< Time elapsed in seconds
 };
