@@ -43,8 +43,6 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	mGoButton = gobutton;
 	gobutton->SetLocation(1200, 900);
 	game->Add(gobutton);
-	
-	
 }
 
 
@@ -70,6 +68,10 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	SolidBrush green(Color(0, 200, 0));
 	graphics->DrawString(L"Score: ", -1,
 		&font, PointF(1100, 100), &green);
+
+	Gdiplus::Font levelFont(&fontFamily, 100);
+	SolidBrush brown(Color(139, 69, 19));
+	graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
 }
 
 void CGameMenu::Update(double elapsed)
