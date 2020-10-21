@@ -25,15 +25,22 @@ public:
 	/// Copy constructor disabled
 	CGameMenu(const CGameMenu&) = delete;
 
+	/// constructor
 	CGameMenu(CGame* game);
 
+	/// destructor
 	~CGameMenu();
 
+	/** set location of menu
+	* \param x location of item along x axis
+	* \param y location of item along y axis
+	*/
 	void SetLocation(double x, double y);
 
+	/** draw for menu border, scoreboard, and level display text
+	* \param graphics
+	*/
 	void Draw(Gdiplus::Graphics* graphics);
-
-	void Update(double elapsed) override;
 
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
@@ -50,5 +57,6 @@ private:
 	/// pointer to Tower Ring
 	std::shared_ptr<CRingTower> mRing = nullptr;
 
-	CGameMenu* menu;
+	/// pointer to Scoreboard
+	std::shared_ptr<CScoreboard> mScore = nullptr;
 };

@@ -22,12 +22,12 @@ public:
 	/// Copy constructor disabled
 	CScoreboard(const CScoreboard&) = delete;
 
+	/// score constructor
 	CScoreboard(CGame* game);
 
+	/// override accept function
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitScoreBoard(this); }
 
 private:
-	/// member variable for scoreboard
-	CScoreboard* mScoreboard;
 };
 
