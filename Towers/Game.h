@@ -86,10 +86,12 @@ public:
     void CGame::OnMouseMove(UINT nFlags, CPoint point);
 
     void CGame::OnLButtonUp(UINT nFlags, CPoint point);
+
+    void Remove(std::vector<CItem*> items);
     
     /// returns the width of the level in pixels
     /// \return level width in pixels
-    double GetGameWidth() { return mTileLength * mLevelWidth; }
+    int GetGameWidth() { return mTileLength * mLevelWidth; }
 
     /// setter for the start x
     /// \param x the start x
@@ -107,6 +109,10 @@ public:
     /// \param height the number of tiles
     void SetLevelHeight(int height) { mLevelHeight = height; }
 
+    /// setter for the button pressed
+    /// \param set the value to assigne to mButtionPressed
+    void SetButtonPressed(bool set) { mButtonPressed = set; }
+
     /// getter for the start x
     /// \return the start x
     int GetStartX() { return mStartX; }
@@ -122,6 +128,10 @@ public:
     /// getter for the level height
     /// \return the number of tiles
     int GetLevelHeight() { return mLevelHeight; }
+
+    /// returns the number of items in the game
+    /// \return size of mItems
+    int GetItemNumber() { return mItems.size(); }
 
     
     /** Iterator that iterates over the game items */
