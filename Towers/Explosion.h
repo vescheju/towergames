@@ -13,6 +13,14 @@ class CExplosion :
 public:
     CExplosion(CGame* game);
 
+    void Update(double elapsed);
+
+    /// Copy consturctor (disbabled)
+    CExplosion(const CExplosion&) = delete;
+
+    /// constructor disabled
+    CExplosion() = delete;
+
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitExplosion(this); }
@@ -24,20 +32,18 @@ public:
 
     void Draw(Gdiplus::Graphics* graphics) override;
 
-    /// Copy consturctor (disbabled)
-    CExplosion(const CExplosion&) = delete;
+    void Detonate() { mDetonated = true; }
 
-    /// constructor disabled
-    CExplosion() = delete;
+    bool isDetonated() const { return mDetonated; }
 
-    /** Getter function for mMaxRadius member
-     * \return double representing max radius
-     */
-    double GetMaxRadius() const { return mMaxRadius; }
+    double GetTimeDetonated() const { return mTimeDetonated; }
 
 private:
     /// radius of circle in pixels
-    double mRadius = 10;
-    double mMaxRadius = 100;
+    double mRadius = 100;
+
+    bool mDetonated = false;
+
+    double mTimeDetonated = 0.25;
 };
 

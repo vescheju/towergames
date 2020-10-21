@@ -9,7 +9,8 @@
 #include "RoadLinker.h"
 #include "GoButton.h"
 #include "ButtonVisitor.h"
-#include "Menu.h"
+#include "DamageVisitor.h"
+#include "ItemRemover.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -28,6 +29,29 @@ const int ScoreY = 949;
 void CGame::Add(std::shared_ptr<CItem> item)
 {
     mItems.push_back(item);
+}
+
+/**
+ * remove items from game
+ * \param items Items to remove
+ */
+void CGame::Remove(std::vector<CItem*> items)
+{
+    //iterate through the items in items vector
+    for (auto removeItem : items)
+    {
+        // iterate through mItems vector
+        for (int i = 0; i < static_cast<int>(mItems.size()); ++i)
+        {
+            // if they are the same item (same address in memory),
+            // remove it from mItems
+            if (&(*removeItem) == &(*(mItems[i])))
+            {
+                mItems.erase(mItems.begin()+i);
+                break;
+            }
+        }
+    }
 }
 
 /**
@@ -63,7 +87,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     {
         // only draw the item if it is with the dimensions of the level
         if ((item->GetX() >= 0 && item->GetX() <= mWidth) &&
-            (item->GetY() >= 0 && item->GetY() <= double(mTileLength) * mLevelHeight))
+            (item->GetY() >= 0 && item->GetY() <= mHeight))
         {
             item->Draw(graphics);
         }
@@ -84,7 +108,6 @@ void CGame::Load(const std::wstring& filename)
     // Open the document with the xml loader class
     CXmlLoader xmlLoader(this);
     xmlLoader.Load(filename);
-    mLevelName = filename;
 
     // Once we know it is open, clear the existing items
     Clear();
@@ -144,6 +167,14 @@ void CGame::Update(double elapsed)
             item->Update(elapsed);
         }
     }
+
+    CDamageVisitor damager;
+    Accept(&damager);
+    damager.DealDamage();
+
+    CItemRemover remover;
+    Accept(&remover);
+    Remove(remover.GetRemovedItems());
 }
 
 /** Accept a visitor for the collection

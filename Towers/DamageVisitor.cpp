@@ -63,10 +63,12 @@ void CDamageVisitor::DealDamage()
         // check darts
         for (auto dart : mLevelDarts)
         {
-            if (balloon->ImagesAreOverlapping(dart))
+            // if the center of the dart is in the balloon is is being hit
+            if (balloon->HitTest(dart->GetX(), dart->GetY()))
             {
                 balloon->Damage(dart->GetDamage());
             }
+
         }
         // check rings
         for (auto ring : mLevelRings)
@@ -81,10 +83,10 @@ void CDamageVisitor::DealDamage()
             double balloonY = balloon->GetY();
 
             // the scalar distance between the centers
-            double distance = sqrt((ringX-balloonX) * (ringX - balloonX) - (ringY - balloonY) * (ringY - balloonY));
+            double distance = sqrt(((ringX-balloonX) * (ringX - balloonX)) + ((ringY - balloonY) * (ringY - balloonY)));
             
             // if the distance is shorter than the radius then they are hitting
-            if (distance <= ring->GetRadius())
+            if (abs(distance) <= abs(ring->GetRadius()))
             {
                 balloon->Damage(ring->GetDamage());
             }
@@ -102,7 +104,7 @@ void CDamageVisitor::DealDamage()
             double balloonY = balloon->GetY();
 
             // the scalar distance between the centers
-            double distance = sqrt((explosionX - balloonX) * (explosionX - balloonX) - (explosionY - balloonY) * (explosionY - balloonY));
+            double distance = sqrt((explosionX - balloonX) * (explosionX - balloonX) + (explosionY - balloonY) * (explosionY - balloonY));
 
             // if the distance is shorter than the radius then they are hitting
             if (distance <= explosion->GetRadius())

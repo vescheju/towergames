@@ -46,6 +46,13 @@ public:
 	 */
 	double GetSpeed() const { return mSpeed; }
 
+	/**
+	 * Getter for mHealth
+	 *
+	 * \return mHealth or health of the balloon.
+	 */
+	int GetHealth() const { return mHealth; }
+
 	void UpdateLocation(double elapsed);
 
 	void UpdateHeading();
