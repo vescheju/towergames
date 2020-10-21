@@ -14,11 +14,11 @@
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
 #include "TowerEight.h"
+#include "BombTower.h"
 #include "RingTower.h"
 #include "GoButton.h"
 #include "Menu.h"
 #include "Scoreboard.h"
-#include "Explosion.h"
 
 using namespace Gdiplus;
 #ifdef _DEBUG
@@ -143,19 +143,19 @@ void CChildView::OnLevelLevel0()
 {
 	mGame.Load(L"level0.xml");
 	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
-	tower->SetLocation(224, 416);
+	tower->SetLocation(400, 350);
 	mGame.Add(tower);
 	std::shared_ptr<CTowerEight> tower2(new CTowerEight(&mGame));
-	tower2->SetLocation(416, 352);
+	tower2->SetLocation(225, 425);
 	mGame.Add(tower2);
 	std::shared_ptr<CRingTower> tower3(new CRingTower(&mGame));
-	tower3->SetLocation(480, 416);
+	tower3->SetLocation(500, 400);
 	mGame.Add(tower3);
 	std::shared_ptr<CGameMenu> menu(new CGameMenu(&mGame));
 	mGame.Add(menu);
-	//std::shared_ptr<CExplosion> explosion(new CExplosion(&mGame));
-	//explosion->SetLocation(700, 700);
-	//mGame.Add(explosion);
+	std::shared_ptr<CBombTower> tower4(new CBombTower(&mGame, 3));
+	tower4->SetLocation(600, 500);
+	mGame.Add(tower4);
 
 	Invalidate();
 }
