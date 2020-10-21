@@ -22,8 +22,22 @@ public:
      */
     double GetRadius() const { return mRadius; }
 
+    void Draw(Gdiplus::Graphics* graphics) override;
+
+    /// Copy consturctor (disbabled)
+    CExplosion(const CExplosion&) = delete;
+
+    /// constructor disabled
+    CExplosion() = delete;
+
+    /** Getter function for mMaxRadius member
+     * \return double representing max radius
+     */
+    double GetMaxRadius() const { return mMaxRadius; }
+
 private:
-    /// radius or ring, initialized to 10 pixels
+    /// radius of circle in pixels
     double mRadius = 10;
+    double mMaxRadius = 100;
 };
 

@@ -31,6 +31,8 @@ public:
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBomb(this); }
 
+	void CBombTower::SetLocation(double x, double y);
+
 private:
 
 	std::shared_ptr<CExplosion> mExplosion;
