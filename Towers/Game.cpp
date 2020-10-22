@@ -8,6 +8,7 @@
 #include "XmlLoader.h"
 #include "RoadLinker.h"
 #include "GoButton.h"
+#include "Menu.h"
 #include "ButtonVisitor.h"
 #include "DamageVisitor.h"
 #include "ItemRemover.h"
@@ -66,6 +67,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
+    
     //
     // Automatic Scaling
     //
@@ -73,12 +75,9 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     float scaleY = float(height) / float(mHeight);
     mScale = min(scaleX, scaleY);
 
-    // Ensure it is centered horizontally
-    mXOffset = (float)((width - mWidth * mScale) / 2);
-
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
-
+    
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
 
@@ -92,6 +91,10 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
             item->Draw(graphics);
         }
         
+    }
+    if (mMenu != nullptr)
+    {
+        mMenu->Draw(graphics);
     }
 }
 
@@ -114,6 +117,7 @@ void CGame::Load(const std::wstring& filename)
 
     // Set the mItems to the new ones from the file
     mItems = xmlLoader.GetItems();
+
 
     InitializeStart();
 
@@ -140,6 +144,7 @@ std::shared_ptr<CItem> CGame::HitTest(int x, int y)
             return item;
         }
     }
+    
 
     return  nullptr;
 }
@@ -159,15 +164,14 @@ void CGame::Clear()
 */
 void CGame::Update(double elapsed)
 {
-    // will be fixed
-    if (mButtonPressed)
-    {
-       
-    }
-
     for (auto item : mItems)
     {
         item->Update(elapsed);
+    }
+
+    if (mMenu != nullptr)
+    {
+        mMenu->Update(elapsed);
     }
 
     CDamageVisitor damager;
@@ -196,6 +200,8 @@ void CGame::Accept(CItemVisitor* visitor)
  */
 void CGame::InitializeStart()
 {
+    // create a menu for the game
+    mMenu = make_shared<CGameMenu>(this);
     // the starting y position of all starting roads
     int yStart = mStartY * mTileLength + mTileLength / 2;
     // the first starting x position
@@ -284,14 +290,16 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
     if (mButtonPressed == false)
     {
         mGrabbedItem = HitTest(point.x, point.y);
+        // see if the item grabbed was in the game
         if (mGrabbedItem != nullptr)
         {
-            CButtonVisitor buttonVisit;
-            mGrabbedItem->Accept(&buttonVisit);
-
-            mButtonPressed = buttonVisit.IsButton();
-            
-            mGrabbedItem = nullptr;
+            // do something with the grabbed item
+        }
+        // see if the grabbed item was in the menu
+        else if(point.x >= (GetGameWidth()* mScale) + mXOffset)
+        {
+            mGrabbedItem = mMenu->MenuHitTest((point.x - mXOffset) / mScale, 
+                (point.y - mYOffset) / mScale);
         }
     }
 }

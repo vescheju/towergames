@@ -69,8 +69,6 @@ public:
 	virtual void Accept(CItemVisitor* visitor) = 0;
 
 private:
-	/// The towers game the item is contained in
-	CGame* mGame;
 
 	/// Item location in the game
 	double mX = 0;		///< X location for the center of the item
@@ -83,6 +81,9 @@ private:
 	std::shared_ptr<Gdiplus::Bitmap> mItemImage;
 
 protected:
+	/// The towers game the item is contained in
+	CGame* mGame;
+
 	const int mTileLength = 64;		///< The length of a tile space
 };
 

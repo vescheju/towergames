@@ -35,22 +35,26 @@ CRingTower::CRingTower(CGame* game) :
  */
 void CRingTower::Update(double elapsed)
 {
-	if (mRing->GetX() < 1024)
+	if (mGame->GetButtonPressed())
 	{
-		// Update time till firing
-		UpdateTimeTillFire(elapsed);
-		if (GetFire())
+		if (mRing->GetX() < 1024)
 		{
-			// Change radius of ring
-			mRing->SetRadius(mRing->GetRadius() + elapsed * RingSpeed);
-			if (mRing->GetRadius() > 100)
+			// Update time till firing
+			UpdateTimeTillFire(elapsed);
+			if (GetFire())
 			{
-				// Reset fire and radius attributes if radius > 100
-				SetFire(false);
-				mRing->SetRadius(10);
+				// Change radius of ring
+				mRing->SetRadius(mRing->GetRadius() + elapsed * RingSpeed);
+				if (mRing->GetRadius() > 100)
+				{
+					// Reset fire and radius attributes if radius > 100
+					SetFire(false);
+					mRing->SetRadius(10);
+				}
 			}
 		}
 	}
+	
 }
 
 

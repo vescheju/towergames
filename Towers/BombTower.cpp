@@ -33,15 +33,19 @@ CBombTower::CBombTower(CGame* game, double timeToDetonate) : CTower(game)
  */
 void CBombTower::Update(double elapsed)
 {
-	// Update time till exploding
-	UpdateTimeTillFire(elapsed);
-	if (GetFire())
+	if (mGame->GetButtonPressed())
 	{
-		// Fire explosion, set detonated to true for cleanup
-		mExplosion->Detonate();
-		mDetonated = true;
-		SetFire(false);
+		// Update time till exploding
+		UpdateTimeTillFire(elapsed);
+		if (GetFire())
+		{
+			// Fire explosion, set detonated to true for cleanup
+			mExplosion->Detonate();
+			mDetonated = true;
+			SetFire(false);
+		}
 	}
+	
 }
 
 /**

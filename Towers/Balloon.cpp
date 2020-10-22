@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Balloon.h"
+#include "Game.h"
 
 
 using namespace std;
@@ -156,6 +157,10 @@ void CBalloon::UpdateHeading()
 */
 void CBalloon::Update(double elapsed)
 {
-	UpdateLocation(elapsed);
-	UpdateHeading();
+	if (mGame->GetButtonPressed())
+	{
+		UpdateLocation(elapsed);
+		UpdateHeading();
+	}
+	
 }

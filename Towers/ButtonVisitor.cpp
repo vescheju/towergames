@@ -17,5 +17,4 @@
 void CButtonVisitor::VisitGoButton(CGoButton* button)
 {
 	mGoClicked = true;
-	button->SetPressed(true);
 }

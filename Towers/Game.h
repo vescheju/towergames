@@ -20,6 +20,9 @@ class CGame
 {
 
 private:
+
+    std::shared_ptr<CGameMenu> mMenu;
+
     /// the collection of items in the game
 	std::vector<std::shared_ptr<CItem> > mItems;
 
@@ -89,6 +92,18 @@ public:
 
     void Remove(std::vector<CItem*> items);
     
+    /// returns the xOffset
+    /// \return level xOffset
+    int GetXOffset() { return mXOffset; }
+
+    /// returns the yOffset
+    /// \return level yOffset
+    int GetYOffset() { return mYOffset; }
+
+    /// returns the scale of the game
+    /// \return the scale
+    int GetScale() { return mScale; }
+
     /// returns the width of the level in pixels
     /// \return level width in pixels
     int GetGameWidth() { return mTileLength * mLevelWidth; }

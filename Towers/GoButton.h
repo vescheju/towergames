@@ -30,24 +30,9 @@ public:
 
 	void SetLocation(double x, double y) override;
 
-	/**
-	* Setter for mPressed
-	* \param set value to set it too
-	*/
-	void SetPressed(bool set) { mPressed = set; }
-
-	/**
-	* Getter for mPressed
-	* \return state of button
-	*/
-	bool GetPressed() { return mPressed; }
-
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitGoButton(this); }
 
-
-private:
-	bool mPressed = false;
 };
 

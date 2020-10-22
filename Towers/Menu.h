@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Item.h"
+#include "Tower.h"
 
 class CGame;
 class CScore;
@@ -43,6 +44,8 @@ public:
 	void Draw(Gdiplus::Graphics* graphics) override;
 
 	void Update(double elapsed) override;
+
+	std::shared_ptr<CTower> MenuHitTest(int x, int y);
 
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 

@@ -14,6 +14,7 @@
 #include "GoButton.h"
 
 using namespace Gdiplus;
+using namespace std;
 
 /**
  * Menu constructor
@@ -57,7 +58,7 @@ CGameMenu::~CGameMenu()
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
 	Pen pen(Color(255, 0, 0), 3);
-	graphics->DrawRectangle(&pen, 1024, 0, 800, 1024);
+	//graphics->DrawRectangle(&pen, 1024, 0, 800, 1024);
 
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily, 32);
@@ -78,7 +79,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	{
 		graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
 	}
-	else if (mTimeSec > 2 && ! mGoButton->GetPressed())
+	else if (mTimeSec > 2 && !mGame->GetButtonPressed())
 	{
 		mGoButton->Draw(graphics);
 	}
@@ -102,4 +103,34 @@ void CGameMenu::SetLocation(double x, double y)
 void CGameMenu::Update(double elapsed)
 {
 	mTimeSec += elapsed;
+
+	if (!mGame->GetButtonPressed())
+	{
+		mGoButton->Update(elapsed);
+	}
+}
+
+shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
+{
+	if (mRing->HitTest(x, y)) 
+	{
+		return mRing;
+	}
+	else if (mEight->HitTest(x, y)) 
+	{
+		return mRing;
+	}
+	else if (mBomb->HitTest(x, y))
+	{
+		return mRing;
+	}
+	else if (mGoButton->HitTest(x, y))
+	{
+		mGame->SetButtonPressed(true);
+		return nullptr;
+	}
+	else
+	{
+		return nullptr;
+	}
 }
