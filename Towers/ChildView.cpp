@@ -134,6 +134,7 @@ void CChildView::OnPaint()
 	GetClientRect(&rect);
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
+	
 }
 
 /**

@@ -22,24 +22,25 @@ using namespace std;
  */
 CGameMenu::CGameMenu(CGame* game) : CItem(game)
 {
+	
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
-	ringtower->SetLocation(1200, 600);
+	ringtower->SetLocation(1124, 600);
 
 	
 	std::shared_ptr<CBombTower> bombtower(new CBombTower(game,0));
 	mBomb = bombtower;
-	bombtower->SetLocation(1200, 500);
+	bombtower->SetLocation(1124, 500);
 	
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
-	eighttower->SetLocation(1200, 400);
+	eighttower->SetLocation(1124, 400);
 
 	
 	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
 	mGoButton = gobutton;
-	gobutton->SetLocation(1200, 900);
+	gobutton->SetLocation(1124, 900);
 }
 
 
@@ -57,18 +58,20 @@ CGameMenu::~CGameMenu()
 */
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
+	
 	Pen pen(Color(255, 0, 0), 3);
-	//graphics->DrawRectangle(&pen, 1024, 0, 800, 1024);
+	graphics->DrawRectangle(&pen, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily, 32);
 	SolidBrush green(Color(0, 200, 0));
 	graphics->DrawString(L"Score: ", -1,
-		&font, PointF(1100, 100), &green);
+		&font, PointF(1050, 100), &green);
 
 	Gdiplus::Font levelFont(&fontFamily, 100);
 	SolidBrush brown(Color(139, 69, 19));
 
+	
 	mRing->Draw(graphics);
 	mBomb->Draw(graphics);
 	mEight->Draw(graphics);
@@ -95,7 +98,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 void CGameMenu::SetLocation(double x, double y)
 {
 	CItem::SetLocation(x, y);
-}/**/
+}
 
 
 /// Handle updates for animation

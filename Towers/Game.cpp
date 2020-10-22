@@ -75,6 +75,9 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     float scaleY = float(height) / float(mHeight);
     mScale = min(scaleX, scaleY);
 
+    // Ensure it is centered horizontally
+    mXOffset = (float)((width - mWidth * mScale) / 2);
+
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
     

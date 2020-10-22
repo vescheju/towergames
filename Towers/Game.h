@@ -149,6 +149,7 @@ public:
     /// returns the number of items in the game
     /// \return size of mItems
     int GetItemNumber() { return mItems.size(); }
+    
 
     
     /** Iterator that iterates over the game items */
