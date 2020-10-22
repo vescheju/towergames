@@ -103,8 +103,16 @@ public:
      */
     virtual void VisitGoButton(CGoButton* button) {}
 
+    /**
+    * Visit a CGameMenu object
+    * \param menu The menu we are visiting
+    */
 	virtual void VisitMenu(CGameMenu* menu) {}
 
+    /**
+    * Visit a CScoreboard object
+    * \param score The scoreboard we are visiting
+    */
 	virtual void VisitScoreBoard(CScoreboard* score) {}
 
 
