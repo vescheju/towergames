@@ -84,6 +84,7 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
  */
 void CChildView::OnPaint() 
 {
+
 	if (mFirstDraw)
 	{
 		mFirstDraw = false;

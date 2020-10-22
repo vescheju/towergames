@@ -60,7 +60,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
 	
 	Pen pen(Color(255, 0, 0), 3);
-	graphics->DrawRectangle(&pen, 1024, 0, 200, 1024);
+	//graphics->DrawRectangle(&pen, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily, 32);
