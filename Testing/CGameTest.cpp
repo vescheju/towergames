@@ -8,8 +8,6 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 
-const wstring HouseImage = L"images/house1.png";
-const wstring TreeImage = L"images/trees1.png";
 
 namespace Testing
 {
@@ -39,12 +37,12 @@ namespace Testing
 
 			// Test Hit Test with items in it
 			shared_ptr<CItemHouse> house = make_shared<CItemHouse>(&game);
-			house->SetImage(HouseImage);
+			house->SetImagePtr(game.GetImage(L"house1.png"));
 			house->SetLocation(5, 5);
 			game.Add(house);
 
 			shared_ptr<CItemTree> tree = make_shared<CItemTree>(&game);
-			tree->SetImage(HouseImage);
+			tree->SetImagePtr(game.GetImage(L"trees1.png"));
 			tree->SetLocation(100, 100);
 			game.Add(tree);
 

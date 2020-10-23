@@ -30,9 +30,6 @@ CBalloonBoss::CBalloonBoss(CGame* game, CItemRoad* road, std::wstring heading) :
  */
 void CBalloonBoss::InitializeCariers()
 {
-	const wstring filename = L"images/black-balloon.png";
-	// pointer to the image for all red balloons
-	shared_ptr<Gdiplus::Bitmap> itemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
 	for (int i = 0; i < mNumBalloons; ++i)
 	{
 		//initial heading of the ballon
@@ -41,7 +38,7 @@ void CBalloonBoss::InitializeCariers()
 		// create the balloon
 		shared_ptr<CBalloonRed> balloon = make_shared<CBalloonRed>(mGame, GetRoad(), heading);
 		// set the image of the balloon
-		balloon->SetImagePtr(itemImage);
+		balloon->SetImagePtr(mGame->GetImage(L"black-balloon.png"));
 		// set the location of the balloon
 		balloon->SetLocation(GetX() + pow(-1, i) * mTileLength/4 * ((i+1)%2), GetY());
 		balloon->SetHealth(3);

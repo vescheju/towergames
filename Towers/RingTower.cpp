@@ -9,8 +9,6 @@
 #include "Game.h"
 #include <string>
 
-/// ring tower png file
-const std::wstring ringTowerName = L"images/tower-rings.png";
 
 /// Speed in pixels per second for darts to travel
 const double RingSpeed = 200;
@@ -22,7 +20,7 @@ const double RingSpeed = 200;
 CRingTower::CRingTower(CGame* game) :
 	CTower(game)
 {
-	SetImage(ringTowerName);
+	SetImagePtr(mGame->GetImage(L"tower-rings.png"));
 	std::shared_ptr<CRing> ring(new CRing(game));
 	mRing = ring;
 	game->Add(ring);
