@@ -69,10 +69,15 @@ private:
     /// Any item we are currently dragging
     std::shared_ptr<CItem> mGrabbedItem;
 
+	/// calculate score to display
+	int mScore = 0;
+
     /// container of the images in the level
     CImageContainer mImages;
 
 public:
+	int GetScore() { return mScore; };
+
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
 	void Add(std::shared_ptr<CItem> item);

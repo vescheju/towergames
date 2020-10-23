@@ -35,5 +35,6 @@ public:
 
 private:
     std::vector<CItem*> mRemovedItems; ///< holds the items that need to be removed
+	int mScoreChange = 0;
 };
 

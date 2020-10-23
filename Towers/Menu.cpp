@@ -14,6 +14,8 @@
 #include "GoButton.h"
 #include "GoVisitor.h"
 
+#include <sstream>
+
 using namespace Gdiplus;
 using namespace std;
 
@@ -59,15 +61,22 @@ CGameMenu::~CGameMenu()
 */
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
-	
 	Pen pen(Color(255, 0, 0), 3);
 	//graphics->DrawRectangle(&pen, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, 32);
+	Gdiplus::Font font(&fontFamily,	24);
 	SolidBrush green(Color(0, 200, 0));
+
+
+	wstringstream str;
+	str << mGame->GetScore();
+
 	graphics->DrawString(L"Score: ", -1,
-		&font, PointF(1050, 100), &green);
+		&font, PointF(1100, 100), &green);
+	graphics->DrawString(str.str().c_str(), -1,
+		&font, PointF(1150, 150), &green);
+
 
 	Gdiplus::Font levelFont(&fontFamily, 100);
 	SolidBrush brown(Color(139, 69, 19));
