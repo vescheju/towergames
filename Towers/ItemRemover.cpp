@@ -9,6 +9,7 @@
 #include "Explosion.h"
 #include "BombTower.h"
 #include "BalloonRed.h"
+#include "BalloonBoss.h"
 
 
 /**
@@ -19,6 +20,23 @@ void CItemRemover::VisitBalloonRed(CBalloonRed* balloon)
 {
 	if (balloon->GetHealth() <= 0 || balloon->GetRoad() == nullptr)
 	{
+		mRemovedItems.push_back(balloon);
+	}
+}
+
+/**
+ * adds boss balloons to a vector of they need to be removed
+ * \param balloon the balloon being visited
+ */
+void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
+{
+	if (balloon->GetRoad() == nullptr)
+	{
+		mRemovedItems.push_back(balloon);
+	}
+	else if (balloon->GetHealth() <= 0)
+	{
+		balloon->Pop();
 		mRemovedItems.push_back(balloon);
 	}
 }

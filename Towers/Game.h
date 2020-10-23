@@ -20,7 +20,10 @@ class CGame
 {
 
 private:
+    /// the name of the current level
+    std::wstring mLevel = L"Level 0";
 
+    /// pointer to the menu in the game
     std::shared_ptr<CGameMenu> mMenu;
 
     /// the collection of items in the game

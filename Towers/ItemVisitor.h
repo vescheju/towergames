@@ -24,6 +24,7 @@ class CExplosion;
 class CGoButton;
 class CGameMenu;
 class CScoreboard;
+class CBalloonBoss;
 
 /** Tile visitor base class */
 class CItemVisitor
@@ -115,6 +116,10 @@ public:
     */
 	virtual void VisitScoreBoard(CScoreboard* score) {}
 
-
+    /**
+     * Visit a CBalloonBoss object
+     * \param balloon BalloonBoss item we are visiting
+     */
+    virtual void VisitBalloonBoss(CBalloonBoss* balloon) {}
 };
 

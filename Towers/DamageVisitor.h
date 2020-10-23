@@ -10,6 +10,8 @@
 #pragma once
 #include "ItemVisitor.h"
 #include "Balloon.h"
+#include "BalloonRed.h"
+#include "BalloonBoss.h"
 #include <vector>
 
 
@@ -21,7 +23,7 @@ class CDamageVisitor :
 {
 private:
     /// vector containing the level's balloons
-    std::vector<CBalloonRed*> mLevelRedBalloons;
+    std::vector<CBalloon*> mLevelBalloons;
     /// vector containing the level's darts
     std::vector<CDart*> mLevelDarts;
     /// vector containing the level's rings
@@ -31,6 +33,8 @@ private:
 public:
 
     virtual void VisitBalloonRed(CBalloonRed* balloon) override;
+
+    virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
 
     virtual void VisitDart(CDart* dart) override;
 

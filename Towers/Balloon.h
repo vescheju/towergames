@@ -12,8 +12,10 @@
 
 #pragma once
 #include <string>
+#include <vector>
 #include "Item.h"
 #include "ItemRoad.h"
+#include "Weapon.h"
 
 class CGame;
  /**
@@ -45,6 +47,12 @@ public:
 	 * \return mSpeed or speed of the balloon.
 	 */
 	double GetSpeed() const { return mSpeed; }
+
+	/**
+	 * Set the health of the balloon.
+	 * \param health the health to be set
+	 */
+	void SetHealth(int health) { mHealth = health; }
 
 	/**
 	 * Getter for mHealth
@@ -86,6 +94,15 @@ public:
 	* \return the health of the balloon
 	*/
 	int GetHealth() { return mHealth; }
+
+	virtual bool IsActiveWeapon(CWeapon* weapon);
+
+	virtual void AddActiveWeapon(CWeapon* weapon);
+
+	virtual void RemoveActiveWeapon(CWeapon* weapon);
+
+	bool IsInterectingRing(CRing*);
+
 protected:
 
 	CBalloon(CGame* game, CItemRoad* road, std::wstring heading);
@@ -99,6 +116,8 @@ private:
 	int mHealth = 1;
 	/// speed of the balloon in pixels per second (default at 128 p/s).
 	double mSpeed = 128;
+	/// the weapons currently hitting the balloon
+	std::vector<CWeapon*> mActiveWeapons;
 
 };
 

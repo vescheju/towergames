@@ -7,9 +7,15 @@
 #include "pch.h"
 #include "Balloon.h"
 #include "Game.h"
+#include "BalloonBoss.h"
+#include "BalloonRed.h"
+#include "Ring.h"
 
 
 using namespace std;
+
+/// Division constant for Degrees to Radians
+const double DtoR = 57.2957795;
 
 /**
  * Constructor for a balloon
@@ -163,4 +169,80 @@ void CBalloon::Update(double elapsed)
 		UpdateHeading();
 	}
 	
+}
+
+
+/**
+ * checks if the weapon is already hitting the balloon or not
+ * 
+ * \param weapon the weapon to check
+ * \returns true is it is already being hit by that weapon
+ */
+bool CBalloon::IsActiveWeapon(CWeapon* weapon)
+{
+	// iterate through the active weapons on this balloon
+	for (CWeapon* activeWeapon : mActiveWeapons)
+	{
+		if (activeWeapon == weapon)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
+/**
+ * adds weapons that are hitting it to the active weapons
+ * \param weapon the weapon to add
+ */
+void CBalloon::AddActiveWeapon(CWeapon* weapon)
+{
+	if (!IsActiveWeapon(weapon))
+	{
+		mActiveWeapons.push_back(weapon);
+	}
+}
+
+
+/**
+ * remove weapons from the balloon that are no longer hitting it
+ * \param weapon the weapon to try and remove
+ */
+void CBalloon::RemoveActiveWeapon(CWeapon* weapon)
+{
+	// make sure it is in the list
+	if (IsActiveWeapon(weapon))
+	{
+		//iterate through the list
+		for (int i = 0; i < static_cast<int>(mActiveWeapons.size()); ++i)
+		{
+			// remove it at the correct location from the vector
+			if (weapon == mActiveWeapons[i])
+			{
+				mActiveWeapons.erase(mActiveWeapons.begin() + i);
+			}
+		}
+	}
+}
+
+
+/**
+ * checks if any point of the ring is hitting the balloon
+ * \param ring the ring to check
+ * \returns true if the ring is intercting the balloon
+ */
+bool CBalloon::IsInterectingRing(CRing* ring)
+{
+	double ringRadius = ring->GetRadius();
+	for (int i = 0; i < 360; ++i)
+	{
+		double x = ring->GetX() + cos(i / DtoR) * ringRadius;
+		double y = ring->GetY() + sin(i / DtoR) * ringRadius;
+		if (HitTest(x, y))
+		{
+			return true;
+		}
+	}
+	return false;
 }

@@ -12,13 +12,12 @@
 #include "ButtonVisitor.h"
 #include "DamageVisitor.h"
 #include "ItemRemover.h"
+#include "BalloonBoss.h"
 
 using namespace std;
 using namespace xmlnode;
 using namespace Gdiplus;
 
-/// the folder that the levels exist in
-const wstring levelFolder = L"levels/";
 
 const int ScoreX = 1124;
 const int ScoreY = 949;
@@ -269,11 +268,41 @@ void CGame::InitializeStart()
         balloon->SetImagePtr(itemImage);
         // set the location of the balloon
         balloon->SetLocation(balloonXPos, yStart);
-        // add it to the game
+        // add the balloon
         Add(balloon);
-
         // update the next balloons location
         balloonXPos -= mBalloonSpacing;
+    }
+    
+    // if it is level 3, add a boss balloon to the level
+    if (mLevel == L"Level 0")
+    {
+        //initial heading of the ballon
+        wstring heading = L"E";
+
+        // boss is always on the first road
+        auto road = startRoads[0];
+
+        const wstring filename = L"images/boss-balloon.png";
+        // pointer to the image for all red balloons
+        shared_ptr<Gdiplus::Bitmap> itemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+
+        // create the balloon
+        shared_ptr<CBalloonBoss> balloon = make_shared<CBalloonBoss>(this, road, heading);
+
+        // set the image of the balloon
+        balloon->SetImagePtr(itemImage);
+
+        // set the location of the balloon
+        balloon->SetLocation(xStart, yStart);
+
+        // set the health of the balloon
+        balloon->SetHealth(15);
+        balloon->SetSpeed(80);
+
+        balloon->InitializeCariers();
+        // add it to the game
+        Add(balloon);
     }
 
     mButtonPressed = false;

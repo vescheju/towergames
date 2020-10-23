@@ -25,6 +25,7 @@ public:
 
     virtual void VisitBombTower(CBombTower* bomb) override;
 
+    virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
     /**
     * getter fot mRemovedItems
     *

@@ -38,15 +38,18 @@ public:
 	*/
 	void SetLocation(double x, double y);
 
-	/** draw for menu border, scoreboard, and level display text
-	* \param graphics
-	*/
+
 	void Draw(Gdiplus::Graphics* graphics) override;
 
 	void Update(double elapsed) override;
 
 	std::shared_ptr<CTower> MenuHitTest(int x, int y);
 
+
+	/**
+	* Accepts a visitor into the menu
+	* \param visitor the visitor to accept
+	*/
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
 private:

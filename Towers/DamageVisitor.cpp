@@ -22,7 +22,17 @@ const double MinTimeDetonatedLeft = 0.245;
  */
 void CDamageVisitor::VisitBalloonRed(CBalloonRed* balloon)
 {
-    mLevelRedBalloons.push_back(balloon);
+    mLevelBalloons.push_back(balloon);
+}
+
+/**
+* Visit a CBalloonBoss object and add it to the
+* mLevelBalloons vector
+* \param balloon Balloon item we are visiting
+*/
+void CDamageVisitor::VisitBalloonBoss(CBalloonBoss* balloon)
+{
+    mLevelBalloons.push_back(balloon);
 }
 
 /**
@@ -66,38 +76,39 @@ void CDamageVisitor::VisitExplosion(CExplosion* explosion)
 void CDamageVisitor::DealDamage()
 {
     // iterate through the balloons
-    for (auto balloon : mLevelRedBalloons)
+    for (auto balloon : mLevelBalloons)
     {
         // check darts
         for (auto dart : mLevelDarts)
         {
             // if the center of the dart is in the balloon is is being hit
-            if (balloon->HitTest(dart->GetX(), dart->GetY()))
+            if (balloon->HitTest(dart->GetX(), dart->GetY()) && !balloon->IsActiveWeapon(dart))
             {
                 balloon->Damage(dart->GetDamage());
+                balloon->AddActiveWeapon(dart);
+            }
+            else
+            {
+                balloon->RemoveActiveWeapon(dart);
             }
 
         }
         // check rings
         for (auto ring : mLevelRings)
         {
-            // if the balloon is in the rings area it is getting damage done
-            // center of the ring
-            double ringX = ring->GetX();
-            double ringY = ring->GetY();
-            
-            // center of the item
-            double balloonX = balloon->GetX();
-            double balloonY = balloon->GetY();
-
-            // the scalar distance between the centers
-            double distance = sqrt(((ringX-balloonX) * (ringX - balloonX)) + ((ringY - balloonY) * (ringY - balloonY)));
-            
-            // if the distance is shorter than the radius then they are hitting
-            if (abs(distance) <= abs(ring->GetRadius()))
-            {
+            double distance = sqrt((ring->GetX() - balloon->GetX()) * (ring->GetX() - balloon->GetX()) +
+                (ring->GetY() - balloon->GetY()) * (ring->GetY() - balloon->GetY()));
+            // if the balloon is intersecting the ring then it is getting damage done
+            if (balloon->IsInterectingRing(ring)) {
                 balloon->Damage(ring->GetDamage());
+                balloon->AddActiveWeapon(ring);
             }
+            // if the ring has been reset then remove it from the active weapons
+            else if (ring->GetRadius() < distance)
+            {
+                balloon->RemoveActiveWeapon(ring);
+            }
+            
         }
 
         for (auto explosion : mLevelExplosions)
@@ -115,9 +126,14 @@ void CDamageVisitor::DealDamage()
             double distance = sqrt((explosionX - balloonX) * (explosionX - balloonX) + (explosionY - balloonY) * (explosionY - balloonY));
 
             // if the distance is shorter than the radius then they are hitting
-            if (distance <= explosion->GetRadius())
+            if (distance <= explosion->GetRadius() && !balloon->IsActiveWeapon(explosion))
             {
                 balloon->Damage(explosion->GetDamage());
+                balloon->AddActiveWeapon(explosion);
+            }
+            else
+            {
+                balloon->RemoveActiveWeapon(explosion);
             }
         }
     }

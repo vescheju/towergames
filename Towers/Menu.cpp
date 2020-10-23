@@ -113,6 +113,13 @@ void CGameMenu::Update(double elapsed)
 	}
 }
 
+
+/**
+ * sees if an element of the menu was clicked on
+ * \param x the x coordinate
+ * \param y the y coordinate
+ * \returns nullptr if nothing was clicked on or the clicked object
+ */
 shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
 {
 	if (mRing->HitTest(x, y)) 
