@@ -32,23 +32,6 @@ CItem::~CItem()
 
 
 /**
- * Set the image to the specific item
- * \param filename The file for the item image
- */
-void CItem::SetImage(const wstring filename) 
-{
-    mItemImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-
-    if (mItemImage->GetLastStatus() != Ok)
-    {
-        wstring msg(L"Failed to open ");
-        msg += filename;
-        AfxMessageBox(msg.c_str());
-    }
-}
-
-
-/**
  * Getter function for Item's image
  * \return Pointer to Bitmap of Item's image
  */

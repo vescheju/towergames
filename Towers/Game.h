@@ -12,6 +12,7 @@
 #include <memory>
 #include "XmlNode.h"
 #include "ItemVisitor.h"
+#include "ImageContainer.h"
 
 class CItem;
 
@@ -68,6 +69,9 @@ private:
     /// Any item we are currently dragging
     std::shared_ptr<CItem> mGrabbedItem;
 
+    /// container of the images in the level
+    CImageContainer mImages;
+
 public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
@@ -82,6 +86,8 @@ public:
     void Accept(CItemVisitor* visitor);
 
     void InitializeStart();
+
+    std::shared_ptr<Gdiplus::Bitmap> GetImage(std::wstring filename);
 
     /// boolean if Go button has been pushed
     /// \return True if pressed

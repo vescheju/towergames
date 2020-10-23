@@ -2,8 +2,6 @@
 #include "GoButton.h"
 #include "Game.h"
 
-/// Go button filename
-const std::wstring GoButtonFileName = L"images/button-go.png";
 
 /**
  * Constructor
@@ -11,7 +9,7 @@ const std::wstring GoButtonFileName = L"images/button-go.png";
  */
 CGoButton::CGoButton(CGame* game) : CItem(game)
 {
-	SetImage(GoButtonFileName);
+	SetImagePtr(mGame->GetImage(L"button-go.png"));
 }
 
 

@@ -18,7 +18,7 @@ namespace Testing
 		CItemMock(CGame* game) :
 			CItem(game)
 		{
-			SetImage(L"images/red-balloon.png");
+			SetImagePtr(mGame->GetImage(L"red-balloon.png"));
 		}
 
 		/** Accept a visitor

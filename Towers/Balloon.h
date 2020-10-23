@@ -75,6 +75,12 @@ public:
 	CItemRoad* GetRoad() { return mRoad; }
 
 	/**
+	 * Set the road of the balloon.
+	 * \param road the road to be set
+	 */
+	void SetRoad(CItemRoad* road) { mRoad = road; }
+
+	/**
 	* returns the heading
 	*
 	* \return the direction that the balloon is moving

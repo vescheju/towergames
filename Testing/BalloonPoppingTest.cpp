@@ -6,6 +6,7 @@
 #include "ItemRemover.h"
 #include "Dart.h"
 #include "DamageVisitor.h"
+#include "ItemRoad.h"
 #include "Item.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -36,7 +37,8 @@ namespace Testing
 			auto balloon2 = make_shared<CBalloonRed>(&game, nullptr, L"");
 
 			auto dart = make_shared<CDart>(&game, 0);
-
+			// make a road
+			auto road = make_shared<CItemRoad>(&game);
 			// set the images
 			wstring filename1 = L"images/red-balloon.png";
 			auto  mItemImage1 = shared_ptr<Bitmap>(Bitmap::FromFile(filename1.c_str()));
@@ -46,7 +48,8 @@ namespace Testing
 
 			balloon1->SetImagePtr(mItemImage1);
 			balloon2->SetImagePtr(mItemImage2);
-
+			balloon1->SetRoad(&(*road));
+			balloon2->SetRoad(&(*road));
 			// set the images so that they are not touching
 			// (32, 32)(96, 32)
 			balloon1->SetLocation(32, 32);
