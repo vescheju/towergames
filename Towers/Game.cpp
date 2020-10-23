@@ -183,6 +183,8 @@ void CGame::Update(double elapsed)
     CItemRemover remover;
     Accept(&remover);
     Remove(remover.GetRemovedItems());
+
+	mScore += remover.GetScoreChange();
 }
 
 /** Accept a visitor for the collection
