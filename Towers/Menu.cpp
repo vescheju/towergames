@@ -12,6 +12,7 @@
 #include "BombTower.h"
 #include "TowerEight.h"
 #include "GoButton.h"
+#include "GoVisitor.h"
 
 #include <sstream>
 
@@ -30,7 +31,7 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	ringtower->SetLocation(1124, 600);
 
 	
-	std::shared_ptr<CBombTower> bombtower(new CBombTower(game,0));
+	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
 	mBomb = bombtower;
 	bombtower->SetLocation(1124, 500);
 	
@@ -133,19 +134,24 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
 {
 	if (mRing->HitTest(x, y)) 
 	{
-		return mRing;
+		std::shared_ptr<CRingTower> tower(new CRingTower(mGame));
+		return tower;
 	}
 	else if (mEight->HitTest(x, y)) 
 	{
-		return mRing;
+		std::shared_ptr<CTowerEight> tower(new CTowerEight(mGame));
+		return tower;
 	}
 	else if (mBomb->HitTest(x, y))
 	{
-		return mRing;
+		std::shared_ptr<CBombTower> tower(new CBombTower(mGame));
+		return tower;
 	}
 	else if (mGoButton->HitTest(x, y))
 	{
 		mGame->SetButtonPressed(true);
+		CGoVisitor visitor;
+		mGame->Accept(&visitor);
 		return nullptr;
 	}
 	else

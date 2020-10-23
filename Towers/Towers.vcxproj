@@ -197,6 +197,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GoButton.h" />
+    <ClInclude Include="GoVisitor.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHouse.h" />
     <ClInclude Include="ItemOpen.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GoButton.cpp" />
+    <ClCompile Include="GoVisitor.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
     <ClCompile Include="ItemOpen.cpp" />

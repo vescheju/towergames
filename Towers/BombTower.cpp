@@ -18,10 +18,9 @@ const std::wstring BombTowerName = L"images/tower-bomb.png";
 * \param game the whole game
 * \param timeToDetonate A time that keeps track of when to detonate tower
 */
-CBombTower::CBombTower(CGame* game, double timeToDetonate) : CTower(game)
+CBombTower::CBombTower(CGame* game) : CTower(game)
 {
 	SetImage(BombTowerName);
-	SetTimeTillFire(timeToDetonate);
 	std::shared_ptr<CExplosion> explosion(new CExplosion(game));
 	mExplosion = explosion;
 	game->Add(explosion);

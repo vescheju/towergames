@@ -153,9 +153,12 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CRingTower> tower3(new CRingTower(&mGame));
 	tower3->SetLocation(500, 400);
 	mGame.Add(tower3);
-	std::shared_ptr<CBombTower> tower4(new CBombTower(&mGame, 3));
+	std::shared_ptr<CBombTower> tower4(new CBombTower(&mGame));
 	tower4->SetLocation(80, 520);
 	mGame.Add(tower4);
+	std::shared_ptr<CBombTower> tower5(new CBombTower(&mGame));
+	tower5->SetLocation(400, 520);
+	mGame.Add(tower5);
 
 	Invalidate();
 }
