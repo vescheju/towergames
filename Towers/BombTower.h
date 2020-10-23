@@ -19,7 +19,7 @@ class CBombTower :
 {
 public:
 	/// constructor
-	CBombTower(CGame* game, double timeToDetonate);
+	CBombTower(CGame* game);
 
 	/// Default constructor (disabled)
 	CBombTower() = delete;
