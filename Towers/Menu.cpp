@@ -28,22 +28,22 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
-	ringtower->SetLocation(1124, 600);
+	ringtower->SetLocation(1170, 600);
 
 	
 	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
 	mBomb = bombtower;
-	bombtower->SetLocation(1124, 500);
+	bombtower->SetLocation(1170, 500);
 	
 
 	std::shared_ptr<CTowerEight> eighttower(new CTowerEight(game));
 	mEight = eighttower;
-	eighttower->SetLocation(1124, 400);
+	eighttower->SetLocation(1170, 400);
 
 	
 	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
 	mGoButton = gobutton;
-	gobutton->SetLocation(1124, 900);
+	gobutton->SetLocation(1170, 900);
 }
 
 
@@ -67,7 +67,6 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily,	24);
 	SolidBrush green(Color(0, 200, 0));
-
 
 	wstringstream str;
 	str << mGame->GetScore();
