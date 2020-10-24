@@ -14,6 +14,7 @@
 #include "ItemVisitor.h"
 
 class CItem;
+class CTower;
 
 /// implements a game
 class CGame

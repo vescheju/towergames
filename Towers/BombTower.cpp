@@ -16,7 +16,6 @@ const std::wstring BombTowerName = L"images/tower-bomb.png";
 /**
 * Bomb Tower constructor
 * \param game the whole game
-* \param timeToDetonate A time that keeps track of when to detonate tower
 */
 CBombTower::CBombTower(CGame* game) : CTower(game)
 {
