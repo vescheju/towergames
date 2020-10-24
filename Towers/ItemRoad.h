@@ -49,6 +49,13 @@ public:
 
     bool SetNeighbor(CItemRoad* road);
 
+    /**
+    * Getter for the lit member function
+    * 
+    * \return true if the road is lit
+    */
+    bool IsLit() { return mLit; }
+
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRoad(this); }
@@ -68,6 +75,9 @@ private:
     /// pointer to the road west of this road, nullptr if no 
     /// road is present
     CItemRoad* mWest = nullptr;
+
+    /// specifies if the road is lit or not
+    bool mLit = false;
 
 };
 

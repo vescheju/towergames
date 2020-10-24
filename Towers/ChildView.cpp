@@ -143,6 +143,7 @@ void CChildView::OnPaint()
 */
 void CChildView::OnLevelLevel0()
 {
+	mGame.SetGameLevel(0);
 	mGame.Load(L"level0.xml");
 	/*
 	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
@@ -171,6 +172,7 @@ void CChildView::OnLevelLevel0()
 */
 void CChildView::OnLevelLevel1()
 {
+	mGame.SetGameLevel(1);
 	mGame.Load(L"level1.xml");
 	Invalidate();
 }
@@ -181,6 +183,7 @@ void CChildView::OnLevelLevel1()
 */
 void CChildView::OnLevelLevel2()
 {
+	mGame.SetGameLevel(2);
 	mGame.Load(L"level2.xml");
 	Invalidate();
 }
@@ -191,6 +194,7 @@ void CChildView::OnLevelLevel2()
 */
 void CChildView::OnLevelLevel3()
 {
+	mGame.SetGameLevel(3);
 	mGame.Load(L"level3.xml");
 	Invalidate();
 }

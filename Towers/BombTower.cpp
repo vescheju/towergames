@@ -10,8 +10,6 @@
 #include "Explosion.h"
 #include <string>
 
-/// bomb tower png file declaration
-const std::wstring BombTowerName = L"images/tower-bomb.png";
 
 /**
 * Bomb Tower constructor
@@ -19,7 +17,7 @@ const std::wstring BombTowerName = L"images/tower-bomb.png";
 */
 CBombTower::CBombTower(CGame* game) : CTower(game)
 {
-	SetImage(BombTowerName);
+	SetImagePtr(mGame->GetImage(L"tower-bomb.png"));
 	std::shared_ptr<CExplosion> explosion(new CExplosion(game));
 	mExplosion = explosion;
 	game->Add(explosion);

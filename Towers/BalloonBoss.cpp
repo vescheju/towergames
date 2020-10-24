@@ -8,6 +8,7 @@
 #include "BalloonBoss.h"
 #include "BalloonRed.h"
 #include "Game.h"
+#include "ItemFog.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -30,9 +31,6 @@ CBalloonBoss::CBalloonBoss(CGame* game, CItemRoad* road, std::wstring heading) :
  */
 void CBalloonBoss::InitializeCariers()
 {
-	const wstring filename = L"images/black-balloon.png";
-	// pointer to the image for all red balloons
-	shared_ptr<Gdiplus::Bitmap> itemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
 	for (int i = 0; i < mNumBalloons; ++i)
 	{
 		//initial heading of the ballon
@@ -41,7 +39,7 @@ void CBalloonBoss::InitializeCariers()
 		// create the balloon
 		shared_ptr<CBalloonRed> balloon = make_shared<CBalloonRed>(mGame, GetRoad(), heading);
 		// set the image of the balloon
-		balloon->SetImagePtr(itemImage);
+		balloon->SetImagePtr(mGame->GetImage(L"black-balloon.png"));
 		// set the location of the balloon
 		balloon->SetLocation(GetX() + pow(-1, i) * mTileLength/4 * ((i+1)%2), GetY());
 		balloon->SetHealth(3);
@@ -49,6 +47,11 @@ void CBalloonBoss::InitializeCariers()
 		// add the balloons to the vector
 		mBalloons.push_back(balloon);
 	}
+
+	mFog = make_shared<CItemFog>(mGame);
+	mFog->SetImagePtr(mGame->GetImage(L"fog.png"));
+	mFog->SetLocation(-612, 512);
+	mFog->SetInitialLocation(mFog->GetX(), mFog->GetY());
 }
 
 
@@ -60,10 +63,16 @@ void CBalloonBoss::InitializeCariers()
 void CBalloonBoss::Update(double elapsed)
 {
 	CBalloon::Update(elapsed);
+
 	for (auto balloon : mBalloons)
 	{
 		balloon->Update(elapsed);
 	}
+	if (mFog->GetX() < 612 && mGame->GetButtonPressed())
+	{
+		mFog->SetLocation(mFog->GetX() + 30 * elapsed, mFog->GetY());
+	}
+	
 }
 
 
@@ -76,6 +85,7 @@ void CBalloonBoss::Pop()
 	{
 		mGame->Add(balloon);
 	}
+	mGame->Add(mFog);
 }
 
 
@@ -105,4 +115,15 @@ void CBalloonBoss::RemoveActiveWeapon(CWeapon* weapon)
 	{
 		balloon->RemoveActiveWeapon(weapon);
 	}
+}
+
+
+/**
+ * Draws the Boss balloon and related images
+ * \param graphics graphics context to draw to
+ */
+void CBalloonBoss::Draw(Graphics* graphics)
+{
+	mFog->Draw(graphics);
+	CItem::Draw(graphics);
 }

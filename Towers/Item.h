@@ -39,8 +39,6 @@ public:
 	virtual bool HitTest(int x, int y);
 
 
-	void SetImage(const std::wstring filename);
-
 	std::shared_ptr<Gdiplus::Bitmap> GetImage();
 
 	/**

@@ -9,8 +9,6 @@
 #include "Game.h"
 #include <string>
 
-/// TowerEight filename
-const std::wstring TowerEightName = L"images/tower8.png";
 
 /// Division constant for Degrees to Radians
 const double DtoR = 57.2957795;
@@ -26,7 +24,7 @@ const double DartSpeed = 200;
 CTowerEight::CTowerEight(CGame* game) :
 	CTower(game)
 {
-	SetImage(TowerEightName);
+	SetImagePtr(mGame->GetImage(L"tower8.png"));
 	for (int a = 0; a < 360; a += 45)
 	{
 		std::shared_ptr<CDart> dart(new CDart(game, a));

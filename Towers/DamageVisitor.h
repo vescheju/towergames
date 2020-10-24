@@ -30,6 +30,8 @@ private:
     std::vector<CRing*> mLevelRings;
     /// vector containing the level's explosions
     std::vector<CExplosion*> mLevelExplosions;
+    /// the score change as a result of the balloons being damaged
+    int mScoreChange = 0;
 public:
 
     virtual void VisitBalloonRed(CBalloonRed* balloon) override;
@@ -43,5 +45,12 @@ public:
     virtual void VisitExplosion(CExplosion* explosion) override;
 
     virtual void DealDamage();
+
+    /**
+    * Returns the change of score
+    * 
+    * \return the score change
+    */
+    virtual int GetScoreChange() { return mScoreChange; }
 };
 

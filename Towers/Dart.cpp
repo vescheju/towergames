@@ -6,9 +6,8 @@
 
 #include "pch.h"
 #include "Dart.h"
+#include "Game.h"
 
- /// towerEight filename
-const std::wstring DartFileName = L"images/dart.png";
 
 
 /**
@@ -18,7 +17,7 @@ const std::wstring DartFileName = L"images/dart.png";
  */
 CDart::CDart(CGame* game, int angle) : CWeapon(game)
 {
-	SetImage(DartFileName);
+	SetImagePtr(mGame->GetImage(L"dart.png"));
     mAngle = angle;
 }
 

@@ -14,6 +14,8 @@
 #include "ItemRemover.h"
 #include "GrabVisitor.h"
 #include "BalloonBoss.h"
+#include "VisibilityUpdater.h"
+#include "LevelProgressor.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -75,9 +77,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     float scaleY = float(height) / float(mHeight);
     mScale = min(scaleX, scaleY);
 
-    // Ensure it is centered horizontally
-    mXOffset = (float)((width - mWidth * mScale) / 2);
-
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
     
@@ -87,13 +86,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // draw the items
     for (auto item : mItems)
     {
-        // only draw the item if it is with the dimensions of the level
-        if ((item->GetX() >= 0 && item->GetX() <= mWidth) &&
-            (item->GetY() >= 0 && item->GetY() <= mHeight))
-        {
-            item->Draw(graphics);
-        }
-        
+           item->Draw(graphics);
     }
     if (mMenu != nullptr)
     {
@@ -128,6 +121,8 @@ void CGame::Load(const std::wstring& filename)
     CRoadLinker linker;
     Accept(&linker);
     linker.LinkRoads();
+
+   
 }
 
 /**
@@ -179,13 +174,41 @@ void CGame::Update(double elapsed)
         mMenu->Update(elapsed);
     }
 
+    // apply appropriate damage to the balloons
     CDamageVisitor damager;
     Accept(&damager);
     damager.DealDamage();
 
+    // incriment score for the popped ballons
+    mScore += damager.GetScoreChange();
+
+    // remove popped balloons and ballons that have made it through the level
     CItemRemover remover;
     Accept(&remover);
     Remove(remover.GetRemovedItems());
+
+    // incriment score based off of how the balloons were removed
+	mScore += remover.GetScoreChange();
+
+    // update the visibility of the balloons
+    CVisibilityUpdater updater;
+    Accept(&updater);
+    updater.UpdateVisibility();
+
+    CLevelProgressor progressor;
+    Accept(&progressor);
+    if (progressor.GetProgress()) 
+    {
+        ProgressLevel();
+    }
+}
+
+void CGame::ProgressLevel()
+{
+    if (mLevel == L"level 0")
+        {
+            Load(L"level 1");
+        }
 }
 
 /** Accept a visitor for the collection
@@ -243,16 +266,7 @@ void CGame::InitializeStart()
     // the initial x position to add the balloon at
     int balloonXPos = xStart - 2 * mTileLength;
     // path to the image to use for all red balloons
-    const wstring filename = L"images/red-balloon.png";
-    // pointer to the image for all red balloons
-    shared_ptr<Gdiplus::Bitmap> itemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-    // make sure getting the image was successful
-    if (itemImage->GetLastStatus() != Ok)
-    {
-        wstring msg(L"Failed to open ");
-        msg += filename;
-        AfxMessageBox(msg.c_str());
-    }
+    
 
     // add mLevelBalloons to the level 
     for (int i = 0; i < mLevelBalloons; ++i)
@@ -268,7 +282,7 @@ void CGame::InitializeStart()
         // create the balloon
         shared_ptr<CBalloonRed> balloon = make_shared<CBalloonRed>(this, road, heading);
         // set the image of the balloon
-        balloon->SetImagePtr(itemImage);
+        balloon->SetImagePtr(GetImage(L"red-balloon.png"));
         // set the location of the balloon
         balloon->SetLocation(balloonXPos, yStart);
         // add the balloon
@@ -286,15 +300,11 @@ void CGame::InitializeStart()
         // boss is always on the first road
         auto road = startRoads[0];
 
-        const wstring filename = L"images/boss-balloon.png";
-        // pointer to the image for all red balloons
-        shared_ptr<Gdiplus::Bitmap> itemImage = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-
         // create the balloon
         shared_ptr<CBalloonBoss> balloon = make_shared<CBalloonBoss>(this, road, heading);
 
         // set the image of the balloon
-        balloon->SetImagePtr(itemImage);
+        balloon->SetImagePtr(GetImage(L"boss-balloon.png"));
 
         // set the location of the balloon
         balloon->SetLocation(xStart, yStart);
@@ -384,3 +394,14 @@ void CGame::OnLButtonUp(UINT nFlags, CPoint point)
     OnMouseMove(nFlags, point);
 }
 
+
+/**
+* gets a pointer to the image so imaegs only get loaded once
+ * 
+ * \param filename the image to get
+ * \returns a pointer to the loaded image
+ */
+shared_ptr<Bitmap> CGame::GetImage(wstring filename)
+{
+    return mImages.GetImage(filename);
+}

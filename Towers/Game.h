@@ -12,6 +12,7 @@
 #include <memory>
 #include "XmlNode.h"
 #include "ItemVisitor.h"
+#include "ImageContainer.h"
 
 class CItem;
 class CTower;
@@ -69,7 +70,38 @@ private:
     /// Any item we are currently dragging
     std::shared_ptr<CItem> mGrabbedItem;
 
+	/// calculate score to display
+	int mScore = 0;
+
+    /// container of the images in the level
+    CImageContainer mImages;
+
+    /// The current level of the game.
+    int mGameLevel = 0;
+
 public:
+
+    /**
+    * getter for the score of the level
+    * 
+    * \return the current score
+    */
+	int GetScore() { return mScore; };
+
+    /**
+    * getter for the level
+    *
+    * \return mGameLevel the current level
+    */
+    int GetGameLevel() { return mGameLevel; };
+
+    /**
+    * Setter for the level
+    *
+    * \param level an int of what level to set.
+    */
+    void SetGameLevel(int level) { mGameLevel = level; };
+
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
 	void Add(std::shared_ptr<CItem> item);
@@ -80,9 +112,13 @@ public:
 
     void Update(double elapsed);
 
+    void ProgressLevel();
+
     void Accept(CItemVisitor* visitor);
 
     void InitializeStart();
+
+    std::shared_ptr<Gdiplus::Bitmap> GetImage(std::wstring filename);
 
     /// boolean if Go button has been pushed
     /// \return True if pressed

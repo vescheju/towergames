@@ -65,8 +65,5 @@ private:
 	/// pointer to Tower Ring
 	std::shared_ptr<CRingTower> mRing = nullptr;
 
-	/// pointer to Scoreboard
-	std::shared_ptr<CScoreboard> mScore = nullptr;
-
 	double mTimeSec = 0; ///< Time elapsed in seconds
 };
