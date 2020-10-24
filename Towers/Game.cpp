@@ -180,6 +180,8 @@ void CGame::Update(double elapsed)
     Accept(&damager);
     damager.DealDamage();
 
+    mScore += damager.GetScoreChange();
+
     CItemRemover remover;
     Accept(&remover);
     Remove(remover.GetRemovedItems());

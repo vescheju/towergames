@@ -33,10 +33,17 @@ public:
     */
     std::vector<CItem*>& GetRemovedItems() { return mRemovedItems; }
 
+    /**
+    * Returns the change of score
+    *
+    * \return the score change
+    */
 	int GetScoreChange() { return mScoreChange; };
 
 private:
     std::vector<CItem*> mRemovedItems; ///< holds the items that need to be removed
+
+    /// the net change in the score
 	int mScoreChange = 0;
 };
 

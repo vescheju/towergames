@@ -21,7 +21,6 @@ void CItemRemover::VisitBalloonRed(CBalloonRed* balloon)
 	if (balloon->GetHealth() <= 0)
 	{
 		mRemovedItems.push_back(balloon);
-		mScoreChange += 1;
 	}
 	else if (balloon->GetRoad() == nullptr)
 	{
@@ -39,6 +38,7 @@ void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
 	if (balloon->GetRoad() == nullptr)
 	{
 		mRemovedItems.push_back(balloon);
+		mScoreChange -= 5;
 	}
 	else if (balloon->GetHealth() <= 0)
 	{

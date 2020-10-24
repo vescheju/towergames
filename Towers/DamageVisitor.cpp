@@ -86,6 +86,11 @@ void CDamageVisitor::DealDamage()
             {
                 balloon->Damage(dart->GetDamage());
                 balloon->AddActiveWeapon(dart);
+
+                if (balloon->GetHealth() <= 0)
+                {
+                    mScoreChange += 10;
+                }
             }
             else
             {
@@ -102,6 +107,10 @@ void CDamageVisitor::DealDamage()
             if (balloon->IsInterectingRing(ring)) {
                 balloon->Damage(ring->GetDamage());
                 balloon->AddActiveWeapon(ring);
+                if (balloon->GetHealth() <= 0)
+                {
+                    mScoreChange += 3;
+                }
             }
             // if the ring has been reset then remove it from the active weapons
             else if (ring->GetRadius() < distance)
@@ -130,6 +139,10 @@ void CDamageVisitor::DealDamage()
             {
                 balloon->Damage(explosion->GetDamage());
                 balloon->AddActiveWeapon(explosion);
+                if (balloon->GetHealth() <= 0)
+                {
+                    mScoreChange += 2;
+                }
             }
             else
             {
