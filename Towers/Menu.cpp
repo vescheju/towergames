@@ -89,7 +89,22 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 
 	if (mTimeSec < 2)
 	{
-		graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		if (mGame->GetGameLevel() == 0)
+		{
+			graphics->DrawString(L"Level 0 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		}
+		else if (mGame->GetGameLevel() == 1)
+		{
+			graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		}
+		else if (mGame->GetGameLevel() == 2)
+		{
+			graphics->DrawString(L"Level 2 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		}
+		else
+		{
+			graphics->DrawString(L"Level 3 Begin", -1, &levelFont, PointF(100, 450), &brown);
+		}
 	}
 	else if (mTimeSec > 2 && !mGame->GetButtonPressed())
 	{

@@ -75,6 +75,9 @@ private:
     /// container of the images in the level
     CImageContainer mImages;
 
+    /// The current level of the game.
+    int mGameLevel = 0;
+
 public:
 
     /**
@@ -83,6 +86,20 @@ public:
     * \return the current score
     */
 	int GetScore() { return mScore; };
+
+    /**
+    * getter for the level
+    *
+    * \return mGameLevel the current level
+    */
+    int GetGameLevel() { return mGameLevel; };
+
+    /**
+    * Setter for the level
+    *
+    * \param level an int of what level to set.
+    */
+    void SetGameLevel(int level) { mGameLevel = level; };
 
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
