@@ -145,6 +145,7 @@ void CChildView::OnLevelLevel0()
 {
 	mGame.SetGameLevel(0);
 	mGame.Load(L"level0.xml");
+	/*
 	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
 	tower->SetLocation(400, 350);
 	mGame.Add(tower);
@@ -160,6 +161,7 @@ void CChildView::OnLevelLevel0()
 	std::shared_ptr<CBombTower> tower5(new CBombTower(&mGame));
 	tower5->SetLocation(400, 520);
 	mGame.Add(tower5);
+	*/
 
 	Invalidate();
 }
@@ -255,4 +257,7 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 	mGame.OnMouseMove(nFlags, point);
 
 	CWnd::OnMouseMove(nFlags, point);
+
+	// Force the screen to redraw
+	Invalidate();
 }

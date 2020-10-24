@@ -3,10 +3,15 @@
 #include "Game.h"
 #include "ItemHouse.h"
 #include "ItemTree.h"
+#include "BombTower.h"
+#include "RingTower.h"
+#include "TowerEight.h"
+#include "GrabVisitor.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
+
 
 
 namespace Testing
@@ -35,7 +40,24 @@ namespace Testing
 			Assert::IsTrue(game.HitTest(100, 200) == nullptr,
 				L"Testing empty game");
 
-			// Test Hit Test with items in it
+
+			// Test Hit Test with bombs added
+			shared_ptr<CBombTower> bomb = make_shared<CBombTower>(&game);
+			bomb->SetLocation(200, 200);
+			game.Add(bomb);
+
+			shared_ptr<CRingTower> tower = make_shared<CRingTower>(&game);
+			tower->SetLocation(100, 350);
+			game.Add(tower);
+
+			Assert::IsTrue(game.HitTest(200, 200) == bomb, L"Testing bomb");
+
+			Assert::IsTrue(game.HitTest(100, 350) == tower, L"Testing ring tower");
+
+			Assert::IsTrue(game.HitTest(110, 360) == tower, L"Testing ring tower");
+
+
+			// Test Hit Test with items in it, make sure doesn't return tiles
 			shared_ptr<CItemHouse> house = make_shared<CItemHouse>(&game);
 			house->SetImagePtr(game.GetImage(L"house1.png"));
 			house->SetLocation(5, 5);
@@ -46,13 +68,13 @@ namespace Testing
 			tree->SetLocation(100, 100);
 			game.Add(tree);
 
-			Assert::IsTrue(game.HitTest(5, 5) == house, L"Testing house");
+			Assert::IsTrue(game.HitTest(5, 5) == nullptr, L"Testing house");
 
-			Assert::IsTrue(game.HitTest(100, 100) == tree, L"Testing tree");
+			Assert::IsTrue(game.HitTest(100, 100) == nullptr, L"Testing tree");
 
-			Assert::IsTrue(game.HitTest(110, 110) == tree, L"Testing tree");
+			Assert::IsTrue(game.HitTest(110, 110) == nullptr, L"Testing tree");
 
-			// Test an empty spot with both added
+			// Test an empty spot with all added
 
 			Assert::IsTrue(game.HitTest(300, 300) == nullptr, L"Testing empty spot");
 
