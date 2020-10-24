@@ -198,6 +198,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GoButton.h" />
     <ClInclude Include="GoVisitor.h" />
+    <ClInclude Include="GrabVisitor.h" />
     <ClInclude Include="ImageContainer.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemFog.h" />
@@ -239,6 +240,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GoButton.cpp" />
     <ClCompile Include="GoVisitor.cpp" />
+    <ClCompile Include="GrabVisitor.cpp" />
     <ClCompile Include="ImageContainer.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemFog.cpp" />

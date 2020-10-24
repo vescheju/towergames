@@ -31,3 +31,4 @@ private:
     bool mIsTower = false;          ///< Boolean value represents if visited CItem is a CTower
 };
 
+
