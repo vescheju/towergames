@@ -200,6 +200,7 @@
     <ClInclude Include="GoVisitor.h" />
     <ClInclude Include="ImageContainer.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemFog.h" />
     <ClInclude Include="ItemHouse.h" />
     <ClInclude Include="ItemOpen.h" />
     <ClInclude Include="ItemRemover.h" />
@@ -218,6 +219,7 @@
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerEight.h" />
     <ClInclude Include="Towers.h" />
+    <ClInclude Include="VisibilityUpdater.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlNode.h" />
@@ -238,6 +240,7 @@
     <ClCompile Include="GoVisitor.cpp" />
     <ClCompile Include="ImageContainer.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemFog.cpp" />
     <ClCompile Include="ItemHouse.cpp" />
     <ClCompile Include="ItemOpen.cpp" />
     <ClCompile Include="ItemRemover.cpp" />
@@ -259,6 +262,7 @@
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerEight.cpp" />
     <ClCompile Include="Towers.cpp" />
+    <ClCompile Include="VisibilityUpdater.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlNode.cpp" />

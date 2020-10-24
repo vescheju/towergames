@@ -13,6 +13,7 @@
 #include "DamageVisitor.h"
 #include "ItemRemover.h"
 #include "BalloonBoss.h"
+#include "VisibilityUpdater.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -74,9 +75,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     float scaleY = float(height) / float(mHeight);
     mScale = min(scaleX, scaleY);
 
-    // Ensure it is centered horizontally
-    mXOffset = (float)((width - mWidth * mScale) / 2);
-
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
     
@@ -86,13 +84,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // draw the items
     for (auto item : mItems)
     {
-        // only draw the item if it is with the dimensions of the level
-        if ((item->GetX() >= 0 && item->GetX() <= mWidth) &&
-            (item->GetY() >= 0 && item->GetY() <= mHeight))
-        {
-            item->Draw(graphics);
-        }
-        
+           item->Draw(graphics);
     }
     if (mMenu != nullptr)
     {
@@ -127,6 +119,8 @@ void CGame::Load(const std::wstring& filename)
     CRoadLinker linker;
     Accept(&linker);
     linker.LinkRoads();
+
+   
 }
 
 /**
@@ -176,17 +170,26 @@ void CGame::Update(double elapsed)
         mMenu->Update(elapsed);
     }
 
+    // apply appropriate damage to the balloons
     CDamageVisitor damager;
     Accept(&damager);
     damager.DealDamage();
 
+    // incriment score for the popped ballons
     mScore += damager.GetScoreChange();
 
+    // remove popped balloons and ballons that have made it through the level
     CItemRemover remover;
     Accept(&remover);
     Remove(remover.GetRemovedItems());
 
+    // incriment score based off of how the balloons were removed
 	mScore += remover.GetScoreChange();
+
+    // update the visibility of the balloons
+    CVisibilityUpdater updater;
+    Accept(&updater);
+    updater.UpdateVisibility();
 }
 
 /** Accept a visitor for the collection

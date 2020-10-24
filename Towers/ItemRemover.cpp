@@ -37,6 +37,7 @@ void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
 {
 	if (balloon->GetRoad() == nullptr)
 	{
+		balloon->Pop();
 		mRemovedItems.push_back(balloon);
 		mScoreChange -= 5;
 	}
@@ -70,5 +71,19 @@ void CItemRemover::VisitBombTower(CBombTower* bomb)
 	if (bomb->IsDetonated())
 	{
 		mRemovedItems.push_back(bomb);
+	}
+}
+
+/**
+* adds the fog to the removed items list if its 
+* x position is less than the inital x
+* 
+* \param fog the fog item to visit
+*/
+void CItemRemover::VisitFog(CItemFog* fog)
+{
+	if (fog->GetX() <= fog->GetInitialX())
+	{
+		mRemovedItems.push_back(fog);
 	}
 }
