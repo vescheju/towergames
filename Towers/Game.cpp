@@ -12,6 +12,7 @@
 #include "ButtonVisitor.h"
 #include "DamageVisitor.h"
 #include "ItemRemover.h"
+#include "GrabVisitor.h"
 #include "BalloonBoss.h"
 #include "VisibilityUpdater.h"
 #include "LevelProgressor.h"
@@ -133,16 +134,18 @@ void CGame::Load(const std::wstring& filename)
  */
 std::shared_ptr<CItem> CGame::HitTest(int x, int y)
 {
-
-    for (auto item : *this)
+    for (auto item : mItems)
     {
         if (item->HitTest((x - mXOffset) / mScale, (y - mYOffset) / mScale))
         {
-            return item;
+            CGrabVisitor visitor;
+            item->Accept(&visitor);
+            if (visitor.IsTower())
+            {
+                return item;
+            }
         }
     }
-    
-
     return  nullptr;
 }
 
@@ -340,8 +343,15 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
         // see if the grabbed item was in the menu
         else if(point.x >= (GetGameWidth()* mScale) + mXOffset)
         {
-            mGrabbedItem = mMenu->MenuHitTest((point.x - mXOffset) / mScale, 
+            mGrabbedItem = mMenu->MenuHitTest((point.x - mXOffset) / mScale,
                 (point.y - mYOffset) / mScale);
+            if (mGrabbedItem != nullptr)
+            {
+                mGrabbedItem->SetLocation((point.x - mXOffset) / mScale,
+                    (point.y - mYOffset) / mScale);
+                Add(mGrabbedItem);
+                
+            }
         }
     }
 }
@@ -354,7 +364,23 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
  */
 void CGame::OnMouseMove(UINT nFlags, CPoint point)
 {
-    
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedItem != nullptr)
+    {
+        // If an item is being moved, we only continue to 
+        // move it while the left button is down.
+        if (nFlags & MK_LBUTTON)
+        {
+            mGrabbedItem->SetLocation((point.x - mXOffset) / mScale,
+                (point.y - mYOffset) / mScale);
+        }
+        else
+        {
+            // When the left button is released, we release the
+            // item.
+            mGrabbedItem = nullptr;
+        }
+    }
 }
 
 
@@ -365,7 +391,7 @@ void CGame::OnMouseMove(UINT nFlags, CPoint point)
  */
 void CGame::OnLButtonUp(UINT nFlags, CPoint point)
 {
-    
+    OnMouseMove(nFlags, point);
 }
 
 
