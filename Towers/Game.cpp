@@ -14,6 +14,7 @@
 #include "ItemRemover.h"
 #include "BalloonBoss.h"
 #include "VisibilityUpdater.h"
+#include "LevelProgressor.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -190,6 +191,21 @@ void CGame::Update(double elapsed)
     CVisibilityUpdater updater;
     Accept(&updater);
     updater.UpdateVisibility();
+
+    CLevelProgressor progressor;
+    Accept(&progressor);
+    if (progressor.GetProgress()) 
+    {
+        ProgressLevel();
+    }
+}
+
+void CGame::ProgressLevel()
+{
+    if (mLevel == L"level 0")
+        {
+            Load(L"level 1");
+        }
 }
 
 /** Accept a visitor for the collection

@@ -94,6 +94,8 @@ public:
 
     void Update(double elapsed);
 
+    void ProgressLevel();
+
     void Accept(CItemVisitor* visitor);
 
     void InitializeStart();

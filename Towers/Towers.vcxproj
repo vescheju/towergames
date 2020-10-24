@@ -207,6 +207,7 @@
     <ClInclude Include="ItemRoad.h" />
     <ClInclude Include="ItemTree.h" />
     <ClInclude Include="ItemVisitor.h" />
+    <ClInclude Include="LevelProgressor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="pch.h" />
@@ -247,6 +248,7 @@
     <ClCompile Include="ItemRoad.cpp" />
     <ClCompile Include="ItemTree.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
+    <ClCompile Include="LevelProgressor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="pch.cpp">
