@@ -34,5 +34,22 @@ public:
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBalloonRed(this); }
 
+	virtual void Draw(Gdiplus::Graphics* graphics) override;
+
+	/**
+	* getter for visiblity
+	* \return if the balloon should be drawn or not
+	*/
+	bool IsVisible() { return mVisible; }
+
+	/**
+	* setter for the visibility
+	* \param visibility the visibility to set
+	*/
+	void SetVisibility(bool visibility) { mVisible = visibility; }
+
+private:
+	/// keeps track of drawing the balloon or not
+	bool mVisible = false;
 };
 

@@ -25,6 +25,7 @@ class CGoButton;
 class CGameMenu;
 class CScoreboard;
 class CBalloonBoss;
+class CItemFog;
 
 /** Tile visitor base class */
 class CItemVisitor
@@ -121,5 +122,11 @@ public:
      * \param balloon BalloonBoss item we are visiting
      */
     virtual void VisitBalloonBoss(CBalloonBoss* balloon) {}
+
+    /**
+     * Visit a CFog object
+     * \param fog CItemFog item we are visiting
+     */
+    virtual void VisitFog(CItemFog* fog) {}
 };
 

@@ -8,6 +8,7 @@
 
 #pragma once
 #include "Balloon.h"
+#include "ItemFog.h"
 
 
 /**
@@ -39,11 +40,23 @@ public:
 
 	void Pop();
 
+	virtual void Draw(Gdiplus::Graphics* graphics) override;
+
+	/**
+	* getter for the fog
+	* 
+	* \return the fog in the balloon
+	*/
+	std::shared_ptr<CItemFog> GetFog() { return mFog; }
+
 private:
 	/// the balloons to drop when it pops
 	std::vector<std::shared_ptr<CBalloonRed> > mBalloons;
 
 	/// the number of balloons the boss holds
 	int mNumBalloons = 4;
+
+	/// pointer to the fog that follows the boss
+	std::shared_ptr<CItemFog> mFog;
 };
 

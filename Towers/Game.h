@@ -76,6 +76,12 @@ private:
     CImageContainer mImages;
 
 public:
+
+    /**
+    * getter for the score of the level
+    * 
+    * \return the current score
+    */
 	int GetScore() { return mScore; };
 
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
@@ -87,6 +93,8 @@ public:
 	void Load(const std::wstring& filename);
 
     void Update(double elapsed);
+
+    void ProgressLevel();
 
     void Accept(CItemVisitor* visitor);
 

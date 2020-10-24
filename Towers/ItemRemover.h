@@ -26,6 +26,8 @@ public:
     virtual void VisitBombTower(CBombTower* bomb) override;
 
     virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
+
+    virtual void VisitFog(CItemFog* fog) override;
     /**
     * getter fot mRemovedItems
     *
@@ -33,10 +35,17 @@ public:
     */
     std::vector<CItem*>& GetRemovedItems() { return mRemovedItems; }
 
+    /**
+    * Returns the change of score
+    *
+    * \return the score change
+    */
 	int GetScoreChange() { return mScoreChange; };
 
 private:
     std::vector<CItem*> mRemovedItems; ///< holds the items that need to be removed
+
+    /// the net change in the score
 	int mScoreChange = 0;
 };
 
