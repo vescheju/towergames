@@ -102,6 +102,24 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  */
 void CGame::Load(const std::wstring& filename)
 {
+    mButtonPressed = false;
+
+    if (filename == L"level0.xml")
+    {
+        mLevel = L"Level 0";
+    }
+    else if (filename == L"level1.xml")
+    {
+        mLevel = L"Level 1";
+    }
+    else if (filename == L"level2.xml")
+    {
+        mLevel = L"Level 2";
+    }
+    else if (filename == L"level3.xml")
+    {
+        mLevel = L"Level 3";
+    }
 
     // Open the document with the xml loader class
     CXmlLoader xmlLoader(this);
@@ -121,7 +139,6 @@ void CGame::Load(const std::wstring& filename)
     Accept(&linker);
     linker.LinkRoads();
 
-   
 }
 
 /**
@@ -194,18 +211,34 @@ void CGame::Update(double elapsed)
 
     CLevelProgressor progressor;
     Accept(&progressor);
-    if (progressor.GetProgress()) 
+    if (mButtonPressed)
     {
-        ProgressLevel();
+        if (progressor.GetProgress()) 
+        {
+            ProgressLevel();
+        }
     }
+
 }
 
 void CGame::ProgressLevel()
 {
-    if (mLevel == L"level 0")
-        {
-            Load(L"level 1");
-        }
+    if (mLevel == L"Level 0")
+    {
+        Load(L"level1.xml");
+    }
+    else if (mLevel == L"Level 1")
+    {
+        Load(L"level2.xml");
+    }
+    else if (mLevel == L"Level 2")
+    {
+        Load(L"level3.xml");
+    }
+    else if (mLevel == L"Level 3")
+    {
+        Load(L"level3.xml");
+    }
 }
 
 /** Accept a visitor for the collection

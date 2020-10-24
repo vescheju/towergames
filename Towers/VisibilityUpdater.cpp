@@ -46,15 +46,18 @@ void CVisibilityUpdater::VisitFog(CItemFog* fog)
  */
 void CVisibilityUpdater::UpdateVisibility()
 {
-	for (auto balloon : mBalloons)
+	if (mFog != nullptr)
 	{
-		if (mFog->HitTest(balloon->GetX(), balloon->GetY()) || balloon->GetX() < 0)
+		for (auto balloon : mBalloons)
 		{
-			balloon->SetVisibility(false);
-		}
-		else
-		{
-			balloon->SetVisibility(true);
+			if (mFog->HitTest(balloon->GetX(), balloon->GetY()) || balloon->GetX() < 0)
+			{
+				balloon->SetVisibility(false);
+			}
+			else
+			{
+				balloon->SetVisibility(true);
+			}
 		}
 	}
 }
