@@ -27,11 +27,13 @@ public:
 
 	void Update(double elapsed) override;
 
-	void SetLocation(double x, double y);
+	std::shared_ptr<CRing> GetRing() const { return mRing; }
 
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRingTower(this); }
+
+	void InitializeWeapon() override;
 
 private:
 

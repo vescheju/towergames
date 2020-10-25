@@ -133,6 +133,10 @@ public:
     void CGame::OnLButtonUp(UINT nFlags, CPoint point);
 
     void Remove(std::vector<CItem*> items);
+
+    void TowersToFrontOfScreen();
+
+    void ToFrontOfScreen(std::shared_ptr<CItem> item);
     
     /// returns the xOffset
     /// \return level xOffset

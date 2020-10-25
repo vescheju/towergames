@@ -25,12 +25,6 @@ CTowerEight::CTowerEight(CGame* game) :
 	CTower(game)
 {
 	SetImagePtr(mGame->GetImage(L"tower8.png"));
-	for (int a = 0; a < 360; a += 45)
-	{
-		std::shared_ptr<CDart> dart(new CDart(game, a));
-		mDarts.push_back(dart);
-		game->Add(dart);
-	}
 }
 
 
@@ -79,18 +73,15 @@ void CTowerEight::Update(double elapsed)
 }
 
 
-/**
-* Set's location of Tower and its Darts
-* \param x X coordinate to set Tower and Darts at
-* \param y Y coordinate to set Tower and Darts at
- */
-void CTowerEight::SetLocation(double x, double y)
+
+void CTowerEight::InitializeWeapon()
 {
-	CItem::SetLocation(x, y);
-	// set locations of darts with tower
-	for (auto dart : mDarts)
+	for (int a = 0; a < 360; a += 45)
 	{
-		dart->SetLocation(x, y);
+		std::shared_ptr<CDart> dart(new CDart(mGame, a));
+		dart->SetLocation(GetX(), GetY());
+		mDarts.push_back(dart);
+		mGame->Add(dart);
 	}
 }
 

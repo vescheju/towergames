@@ -21,9 +21,6 @@ CRingTower::CRingTower(CGame* game) :
 	CTower(game)
 {
 	SetImagePtr(mGame->GetImage(L"tower-rings.png"));
-	std::shared_ptr<CRing> ring(new CRing(game));
-	mRing = ring;
-	game->Add(ring);
 }
 
 
@@ -56,14 +53,10 @@ void CRingTower::Update(double elapsed)
 }
 
 
-/**
-* Set's location of Tower and its Ring
-* \param x X coordinate to set Tower and Ring at
-* \param y Y coordinate to set Tower and Ring at
- */
-void CRingTower::SetLocation(double x, double y)
+void CRingTower::InitializeWeapon()
 {
-	CItem::SetLocation(x, y);
-	// set locations of ring with tower
-	mRing->SetLocation(x, y);
+	std::shared_ptr<CRing> ring(new CRing(mGame));
+	ring->SetLocation(GetX(), GetY());
+	mRing = ring;
+	mGame->Add(ring);
 }

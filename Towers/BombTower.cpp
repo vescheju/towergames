@@ -18,9 +18,6 @@
 CBombTower::CBombTower(CGame* game) : CTower(game)
 {
 	SetImagePtr(mGame->GetImage(L"tower-bomb.png"));
-	std::shared_ptr<CExplosion> explosion(new CExplosion(game));
-	mExplosion = explosion;
-	game->Add(explosion);
 }
 
 
@@ -45,14 +42,11 @@ void CBombTower::Update(double elapsed)
 	
 }
 
-/**
-* Set's location of Tower and its explosion
-* \param x X coordinate to set Tower and explosion at
-* \param y Y coordinate to set Tower and explosion at
- */
-void CBombTower::SetLocation(double x, double y)
+
+void CBombTower::InitializeWeapon()
 {
-	CItem::SetLocation(x, y);
-	// set locations of ring with tower
-	mExplosion->SetLocation(x, y);
+	std::shared_ptr<CExplosion> explosion(new CExplosion(mGame));
+	explosion->SetLocation(GetX(), GetY());
+	mExplosion = explosion;
+	mGame->Add(explosion);
 }

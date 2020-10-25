@@ -166,6 +166,7 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
 		mGame->SetButtonPressed(true);
 		CGoVisitor visitor;
 		mGame->Accept(&visitor);
+		mGame->TowersToFrontOfScreen();
 		return nullptr;
 	}
 	else

@@ -11,11 +11,15 @@
 #include "Menu.h"
 #include "ButtonVisitor.h"
 #include "DamageVisitor.h"
+#include "TileLocker.h"
 #include "ItemRemover.h"
 #include "GrabVisitor.h"
 #include "BalloonBoss.h"
+#include "ItemOpen.h"
 #include "VisibilityUpdater.h"
 #include "LevelProgressor.h"
+
+#include <algorithm>
 
 using namespace std;
 using namespace xmlnode;
@@ -48,7 +52,7 @@ void CGame::Remove(std::vector<CItem*> items)
         {
             // if they are the same item (same address in memory),
             // remove it from mItems
-            if (&(*removeItem) == &(*(mItems[i])))
+            if (&(*removeItem) == &(*(mItems[i])) && &(*mItems[i]) != &(*mGrabbedItem))
             {
                 mItems.erase(mItems.begin()+i);
                 break;
@@ -56,6 +60,31 @@ void CGame::Remove(std::vector<CItem*> items)
         }
     }
 }
+
+void CGame::TowersToFrontOfScreen()
+{
+    for (auto item : mItems)
+    {
+        CGrabVisitor visitor;
+        item->Accept(&visitor);
+        if (visitor.IsTower())
+        {
+            ToFrontOfScreen(item);
+        }
+    }
+}
+
+
+void CGame::ToFrontOfScreen(std::shared_ptr<CItem> item)
+{
+    auto locate = find(mItems.begin(), mItems.end(), item);
+    if (locate != mItems.end())
+    {
+        mItems.erase(locate);
+        mItems.push_back(item);
+    }
+}
+
 
 /**
  * Draw the game area
@@ -199,7 +228,7 @@ void CGame::Update(double elapsed)
     // incriment score for the popped ballons
     mScore += damager.GetScoreChange();
 
-    // remove popped balloons and ballons that have made it through the level
+    // remove popped balloons and balloons that have made it through the level
     CItemRemover remover;
     Accept(&remover);
     Remove(remover.GetRemovedItems());
@@ -371,7 +400,16 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
         // see if the item grabbed was in the game
         if (mGrabbedItem != nullptr)
         {
-            // do something with the grabbed item
+            // Tile and Tower no longer relate, so sever ties
+
+
+            //mGrabbedItem->GetTile()->SetTower(nullptr);
+
+
+            mGrabbedItem->SetTile(nullptr);
+            // Set grabbed attribute to true, move tower to the front of the screen
+            mGrabbedItem->SetGrabbed(true);
+            ToFrontOfScreen(mGrabbedItem);
         }
         // see if the grabbed item was in the menu
         else if(point.x >= (GetGameWidth()* mScale) + mXOffset)
@@ -382,7 +420,9 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
             {
                 mGrabbedItem->SetLocation((point.x - mXOffset) / mScale,
                     (point.y - mYOffset) / mScale);
+                mGrabbedItem->SetGrabbed(true);
                 Add(mGrabbedItem);
+
                 
             }
         }
@@ -409,6 +449,21 @@ void CGame::OnMouseMove(UINT nFlags, CPoint point)
         }
         else
         {
+            CTileLocker visitor;
+            Accept(&visitor);
+            CItemOpen* tile = visitor.LockTower(mGrabbedItem);
+            if (tile != nullptr)
+            {
+                for (auto item : mItems)
+                {
+                    if (&(*item) == &(*tile))
+                    {
+                        mGrabbedItem->SetTile(item);
+                    }
+                }
+            }
+            mGrabbedItem->SetGrabbed(false);
+
             // When the left button is released, we release the
             // item.
             mGrabbedItem = nullptr;

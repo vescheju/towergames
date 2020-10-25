@@ -7,6 +7,9 @@
 #include "pch.h"
 #include "GoVisitor.h"
 #include "BombTower.h"
+#include "TowerEight.h"
+#include "RingTower.h"
+
 
 
 /**
@@ -16,6 +19,20 @@
 */
 void CGoVisitor::VisitBombTower(CBombTower* bomb)
 {
+	bomb->InitializeWeapon();
 	bomb->SetTimeTillFire(mDetonateTime);
 	mDetonateTime += 3;
 }
+
+void CGoVisitor::VisitTowerEight(CTowerEight* tower)
+{
+	tower->InitializeWeapon();
+	mTowers.push_back(tower);
+}
+
+void CGoVisitor::VisitRingTower(CRingTower* tower)
+{
+	tower->InitializeWeapon();
+	mTowers.push_back(tower);
+}
+

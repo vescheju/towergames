@@ -10,7 +10,9 @@
 #include "BombTower.h"
 #include "BalloonRed.h"
 #include "BalloonBoss.h"
-
+#include "TowerEight.h"
+#include "RingTower.h"
+#include "BombTower.h"
 
 /**
  * adds red balloons to a vector of they need to be removed
@@ -48,6 +50,14 @@ void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
 	}
 }
 
+void CItemRemover::VisitTowerEight(CTowerEight* tower)
+{
+	if (tower->GetTile() == nullptr && !tower->Grabbed())
+	{
+		mRemovedItems.push_back(tower);
+	}
+}
+
 
 /**
  * adds explosions to a vector of they need to be removed
@@ -62,13 +72,21 @@ void CItemRemover::VisitExplosion(CExplosion* explosion)
 }
 
 
+void CItemRemover::VisitRingTower(CRingTower* tower)
+{
+	if (tower->GetTile() == nullptr && !tower->Grabbed())
+	{
+		mRemovedItems.push_back(tower);
+	}
+}
+
 /**
  * adds bombs to a vector of they need to be removed
  * \param bomb the bomb being visited
  */
 void CItemRemover::VisitBombTower(CBombTower* bomb)
 {
-	if (bomb->IsDetonated())
+	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
 	{
 		mRemovedItems.push_back(bomb);
 	}

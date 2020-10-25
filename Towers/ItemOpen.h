@@ -9,6 +9,7 @@
 #pragma once
 #include "Item.h"
 
+class CTower;
 
 /**
  * An open spot for any item
@@ -30,5 +31,13 @@ public:
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitOpen(this); }
+
+    void SetTower(std::shared_ptr<CItem> tower) { mTower = tower; }
+
+    std::shared_ptr<CItem> GetTower() const { return mTower; }
+
+private:
+
+    std::shared_ptr<CItem> mTower = nullptr;           ///< Tower sitting on this open location
 };
 

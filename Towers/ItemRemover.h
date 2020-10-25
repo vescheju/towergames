@@ -27,6 +27,10 @@ public:
 
     virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
 
+    virtual void VisitTowerEight(CTowerEight* tower) override;
+
+    virtual void VisitRingTower(CRingTower* tower) override;
+
     virtual void VisitFog(CItemFog* fog) override;
     /**
     * getter fot mRemovedItems

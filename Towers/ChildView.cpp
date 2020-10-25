@@ -145,24 +145,6 @@ void CChildView::OnLevelLevel0()
 {
 	mGame.SetGameLevel(0);
 	mGame.Load(L"level0.xml");
-	/*
-	std::shared_ptr<CTowerEight> tower(new CTowerEight(&mGame));
-	tower->SetLocation(400, 350);
-	mGame.Add(tower);
-	std::shared_ptr<CTowerEight> tower2(new CTowerEight(&mGame));
-	tower2->SetLocation(225, 425);
-	mGame.Add(tower2);
-	std::shared_ptr<CRingTower> tower3(new CRingTower(&mGame));
-	tower3->SetLocation(500, 400);
-	mGame.Add(tower3);
-	std::shared_ptr<CBombTower> tower4(new CBombTower(&mGame));
-	tower4->SetLocation(80, 520);
-	mGame.Add(tower4);
-	std::shared_ptr<CBombTower> tower5(new CBombTower(&mGame));
-	tower5->SetLocation(400, 520);
-	mGame.Add(tower5);
-	*/
-
 	Invalidate();
 }
 

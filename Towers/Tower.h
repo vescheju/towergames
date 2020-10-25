@@ -12,6 +12,9 @@
 #include <memory>
 
 class CGame;
+class CItemOpen;
+
+
 /**
 * Base Class for each of the different towers, derived from CItem
 */
@@ -42,6 +45,9 @@ public:
 	 * \param time double to set mTimeTillFire to
 	 */
 	void SetTimeTillFire(double time) { mTimeTillFire = time; }
+
+
+	virtual void InitializeWeapon() = 0;
 
 
 private:

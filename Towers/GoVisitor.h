@@ -10,6 +10,9 @@
 #pragma once
 
 #include "ItemVisitor.h"
+#include<vector>
+
+class CTower;
 
 
  /**
@@ -22,9 +25,17 @@ public:
 
     virtual void VisitBombTower(CBombTower* bomb) override;
 
+    virtual void VisitTowerEight(CTowerEight* bomb) override;
+
+    virtual void VisitRingTower(CRingTower* bomb) override;
+
+    std::vector<CTower*> GetTowers() const { return mTowers; }
+
 private:
 
     double mDetonateTime = 3;           ///< Time until detonate for bomb visited
+
+    std::vector<CTower*> mTowers;
 
 };
 
