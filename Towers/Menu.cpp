@@ -111,6 +111,28 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		mGoButton->Draw(graphics);
 	}
 
+	if (mGame->GetDisplayEnd() == true)
+	{
+
+		if (mTimeFreeze <= 0.00001 && mTimeFreeze >= -0.00001)
+		{
+			mTimeFreeze = mTimeSec;
+		}
+
+		if (mTimeSec - mTimeFreeze < 2)
+		{
+			graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(100, 450), &brown);
+		}
+		else 
+		{
+			mEndGame = true;
+			mTimeFreeze = 0;
+		}
+	}
+	else
+	{
+		mEndGame = false;
+	}
 	
 
 }

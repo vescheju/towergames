@@ -79,6 +79,8 @@ private:
     /// The current level of the game.
     int mGameLevel = 0;
 
+    bool mDisplayEnd = false;
+
 public:
 
     /**
@@ -87,6 +89,13 @@ public:
     * \return the current score
     */
 	int GetScore() { return mScore; };
+
+    /**
+    * getter for the display end
+    *
+    * \return mDisplayEnd
+    */
+    int GetDisplayEnd() { return mDisplayEnd; };
 
     /**
     * getter for the level
