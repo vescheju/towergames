@@ -137,18 +137,22 @@ void CGame::Load(const std::wstring& filename)
     if (filename == L"level0.xml")
     {
         mLevel = L"Level 0";
+        mLevelBalloons = 30;
     }
     else if (filename == L"level1.xml")
     {
         mLevel = L"Level 1";
+        mLevelBalloons = 30;
     }
     else if (filename == L"level2.xml")
     {
         mLevel = L"Level 2";
+        mLevelBalloons = 30;
     }
     else if (filename == L"level3.xml")
     {
         mLevel = L"Level 3";
+        mLevelBalloons = 40;
     }
 
     // Open the document with the xml loader class
@@ -354,7 +358,7 @@ void CGame::InitializeStart()
     }
     
     // if it is level 3, add a boss balloon to the level
-    if (mLevel == L"Level 0")
+    if (mLevel == L"Level 2")
     {
         //initial heading of the ballon
         wstring heading = L"E";
