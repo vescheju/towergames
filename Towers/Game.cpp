@@ -404,7 +404,7 @@ void CGame::InitializeStart()
     }
     
     // if it is level 3, add a boss balloon to the level
-    if (mLevel == L"Level 2")
+    if (mLevel == L"Level 3")
     {
         //initial heading of the ballon
         wstring heading = L"E";

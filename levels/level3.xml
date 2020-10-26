@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level width="1024" height="1024" start-y="6" start-x="0">
+<level width="16" height="16" start-y="6" start-x="0">
 <declarations>
 	<road id="i001" image="dead-roadEW.png" type="EW"/>
 	<road id="i002" image="dead-roadNS.png" type="NS"/>
