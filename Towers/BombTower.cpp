@@ -39,14 +39,24 @@ void CBombTower::Update(double elapsed)
 			SetFire(false);
 		}
 	}
-	
+
 }
 
 
+/**
+ * Initialize Weapon function, initializes explosion in Bomb
+ */
 void CBombTower::InitializeWeapon()
 {
-	std::shared_ptr<CExplosion> explosion(new CExplosion(mGame));
+	std::shared_ptr<CExplosion> explosion = std::make_shared<CExplosion>(mGame);
 	explosion->SetLocation(GetX(), GetY());
 	mExplosion = explosion;
-	mGame->Add(explosion);
+}
+
+/**
+ * Add Weapon function, adds explosion to game mItems
+ */
+void CBombTower::AddWeapon()
+{
+	mGame->Add(mExplosion);
 }

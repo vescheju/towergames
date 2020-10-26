@@ -36,6 +36,8 @@ public:
 
 	void InitializeWeapon() override;
 
+	void AddWeapon() override;
+
 private:
 
 	std::vector<std::shared_ptr<CDart> > mDarts;		///< Vector of darts tower contains

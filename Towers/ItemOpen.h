@@ -32,12 +32,18 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitOpen(this); }
 
-    void SetTower(std::shared_ptr<CItem> tower) { mTower = tower; }
+    /** Set mTower to value
+    * \param tower CTower object to set mTower to
+    */
+    void SetTower(CTower* tower) { mTower = tower; }
 
-    std::shared_ptr<CItem> GetTower() const { return mTower; }
+    /** Get mTower value
+    * \return CTower object
+    */
+    CTower* GetTower() const { return mTower; }
 
 private:
 
-    std::shared_ptr<CItem> mTower = nullptr;           ///< Tower sitting on this open location
+    CTower* mTower = nullptr;           ///< Tower sitting on this open location
 };
 

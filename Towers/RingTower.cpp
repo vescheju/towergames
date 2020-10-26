@@ -13,6 +13,7 @@
 /// Speed in pixels per second for darts to travel
 const double RingSpeed = 200;
 
+
 /**
 * Ring Tower constructor
 * \param game the whole game
@@ -53,10 +54,21 @@ void CRingTower::Update(double elapsed)
 }
 
 
+ /**
+  * Initialize Weapon function, initializes ring in Tower
+  */
 void CRingTower::InitializeWeapon()
 {
-	std::shared_ptr<CRing> ring(new CRing(mGame));
+	std::shared_ptr<CRing> ring = std::make_shared<CRing>(mGame);
 	ring->SetLocation(GetX(), GetY());
 	mRing = ring;
-	mGame->Add(ring);
+}
+
+
+/**
+ * Add Weapon function, adds ring to game mItems
+ */
+void CRingTower::AddWeapon()
+{
+	mGame->Add(mRing);
 }

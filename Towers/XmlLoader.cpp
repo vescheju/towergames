@@ -130,7 +130,6 @@ void CXmlLoader::XmlInitializeItem(std::shared_ptr<xmlnode::CXmlNode> node)
     {
         // We found it
         auto declaration = iterator->second;
-
         mInitializedItems.push_back(declaration->Initialize(xPos, yPos));
     }
 }

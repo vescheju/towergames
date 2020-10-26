@@ -8,6 +8,7 @@
 
 #pragma once
 #include "ItemVisitor.h"
+#include "Tower.h"
 
 /* Is the grabbed item a tower */
 class CGrabVisitor :
@@ -24,7 +25,7 @@ public:
     /* Getter returns mIsTower memmber
     * \return boolean of whether or not we've visited tower
     */
-    bool IsTower() { return mIsTower; }
+    bool IsTower() const { return mIsTower; }
 
 private:
 

@@ -67,8 +67,8 @@ private:
     /// tells if the game should operate
     bool mButtonPressed = false;
 
-    /// Any item we are currently dragging
-    std::shared_ptr<CItem> mGrabbedItem;
+    /// Any tower we are currently dragging
+    std::shared_ptr<CTower> mGrabbedItem;
 
 	/// calculate score to display
 	int mScore = 0;
@@ -124,7 +124,7 @@ public:
     /// \return True if pressed
 	bool GetButtonPressed() { return mButtonPressed; };
 
-	std::shared_ptr<CItem> HitTest(int x, int y);
+	std::shared_ptr<CTower> HitTest(int x, int y);
 
     void OnLButtonDown(UINT nFlags, CPoint point);
 
@@ -134,7 +134,7 @@ public:
 
     void Remove(std::vector<CItem*> items);
 
-    void TowersToFrontOfScreen();
+    void TowersToFrontOfScreen(std::vector<CTower*> towers);
 
     void ToFrontOfScreen(std::shared_ptr<CItem> item);
     

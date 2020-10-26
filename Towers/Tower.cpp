@@ -14,6 +14,7 @@ class CGame;
 /// Time between each firing
 double TimeBetweenShots = 5;
 
+
 /**
 * Tower Constructor
 * \param game the whole game

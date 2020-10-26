@@ -21,13 +21,18 @@
 
 #include <algorithm>
 
+
 using namespace std;
 using namespace xmlnode;
 using namespace Gdiplus;
 
 
+/// Score positioning X variable
 const int ScoreX = 1124;
+
+/// Score positioning Y variable
 const int ScoreY = 949;
+
 
 /**
  * Add an item to the game
@@ -61,29 +66,51 @@ void CGame::Remove(std::vector<CItem*> items)
     }
 }
 
-void CGame::TowersToFrontOfScreen()
+
+/**
+* Moves all towers to the front of the screen.
+* For use after pressing go button
+* 
+* \param towers Vector of towers to move to the front of the screen
+*/
+void CGame::TowersToFrontOfScreen(std::vector<CTower*> towers)
 {
-    for (auto item : mItems)
+    // Iterate through items in towers
+    for (auto tower : towers)
     {
-        CGrabVisitor visitor;
-        item->Accept(&visitor);
-        if (visitor.IsTower())
+        // Iterate through items in mItems
+        for (auto item : mItems)
         {
-            ToFrontOfScreen(item);
+            // If they are at the same address in memory
+            if (&(*item) == &(*tower)) 
+            {
+                // move to the front of the screen
+                ToFrontOfScreen(item);
+            }
         }
     }
 }
 
 
+/*
+* Moves object to front of screen.
+* 
+* \param item Shared pointer to item moved to front of screen
+*/
 void CGame::ToFrontOfScreen(std::shared_ptr<CItem> item)
 {
+    // locate item in mItems
     auto locate = find(mItems.begin(), mItems.end(), item);
     if (locate != mItems.end())
     {
+        // erase the item and push it to the back of mItems
         mItems.erase(locate);
         mItems.push_back(item);
     }
 }
+
+
+
 
 
 /**
@@ -115,7 +142,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // draw the items
     for (auto item : mItems)
     {
-           item->Draw(graphics);
+        item->Draw(graphics);
     }
     if (mMenu != nullptr)
     {
@@ -180,29 +207,33 @@ void CGame::Load(const std::wstring& filename)
  *
  * \param x An int of the x location
  * \param y an int of the y location
- * \return share_ptr of the object located at the location
+ * \return share_ptr of the tower located at the location
  */
-std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+std::shared_ptr<CTower> CGame::HitTest(int x, int y)
 {
     for (auto item : mItems)
     {
+        // if item is hit
         if (item->HitTest((x - mXOffset) / mScale, (y - mYOffset) / mScale))
         {
+            // if item is a tower
             CGrabVisitor visitor;
             item->Accept(&visitor);
             if (visitor.IsTower())
             {
-                return item;
+                // cast CItem pointer to CTower pointer
+                return std::static_pointer_cast<CTower>(item);
             }
         }
     }
-    return  nullptr;
+    //otherwise return nullptr
+    return nullptr;
 }
 
 /**
- * Clear the aquarium data.
+ * Clear the game data.
  *
- * Deletes all known items in the aquarium.
+ * Deletes all known items in mItems.
  */
 void CGame::Clear()
 {
@@ -276,6 +307,7 @@ void CGame::ProgressLevel()
         Load(L"level3.xml");
     }
 }
+
 
 /** Accept a visitor for the collection
  * \param visitor The visitor for the collection
@@ -401,33 +433,35 @@ void CGame::OnLButtonDown(UINT nFlags, CPoint point)
     if (mButtonPressed == false)
     {
         mGrabbedItem = HitTest(point.x, point.y);
+
         // see if the item grabbed was in the game
         if (mGrabbedItem != nullptr)
         {
             // Tile and Tower no longer relate, so sever ties
-
-
-            //mGrabbedItem->GetTile()->SetTower(nullptr);
-
-
+            mGrabbedItem->GetTile()->SetTower(nullptr);
             mGrabbedItem->SetTile(nullptr);
+
             // Set grabbed attribute to true, move tower to the front of the screen
             mGrabbedItem->SetGrabbed(true);
             ToFrontOfScreen(mGrabbedItem);
         }
+
         // see if the grabbed item was in the menu
         else if(point.x >= (GetGameWidth()* mScale) + mXOffset)
         {
+            // create new instance of tower if tower icon is clicked on in menu
             mGrabbedItem = mMenu->MenuHitTest((point.x - mXOffset) / mScale,
                 (point.y - mYOffset) / mScale);
+            // if new tower was created
             if (mGrabbedItem != nullptr)
             {
+                // set its location at mouse point
                 mGrabbedItem->SetLocation((point.x - mXOffset) / mScale,
                     (point.y - mYOffset) / mScale);
+
+                // Set grabbed attribute to true, add to mItems
                 mGrabbedItem->SetGrabbed(true);
                 Add(mGrabbedItem);
-
-                
             }
         }
     }
@@ -451,25 +485,18 @@ void CGame::OnMouseMove(UINT nFlags, CPoint point)
             mGrabbedItem->SetLocation((point.x - mXOffset) / mScale,
                 (point.y - mYOffset) / mScale);
         }
+        // When the left button is released
         else
         {
+            // Lock tower to an open tile
             CTileLocker visitor;
             Accept(&visitor);
-            CItemOpen* tile = visitor.LockTower(mGrabbedItem);
-            if (tile != nullptr)
-            {
-                for (auto item : mItems)
-                {
-                    if (&(*item) == &(*tile))
-                    {
-                        mGrabbedItem->SetTile(item);
-                    }
-                }
-            }
+            mGrabbedItem->Accept(&visitor);
+            visitor.LockTower();
+            
+            // Set tower grabbed attribute to false and 
+            // set mGrabbedItem to nullptr
             mGrabbedItem->SetGrabbed(false);
-
-            // When the left button is released, we release the
-            // item.
             mGrabbedItem = nullptr;
         }
     }
