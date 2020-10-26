@@ -215,18 +215,22 @@ void CGame::Load(const std::wstring& filename)
  */
 std::shared_ptr<CTower> CGame::HitTest(int x, int y)
 {
-    for (auto item : mItems)
+    CGrabVisitor visitor;
+    Accept(&visitor);
+    for (auto tower : visitor.GetTowers())
     {
         // if item is hit
-        if (item->HitTest((x - mXOffset) / mScale, (y - mYOffset) / mScale))
+        if (tower->HitTest((x - mXOffset) / mScale, (y - mYOffset) / mScale))
         {
-            // if item is a tower
-            CGrabVisitor visitor;
-            item->Accept(&visitor);
-            if (visitor.IsTower())
+            // find tower in mItems
+            for (auto item : mItems)
             {
-                // cast CItem pointer to CTower pointer
-                return std::static_pointer_cast<CTower>(item);
+                // If they refer to the same memory
+                if (&(*item) == &(*tower))
+                {
+                    // return downcast of item to CTower
+                    return std::static_pointer_cast<CTower>(item);
+                }
             }
         }
     }

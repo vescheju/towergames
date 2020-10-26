@@ -1,3 +1,9 @@
+/**
+ * \file TileLocker.cpp
+ *
+ * \author Zach Arnold
+ */
+
 #include "pch.h"
 #include "TileLocker.h"
 #include "ItemOpen.h"

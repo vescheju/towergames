@@ -12,31 +12,32 @@
 
 
 /**
-* Visit a CBombTower object and set mIsTower true
+* Visit a CBombTower object and add to mTowers
 * \param bomb BombTower visiting
 */
 void CGrabVisitor::VisitBombTower(CBombTower* bomb)
 {
-	mIsTower = true;
+	mTowers.push_back(bomb);
 }
 
 
 /**
-* Visit a CTowerEight object and set mIsTower true
+* Visit a CTowerEight object and add to mTowers
 * \param tower TowerEight visiting
 */
 void CGrabVisitor::VisitTowerEight(CTowerEight* tower)
 {
-	mIsTower = true;
+	mTowers.push_back(tower);
 }
 
 
 /**
-* Visit a CRingTower object and set mIsTower true
+* Visit a CRingTower object and add to mTowers
 * \param tower RingTower visiting
 */
 void CGrabVisitor::VisitRingTower(CRingTower* tower)
 {
-	mIsTower = true;
+	mTowers.push_back(tower);
 }
+
 
