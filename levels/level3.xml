@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level width="1024" height="1024" start-y="6" start-x="0">
 <declarations>
-	<road id="i001" image="roadEW.png" type="EW"/>
-	<road id="i002" image="roadNS.png" type="NS"/>
-	<road id="i003" image="roadSE.png" type="SE"/>
-	<road id="i004" image="roadSW.png" type="SW"/>
-	<road id="i005" image="roadNE.png" type="NE"/>
-	<road id="i006" image="roadNW.png" type="NW"/>
+	<road id="i001" image="dead-roadEW.png" type="EW"/>
+	<road id="i002" image="dead-roadNS.png" type="NS"/>
+	<road id="i003" image="dead-roadSE.png" type="SE"/>
+	<road id="i004" image="dead-roadSW.png" type="SW"/>
+	<road id="i005" image="dead-roadNE.png" type="NE"/>
+	<road id="i006" image="dead-roadNW.png" type="NW"/>
+	<road id="i007" image="dead-roadCR.png" type="CR"/>
 	<trees id="i021" image="trees4.png"/>
 </declarations>
 <items>
 	<road id="i001" x="0" y="6"/>
 	<road id="i001" x="1" y="6"/>
-	<road id="i001" x="2" y="6"/>
+	<road id="i007" x="2" y="6"/>
 	<road id="i001" x="3" y="6"/>
 	<road id="i001" x="4" y="6"/>
 	<road id="i001" x="11" y="6"/>
 	<road id="i001" x="12" y="6"/>
-	<road id="i001" x="13" y="6"/>
+	<road id="i007" x="13" y="6"/>
 	<road id="i001" x="14" y="6"/>
 	<road id="i001" x="15" y="6"/>
 	<road id="i001" x="3" y="3"/>
