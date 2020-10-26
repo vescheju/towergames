@@ -7,31 +7,45 @@
 	<road id="i004" image="dead-roadSW.png" type="SW"/>
 	<road id="i005" image="dead-roadNE.png" type="NE"/>
 	<road id="i006" image="dead-roadNW.png" type="NW"/>
-	<road id="i007" image="dead-roadCR.png" type="CR"/>
-	<trees id="i021" image="trees4.png"/>
+	<road id="i007" image="dead-lit-roadCR.png" type="CR" lit="true"/>
+	<road id="i008" image="dead-lit-roadNS.png" type="NS" lit="true"/>
+	<road id="i009" image="dead-lit-roadEW.png" type="EW" lit="true"/>
+	<road id="i010" image="dead-lit-roadNW.png" type="NW" lit="true"/>
+	<road id="i011" image="dead-lit-roadNE.png" type="NE" lit="true"/>
+	<road id="i012" image="dead-lit-roadSW.png" type="SW" lit="true"/>
+	<road id="i013" image="dead-lit-roadSE.png" type="SE" lit="true"/>
+	<road id="i014" image="bridge-roadEW.png" type="EW" lit="true"/>
+
+	<trees id="i021" image="lakeSE.png"/>
+	<trees id="i022" image="lakeNE.png"/>
+	<trees id="i023" image="lakeSW.png"/>
+	<trees id="i024" image="lakeNW.png"/>
+	<trees id="i025" image="river5.png"/>
+	<trees id="i026" image="river4.png"/>
+	<trees id="i027" image="river3.png"/>
+	<trees id="i028" image="river2.png"/>
+	<trees id="i029" image="river1.png"/>
 </declarations>
 <items>
 	<road id="i001" x="0" y="6"/>
 	<road id="i001" x="1" y="6"/>
 	<road id="i007" x="2" y="6"/>
-	<road id="i001" x="3" y="6"/>
-	<road id="i001" x="4" y="6"/>
-	<road id="i001" x="11" y="6"/>
-	<road id="i001" x="12" y="6"/>
+	<road id="i009" x="3" y="6"/>
+	<road id="i009" x="4" y="6"/>
+	<road id="i009" x="11" y="6"/>
+	<road id="i009" x="12" y="6"/>
 	<road id="i007" x="13" y="6"/>
 	<road id="i001" x="14" y="6"/>
 	<road id="i001" x="15" y="6"/>
-	<road id="i001" x="3" y="3"/>
-	<road id="i001" x="4" y="3"/>
-	<road id="i001" x="11" y="3"/>
-	<road id="i001" x="12" y="3"/>
+	<road id="i009" x="3" y="3"/>
+	<road id="i009" x="4" y="3"/>
+	<road id="i014" x="11" y="3"/>
+	<road id="i009" x="12" y="3"/>
 
-	<road id="i002" x="2" y="4"/>
-	<road id="i002" x="2" y="5"/>
-	<road id="i002" x="5" y="4"/>
-	<road id="i002" x="5" y="5"/>
-	<road id="i002" x="2" y="4"/>
-	<road id="i002" x="2" y="5"/>
+	<road id="i008" x="5" y="4"/>
+	<road id="i008" x="5" y="5"/>
+	<road id="i008" x="2" y="4"/>
+	<road id="i008" x="2" y="5"/>
 	<road id="i002" x="2" y="7"/>
 	<road id="i002" x="2" y="8"/>
 	<road id="i002" x="2" y="9"/>
@@ -68,21 +82,21 @@
 	<road id="i002" x="13" y="9"/>
 	<road id="i002" x="13" y="10"/>
 	<road id="i002" x="13" y="11"/>
-	<road id="i002" x="13" y="4"/>
-	<road id="i002" x="13" y="5"/>
-	<road id="i002" x="10" y="4"/>
-	<road id="i002" x="10" y="5"/>
+	<road id="i008" x="13" y="4"/>
+	<road id="i008" x="13" y="5"/>
+	<road id="i008" x="10" y="4"/>
+	<road id="i008" x="10" y="5"/>
 
-	<road id="i003" x="2" y="3"/>
-	<road id="i003" x="10" y="3"/>
+	<road id="i013" x="2" y="3"/>
+	<road id="i013" x="10" y="3"/>
 	<road id="i003" x="3" y="11"/>
 	<road id="i003" x="5" y="11"/>
 	<road id="i003" x="7" y="11"/>
 	<road id="i003" x="9" y="11"/>
 	<road id="i003" x="11" y="11"/>
 
-	<road id="i004" x="5" y="3"/>
-	<road id="i004" x="13" y="3"/>
+	<road id="i012" x="5" y="3"/>
+	<road id="i012" x="13" y="3"/>
 	<road id="i004" x="4" y="11"/>
 	<road id="i004" x="6" y="11"/>
 	<road id="i004" x="8" y="11"/>
@@ -95,7 +109,7 @@
 	<road id="i005" x="8" y="14"/>
 	<road id="i005" x="10" y="14"/>
 	<road id="i005" x="12" y="14"/>
-	<road id="i005" x="10" y="6"/>
+	<road id="i011" x="10" y="6"/>
 
 	<road id="i006" x="3" y="14"/>
 	<road id="i006" x="5" y="14"/>
@@ -103,6 +117,16 @@
 	<road id="i006" x="9" y="14"/>
 	<road id="i006" x="11" y="14"/>
 	<road id="i006" x="13" y="14"/>
-	<road id="i006" x="5" y="6"/>
+	<road id="i010" x="5" y="6"/>
+
+	<trees id="i021" x="12" y="5"/>
+	<trees id="i022" x="12" y="4"/>
+	<trees id="i023" x="11" y="5"/>
+	<trees id="i024" x="11" y="4"/>
+	<trees id="i025" x="9" y="0"/>
+	<trees id="i026" x="10" y="0"/>
+	<trees id="i027" x="10" y="1"/>
+	<trees id="i028" x="11" y="1"/>
+	<trees id="i029" x="11" y="2"/>
 </items>
 </level>
