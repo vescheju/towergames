@@ -52,6 +52,12 @@ public:
 	*/
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMenu(this); }
 
+	/**
+	* Getter for mEndGame
+	* \return mEndGame
+	*/
+	bool GetEndGame() { return mEndGame; }
+
 private:
 	/// pointer to Go button
 	std::shared_ptr<CGoButton> mGoButton = nullptr;
@@ -66,4 +72,9 @@ private:
 	std::shared_ptr<CRingTower> mRing = nullptr;
 
 	double mTimeSec = 0; ///< Time elapsed in seconds
+
+	double mTimeFreeze = 0; ///< Time elapsed frozen in seconds
+
+	/// boolean to see if game is finished.
+	bool mEndGame = false;
 };

@@ -135,7 +135,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
-    
+
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
 
@@ -163,21 +163,25 @@ void CGame::Load(const std::wstring& filename)
 
     if (filename == L"level0.xml")
     {
+        SetGameLevel(0);
         mLevel = L"Level 0";
         mLevelBalloons = 30;
     }
     else if (filename == L"level1.xml")
     {
+        SetGameLevel(1);
         mLevel = L"Level 1";
         mLevelBalloons = 30;
     }
     else if (filename == L"level2.xml")
     {
+        SetGameLevel(2);
         mLevel = L"Level 2";
         mLevelBalloons = 30;
     }
     else if (filename == L"level3.xml")
     {
+        SetGameLevel(3);
         mLevel = L"Level 3";
         mLevelBalloons = 40;
     }
@@ -282,7 +286,13 @@ void CGame::Update(double elapsed)
     {
         if (progressor.GetProgress()) 
         {
-            ProgressLevel();
+            mDisplayEnd = true;
+            if (mMenu->GetEndGame() == true)
+            {
+                mDisplayEnd = false;
+                ProgressLevel();
+            }
+            
         }
     }
 

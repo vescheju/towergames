@@ -1,2 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level width="1024" height="1024" start-y="7" start-x="0"><declarations><road id="i001" image="roadEW.png" type="EW"/></declarations><items><road id="i001" x="0" y="7"/><road id="i001" x="1" y="7"/><road id="i001" x="2" y="7"/><road id="i001" x="3" y="7"/><road id="i001" x="4" y="7"/><road id="i001" x="5" y="7"/><road id="i001" x="6" y="7"/><road id="i001" x="7" y="7"/><road id="i001" x="8" y="7"/><road id="i001" x="9" y="7"/><road id="i001" x="10" y="7"/><road id="i001" x="11" y="7"/><road id="i001" x="12" y="7"/><road id="i001" x="13" y="7"/><road id="i001" x="14" y="7"/><road id="i001" x="15" y="7"/></items></level>
+<level width="1024" height="1024" start-y="6" start-x="0">
+<declarations>
+	<road id="i001" image="dead-roadEW.png" type="EW"/>
+	<road id="i002" image="dead-roadNS.png" type="NS"/>
+	<road id="i003" image="dead-roadSE.png" type="SE"/>
+	<road id="i004" image="dead-roadSW.png" type="SW"/>
+	<road id="i005" image="dead-roadNE.png" type="NE"/>
+	<road id="i006" image="dead-roadNW.png" type="NW"/>
+	<road id="i007" image="dead-roadCR.png" type="CR"/>
+	<trees id="i021" image="trees4.png"/>
+</declarations>
+<items>
+	<road id="i001" x="0" y="6"/>
+	<road id="i001" x="1" y="6"/>
+	<road id="i007" x="2" y="6"/>
+	<road id="i001" x="3" y="6"/>
+	<road id="i001" x="4" y="6"/>
+	<road id="i001" x="11" y="6"/>
+	<road id="i001" x="12" y="6"/>
+	<road id="i007" x="13" y="6"/>
+	<road id="i001" x="14" y="6"/>
+	<road id="i001" x="15" y="6"/>
+	<road id="i001" x="3" y="3"/>
+	<road id="i001" x="4" y="3"/>
+	<road id="i001" x="11" y="3"/>
+	<road id="i001" x="12" y="3"/>
+
+	<road id="i002" x="2" y="4"/>
+	<road id="i002" x="2" y="5"/>
+	<road id="i002" x="5" y="4"/>
+	<road id="i002" x="5" y="5"/>
+	<road id="i002" x="2" y="4"/>
+	<road id="i002" x="2" y="5"/>
+	<road id="i002" x="2" y="7"/>
+	<road id="i002" x="2" y="8"/>
+	<road id="i002" x="2" y="9"/>
+	<road id="i002" x="2" y="10"/>
+	<road id="i002" x="2" y="11"/>
+
+	<road id="i002" x="2" y="12"/>
+	<road id="i002" x="3" y="12"/>
+	<road id="i002" x="4" y="12"/>
+	<road id="i002" x="5" y="12"/>
+	<road id="i002" x="6" y="12"/>
+	<road id="i002" x="7" y="12"/>
+	<road id="i002" x="8" y="12"/>
+	<road id="i002" x="9" y="12"/>
+	<road id="i002" x="10" y="12"/>
+	<road id="i002" x="11" y="12"/>
+	<road id="i002" x="12" y="12"/>
+	<road id="i002" x="13" y="12"/>
+
+	<road id="i002" x="2" y="13"/>
+	<road id="i002" x="3" y="13"/>
+	<road id="i002" x="4" y="13"/>
+	<road id="i002" x="5" y="13"/>
+	<road id="i002" x="6" y="13"/>
+	<road id="i002" x="7" y="13"/>
+	<road id="i002" x="8" y="13"/>
+	<road id="i002" x="9" y="13"/>
+	<road id="i002" x="10" y="13"/>
+	<road id="i002" x="11" y="13"/>
+	<road id="i002" x="12" y="13"/>
+	<road id="i002" x="13" y="13"/>
+	<road id="i002" x="13" y="7"/>
+	<road id="i002" x="13" y="8"/>
+	<road id="i002" x="13" y="9"/>
+	<road id="i002" x="13" y="10"/>
+	<road id="i002" x="13" y="11"/>
+	<road id="i002" x="13" y="4"/>
+	<road id="i002" x="13" y="5"/>
+	<road id="i002" x="10" y="4"/>
+	<road id="i002" x="10" y="5"/>
+
+	<road id="i003" x="2" y="3"/>
+	<road id="i003" x="10" y="3"/>
+	<road id="i003" x="3" y="11"/>
+	<road id="i003" x="5" y="11"/>
+	<road id="i003" x="7" y="11"/>
+	<road id="i003" x="9" y="11"/>
+	<road id="i003" x="11" y="11"/>
+
+	<road id="i004" x="5" y="3"/>
+	<road id="i004" x="13" y="3"/>
+	<road id="i004" x="4" y="11"/>
+	<road id="i004" x="6" y="11"/>
+	<road id="i004" x="8" y="11"/>
+	<road id="i004" x="10" y="11"/>
+	<road id="i004" x="12" y="11"/>
+
+	<road id="i005" x="2" y="14"/>
+	<road id="i005" x="4" y="14"/>
+	<road id="i005" x="6" y="14"/>
+	<road id="i005" x="8" y="14"/>
+	<road id="i005" x="10" y="14"/>
+	<road id="i005" x="12" y="14"/>
+	<road id="i005" x="10" y="6"/>
+
+	<road id="i006" x="3" y="14"/>
+	<road id="i006" x="5" y="14"/>
+	<road id="i006" x="7" y="14"/>
+	<road id="i006" x="9" y="14"/>
+	<road id="i006" x="11" y="14"/>
+	<road id="i006" x="13" y="14"/>
+	<road id="i006" x="5" y="6"/>
+</items>
+</level>

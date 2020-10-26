@@ -65,7 +65,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	graphics->FillRectangle(&brush, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily,	24);
+	Gdiplus::Font font(&fontFamily,	24, FontStyleBold, UnitPixel);
 	SolidBrush green(Color(0, 200, 0));
 
 	wstringstream str;
@@ -77,7 +77,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		&font, PointF(1150, 150), &green);
 
 
-	Gdiplus::Font levelFont(&fontFamily, 100);
+	Gdiplus::Font levelFont(&fontFamily, 100, FontStyleBold, UnitPixel);
 	SolidBrush brown(Color(139, 69, 19));
 
 	
@@ -111,6 +111,28 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		mGoButton->Draw(graphics);
 	}
 
+	if (mGame->GetDisplayEnd() == true)
+	{
+
+		if (mTimeFreeze <= 0.00001 && mTimeFreeze >= -0.00001)
+		{
+			mTimeFreeze = mTimeSec;
+		}
+
+		if (mTimeSec - mTimeFreeze < 2)
+		{
+			graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(100, 450), &brown);
+		}
+		else 
+		{
+			mEndGame = true;
+			mTimeFreeze = 0;
+		}
+	}
+	else
+	{
+		mEndGame = false;
+	}
 	
 
 }
