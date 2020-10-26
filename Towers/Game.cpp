@@ -108,7 +108,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // Ensure it is centered vertically
     mYOffset = (float)((height - mHeight * mScale) / 2);
-    
+
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
 

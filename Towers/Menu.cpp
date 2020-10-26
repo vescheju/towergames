@@ -65,7 +65,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	graphics->FillRectangle(&brush, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily,	24);
+	Gdiplus::Font font(&fontFamily,	24, mGame->GetScale());
 	SolidBrush green(Color(0, 200, 0));
 
 	wstringstream str;
