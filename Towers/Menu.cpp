@@ -77,7 +77,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		&font, PointF(1150, 150), &green);
 
 
-	Gdiplus::Font levelFont(&fontFamily, 100);
+	Gdiplus::Font levelFont(&fontFamily, 100, UnitPixel);
 	SolidBrush brown(Color(139, 69, 19));
 
 	
