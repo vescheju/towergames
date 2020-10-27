@@ -79,6 +79,7 @@ private:
     /// The current level of the game.
     int mGameLevel = 0;
 
+    /// Check if the end should be displayed
     bool mDisplayEnd = false;
 
 public:
