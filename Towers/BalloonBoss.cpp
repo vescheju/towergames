@@ -9,6 +9,8 @@
 #include "BalloonRed.h"
 #include "Game.h"
 #include "ItemFog.h"
+#include <Windows.h>
+#include <mmsystem.h>
 
 using namespace std;
 using namespace Gdiplus;
@@ -22,7 +24,7 @@ using namespace Gdiplus;
 CBalloonBoss::CBalloonBoss(CGame* game, CItemRoad* road, std::wstring heading) :
 	CBalloon(game, road, heading)
 {
-	
+
 }
 
 
@@ -86,6 +88,7 @@ void CBalloonBoss::Pop()
 		mGame->Add(balloon);
 	}
 	mGame->Add(mFog);
+	PlaySound((L"audio\\wickedlaugh.wav"), NULL, SND_FILENAME);
 }
 
 
