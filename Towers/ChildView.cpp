@@ -99,6 +99,8 @@ void CChildView::OnPaint()
 
 		mLastTime = time.QuadPart;
 		mTimeFreq = double(freq.QuadPart);
+
+		mGame.Load(L"level1.xml");
 	}
 
 	/*
