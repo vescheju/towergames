@@ -35,6 +35,8 @@ public:
 
 	void InitializeWeapon() override;
 
+	void AddWeapon() override;
+
 private:
 
 	std::shared_ptr<CRing> mRing;		///< CRing object owned by tower

@@ -46,8 +46,33 @@ public:
 	 */
 	void SetTimeTillFire(double time) { mTimeTillFire = time; }
 
+	/** Setter function for mTile member
+	* \param open shared pointer to set mTile to
+	*/
+	void SetTile(CItemOpen* open) { mTile = open; }
 
+	/** Getter function for mGrabbed member
+	* \return Boolean of mGrabbed
+	*/
+	bool Grabbed() const { return mGrabbed; }
+
+	/** Setter function for mGrabbed member
+	* \param grabbed Boolean to set mGrabbed to
+	*/
+	void SetGrabbed(bool grabbed) { mGrabbed = grabbed; }
+
+	/** Getter function for mTile member
+	* \return shared pointer to mTile
+	*/
+	CItemOpen* GetTile() const { return mTile; }
+
+	/** Abstract method to initialize weapon
+	*/
 	virtual void InitializeWeapon() = 0;
+
+	/** Abstract method add weapon to game
+	*/
+	virtual void AddWeapon() = 0;
 
 
 private:
@@ -55,5 +80,9 @@ private:
 	double mTimeTillFire = 5;		///< Time in seconds until next firing
 
 	bool mFire = false;			///< Boolean represents whether or not currently firing
+
+	CItemOpen* mTile = nullptr;			///< Tile this tower sits on
+
+	bool mGrabbed = false;			///< Whether or not tower is grabbed
 };
 

@@ -40,6 +40,8 @@ public:
 
 	void InitializeWeapon() override;
 
+	void AddWeapon() override;
+
 private:
 
 	std::shared_ptr<CExplosion> mExplosion;			///< Explosion object that tower detonates

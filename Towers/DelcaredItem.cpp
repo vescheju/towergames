@@ -29,6 +29,7 @@ CDeclaredItem::CDeclaredItem(std::shared_ptr<xmlnode::CXmlNode> node, CGame * ga
     mId = node->GetAttributeValue(L"id", L"");
     wstring filename = L"images/" + node->GetAttributeValue(L"image", L"");
     mType = node->GetAttributeValue(L"type", L"");
+    mLit = (L"true" == node->GetAttributeValue(L"lit", L""));
 
 
 
@@ -62,6 +63,7 @@ shared_ptr<CItem> CDeclaredItem::Initialize(int x, int y)
         item->SetImagePtr(mItemImage);
         item->SetLocation(trueX, trueY);
         item->SetRoadDirection(mType);
+        item->SetLit(mLit);
         return item;
     }
     else if (mName == L"open")

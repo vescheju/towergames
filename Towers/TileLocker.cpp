@@ -1,36 +1,85 @@
+/**
+ * \file TileLocker.cpp
+ *
+ * \author Zach Arnold
+ */
+
 #include "pch.h"
 #include "TileLocker.h"
 #include "ItemOpen.h"
+#include "BombTower.h"
+#include "RingTower.h"
+#include "TowerEight.h"
 
-const double LockThreshold = 60;
 
+/// Distance in pixels for tower to lock to open tile
+const double LockThreshold = 35;
+
+
+/**
+* Visit a CItemOpen object and add to mOpenTiles
+* \param open ItemOpen visiting
+*/
 void CTileLocker::VisitOpen(CItemOpen* open)
 {
-	mOpenTiles.push_back(open);
+	if (open->GetTower() == nullptr)
+	{
+		mOpenTiles.push_back(open);
+	}
 }
 
 
-CItemOpen* CTileLocker::LockTower(std::shared_ptr<CItem> tower)
+/**
+* Visit a CBombTower object and set mTower
+* \param bomb BombTower visiting
+*/
+void CTileLocker::VisitBombTower(CBombTower* bomb)
 {
-	double grabbedX = tower->GetX();
-	double grabbedY = tower->GetY();
+	mTower = bomb;
+}
+
+
+/**
+* Visit a CRingTower object and set mIsTower true
+* \param tower RingTower visiting
+*/
+void CTileLocker::VisitRingTower(CRingTower* tower)
+{
+	mTower = tower;
+}
+
+
+/**
+* Visit a CTowerEight object and set mIsTower true
+* \param tower TowerEight visiting
+*/
+void CTileLocker::VisitTowerEight(CTowerEight* tower)
+{
+	mTower = tower;
+}
+
+
+/**
+* Lock tower to tile thats within a specific proximity
+* Uses visited tiles and tower
+*/
+void CTileLocker::LockTower()
+{
+	double grabbedX = mTower->GetX();
+	double grabbedY = mTower->GetY();
 	for (auto tile : mOpenTiles)
 	{
-		if (tile->GetTower() == nullptr)
+		double tileX = tile->GetX();
+		double tileY = tile->GetY();
+
+		double distance = sqrt((grabbedX - tileX) * (grabbedX - tileX)
+			+ (grabbedY - tileY) * (grabbedY - tileY));
+
+		if (distance < LockThreshold)
 		{
-			double tileX = tile->GetX();
-			double tileY = tile->GetY();
-
-			double distance = sqrt((grabbedX - tileX) * (grabbedX - tileX)
-				+ (grabbedY - tileY) * (grabbedY - tileY));
-
-			if (distance < LockThreshold)
-			{
-				tile->SetTower(tower);
-				tower->SetLocation(tileX, tileY);
-				return tile;
-			}
+			tile->SetTower(mTower);
+			mTower->SetLocation(tileX, tileY);
+			mTower->SetTile(tile);
 		}
 	}
-	return nullptr;
 }

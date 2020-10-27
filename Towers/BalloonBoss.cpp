@@ -70,9 +70,9 @@ void CBalloonBoss::Update(double elapsed)
 	{
 		balloon->Update(elapsed);
 	}
-	if (mFog->GetX() < 612 && mGame->GetButtonPressed())
+	if (mFog->GetX() < 516 && mGame->GetButtonPressed())
 	{
-		mFog->SetLocation(mFog->GetX() + 30 * elapsed, mFog->GetY());
+		mFog->SetLocation(mFog->GetX() + 20 * elapsed, mFog->GetY());
 	}
 	
 }

@@ -61,8 +61,6 @@ CGameMenu::~CGameMenu()
 */
 void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
-	SolidBrush brush(Color(0, 0, 0));
-	graphics->FillRectangle(&brush, 1024, 0, 200, 1024);
 
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily,	24, FontStyleBold, UnitPixel);
@@ -170,25 +168,26 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
 {
 	if (mRing->HitTest(x, y)) 
 	{
-		std::shared_ptr<CRingTower> tower(new CRingTower(mGame));
+		std::shared_ptr<CRingTower> tower = std::make_shared<CRingTower>(mGame);
 		return tower;
 	}
 	else if (mEight->HitTest(x, y)) 
 	{
-		std::shared_ptr<CTowerEight> tower(new CTowerEight(mGame));
+		std::shared_ptr<CTowerEight> tower = std::make_shared<CTowerEight>(mGame);
 		return tower;
 	}
 	else if (mBomb->HitTest(x, y))
 	{
-		std::shared_ptr<CBombTower> tower(new CBombTower(mGame));
+		std::shared_ptr<CBombTower> tower = std::make_shared<CBombTower>(mGame);
 		return tower;
 	}
 	else if (mGoButton->HitTest(x, y))
 	{
-		mGame->SetButtonPressed(true);
 		CGoVisitor visitor;
 		mGame->Accept(&visitor);
-		mGame->TowersToFrontOfScreen();
+		visitor.AddWeapons();
+		mGame->TowersToFrontOfScreen(visitor.GetTowers());
+		mGame->SetButtonPressed(true);
 		return nullptr;
 	}
 	else

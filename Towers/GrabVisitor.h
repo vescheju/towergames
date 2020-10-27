@@ -8,6 +8,9 @@
 
 #pragma once
 #include "ItemVisitor.h"
+#include "Tower.h"
+
+#include <vector>
 
 /* Is the grabbed item a tower */
 class CGrabVisitor :
@@ -21,14 +24,14 @@ public:
 
     virtual void VisitRingTower(CRingTower* tower) override;
 
-    /* Getter returns mIsTower memmber
-    * \return boolean of whether or not we've visited tower
+    /* Getter returns mTowers memmber
+    * \return vector of towers colleceted
     */
-    bool IsTower() { return mIsTower; }
+    std::vector<CTower*> GetTowers() const { return mTowers; }
 
 private:
 
-    bool mIsTower = false;          ///< Boolean value represents if visited CItem is a CTower
+    std::vector<CTower*> mTowers;          ///< Boolean value represents if visited CItem is a CTower
 };
 
 

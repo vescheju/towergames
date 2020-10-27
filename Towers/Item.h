@@ -38,15 +38,6 @@ public:
 
 	virtual bool HitTest(int x, int y);
 
-	void SetTile(std::shared_ptr<CItem> open) { mTile = open; }
-
-	bool Grabbed() const { return mGrabbed; }
-
-	void SetGrabbed(bool grabbed) { mGrabbed = grabbed; }
-
-	std::shared_ptr<CItem> GetTile() const { return mTile; }
-
-
 	std::shared_ptr<Gdiplus::Bitmap> GetImage();
 
 	/**
@@ -87,13 +78,11 @@ private:
 	std::shared_ptr<Gdiplus::Bitmap> mItemImage;
 
 protected:
+
 	/// The towers game the item is contained in
 	CGame* mGame;
 
 	const int mTileLength = 64;		///< The length of a tile space
 
-	std::shared_ptr<CItem> mTile = nullptr;			///< Tile this tower sits on
-
-	bool mGrabbed = false;
 };
 

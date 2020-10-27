@@ -56,6 +56,13 @@ public:
     */
     bool IsLit() { return mLit; }
 
+    /**
+    * setter for the lit member function
+    *
+    * \param lit the bool to set mLit to
+    */
+    void SetLit(bool lit) { mLit = lit; }
+
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRoad(this); }

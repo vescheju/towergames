@@ -73,14 +73,27 @@ void CTowerEight::Update(double elapsed)
 }
 
 
-
+/**
+ * Initialize Weapon function, initializes darts in Tower
+ */
 void CTowerEight::InitializeWeapon()
 {
 	for (int a = 0; a < 360; a += 45)
 	{
-		std::shared_ptr<CDart> dart(new CDart(mGame, a));
+		std::shared_ptr<CDart> dart = std::make_shared<CDart>(mGame, a);
 		dart->SetLocation(GetX(), GetY());
 		mDarts.push_back(dart);
+	}
+}
+
+
+/**
+ * Add Weapon function, adds darts to game mItems
+ */
+void CTowerEight::AddWeapon()
+{
+	for (auto dart : mDarts)
+	{
 		mGame->Add(dart);
 	}
 }
