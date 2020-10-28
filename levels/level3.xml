@@ -25,6 +25,18 @@
 	<trees id="i027" image="river3.png"/>
 	<trees id="i028" image="river2.png"/>
 	<trees id="i029" image="river1.png"/>
+	<trees id="i030" image="dead-tree1.png"/>
+	<trees id="i031" image="dead-tree.png"/>
+
+	<open id="i040" image="dead-grass1.png"/>
+	<open id="i041" image="dead-grass2.png"/>
+
+	<house id="i050" image="coffin1.png"/>
+	<house id="i051" image="coffin2.png"/>
+	<house id="i052" image="gravestone1.png"/>
+	<house id="i053" image="gravestone2.png"/>
+	<house id="i054" image="h-house1.png"/>
+	<house id="i055" image="h-house2.png"/>
 </declarations>
 <items>
 	<road id="i001" x="0" y="6"/>
@@ -128,5 +140,185 @@
 	<trees id="i027" x="10" y="1"/>
 	<trees id="i028" x="11" y="1"/>
 	<trees id="i029" x="11" y="2"/>
+
+	<trees id="i030" x="6" y="3"/>
+	<trees id="i030" x="6" y="2"/>
+	<trees id="i030" x="5" y="2"/>
+	<trees id="i030" x="4" y="2"/>
+	<trees id="i030" x="3" y="2"/>
+	<trees id="i030" x="4" y="1"/>
+	<trees id="i030" x="3" y="1"/>
+	<trees id="i030" x="2" y="1"/>
+	<trees id="i030" x="2" y="0"/>
+	<trees id="i030" x="9" y="3"/>
+	<trees id="i030" x="9" y="2"/>
+	<trees id="i030" x="10" y="2"/>
+	<trees id="i030" x="12" y="2"/>
+	<trees id="i030" x="12" y="1"/>
+	<trees id="i030" x="13" y="1"/>
+	<trees id="i030" x="13" y="0"/>
+
+	<open id="i040" x="0" y="0"/>
+	<open id="i041" x="1" y="0"/>
+	<open id="i040" x="0" y="1"/>
+	<open id="i041" x="1" y="1"/>
+	<open id="i040" x="0" y="2"/>
+	<open id="i041" x="1" y="2"/>
+	<open id="i040" x="0" y="3"/>
+	<open id="i041" x="1" y="3"/>
+	<open id="i040" x="0" y="4"/>
+	<open id="i041" x="1" y="4"/>
+	<open id="i040" x="0" y="5"/>
+	<open id="i041" x="1" y="5"/>
+	<open id="i040" x="2" y="2"/>
+
+	<open id="i040" x="3" y="0"/>
+	<open id="i040" x="4" y="0"/>
+	<open id="i040" x="5" y="0"/>
+	<open id="i040" x="6" y="0"/>
+	<open id="i040" x="7" y="0"/>
+	<open id="i040" x="8" y="0"/>
+
+	<open id="i041" x="5" y="1"/>
+	<open id="i041" x="6" y="1"/>
+	<open id="i041" x="7" y="1"/>
+	<open id="i041" x="8" y="1"/>
+	<open id="i041" x="9" y="1"/>
+
+	<open id="i040" x="11" y="0"/>
+	<open id="i041" x="12" y="0"/>
+
+	<open id="i040" x="14" y="0"/>
+	<open id="i041" x="15" y="0"/>
+	<open id="i040" x="14" y="1"/>
+	<open id="i041" x="15" y="1"/>
+	<open id="i040" x="14" y="2"/>
+	<open id="i041" x="15" y="2"/>
+	<open id="i040" x="14" y="3"/>
+	<open id="i041" x="15" y="3"/>
+	<open id="i040" x="14" y="4"/>
+	<open id="i041" x="15" y="4"/>
+	<open id="i040" x="14" y="5"/>
+	<open id="i041" x="15" y="5"/>
+	<open id="i041" x="13" y="2"/>
+
+	<open id="i040" x="7" y="2"/>
+	<open id="i041" x="8" y="2"/>
+	<open id="i040" x="7" y="3"/>
+	<open id="i041" x="8" y="3"/>
+	<open id="i040" x="6" y="4"/>
+	<open id="i041" x="9" y="4"/>
+	<open id="i040" x="6" y="5"/>
+	<open id="i041" x="9" y="5"/>
+	<open id="i040" x="6" y="6"/>
+	<open id="i041" x="7" y="6"/>
+	<open id="i040" x="8" y="6"/>
+	<open id="i041" x="9" y="6"/>
+
+	<open id="i040" x="0" y="7"/>
+	<open id="i041" x="1" y="7"/>
+	<open id="i040" x="0" y="8"/>
+	<open id="i041" x="1" y="8"/>
+	<open id="i040" x="0" y="9"/>
+	<open id="i041" x="1" y="9"/>
+	<open id="i040" x="0" y="10"/>
+	<open id="i041" x="1" y="10"/>
+	<open id="i040" x="0" y="11"/>
+	<open id="i041" x="1" y="11"/>
+	<open id="i040" x="0" y="12"/>
+	<open id="i040" x="0" y="13"/>
+	<open id="i040" x="0" y="14"/>
+	<open id="i041" x="1" y="14"/>
+	<open id="i040" x="0" y="15"/>
+	<open id="i041" x="1" y="15"/>
+
+	<open id="i040" x="2" y="15"/>
+	<open id="i041" x="3" y="15"/>
+	<open id="i040" x="4" y="15"/>
+	<open id="i041" x="5" y="15"/>
+	<open id="i040" x="6" y="15"/>
+	<open id="i041" x="7" y="15"/>
+	<open id="i040" x="8" y="15"/>
+	<open id="i041" x="9" y="15"/>
+	<open id="i040" x="10" y="15"/>
+	<open id="i041" x="11" y="15"/>
+	<open id="i040" x="12" y="15"/>
+	<open id="i041" x="13" y="15"/>
+
+	<open id="i040" x="14" y="7"/>
+	<open id="i041" x="15" y="7"/>
+	<open id="i040" x="14" y="8"/>
+	<open id="i041" x="15" y="8"/>
+	<open id="i040" x="14" y="9"/>
+	<open id="i041" x="15" y="9"/>
+	<open id="i040" x="14" y="10"/>
+	<open id="i041" x="15" y="10"/>
+	<open id="i040" x="14" y="11"/>
+	<open id="i041" x="15" y="11"/>
+	<open id="i041" x="15" y="12"/>
+	<open id="i041" x="15" y="13"/>
+	<open id="i040" x="14" y="14"/>
+	<open id="i041" x="15" y="14"/>
+	<open id="i040" x="14" y="15"/>
+	<open id="i041" x="15" y="15"/>
+
+	<house id="i050" x="1" y="12"/>
+	<house id="i051" x="1" y="13"/>
+	<house id="i050" x="14" y="12"/>
+	<house id="i051" x="14" y="13"/>
+
+	<trees id="i031" x="6" y="7"/>
+	<trees id="i031" x="6" y="8"/>
+	<trees id="i031" x="7" y="7"/>
+	<trees id="i031" x="8" y="7"/>
+	<trees id="i031" x="9" y="7"/>
+	<trees id="i031" x="9" y="8"/>
+	
+	<open id="i040" x="5" y="8"/>
+	<open id="i041" x="5" y="9"/>
+	<open id="i040" x="10" y="8"/>
+	<open id="i041" x="10" y="9"/>
+
+	<house id="i054" x="7" y="8"/>
+	<house id="i055" x="8" y="8"/>
+	<house id="i054" x="6" y="9"/>
+	<house id="i055" x="7" y="9"/>
+	<house id="i054" x="8" y="9"/>
+	<house id="i055" x="9" y="9"/>
+
+	<house id="i052" x="7" y="4"/>
+	<house id="i053" x="7" y="5"/>
+	<house id="i052" x="8" y="4"/>
+	<house id="i053" x="8" y="5"/>
+
+	<open id="i040" x="3" y="7"/>
+	<open id="i041" x="4" y="7"/>
+	<open id="i040" x="3" y="8"/>
+	<open id="i041" x="4" y="8"/>
+	<open id="i040" x="3" y="9"/>
+	<open id="i041" x="4" y="9"/>
+	<open id="i040" x="3" y="10"/>
+	<open id="i041" x="4" y="10"/>
+	<open id="i040" x="11" y="7"/>
+	<open id="i041" x="12" y="7"/>
+	<open id="i040" x="11" y="8"/>
+	<open id="i041" x="12" y="8"/>
+	<open id="i040" x="11" y="9"/>
+	<open id="i041" x="12" y="9"/>
+	<open id="i040" x="11" y="10"/>
+	<open id="i041" x="12" y="10"/>
+	<open id="i040" x="5" y="7"/>
+	<open id="i041" x="10" y="7"/>
+	<open id="i040" x="5" y="10"/>
+	<open id="i041" x="6" y="10"/>
+	<open id="i040" x="7" y="10"/>
+	<open id="i041" x="8" y="10"/>
+	<open id="i040" x="9" y="10"/>
+	<open id="i041" x="10" y="10"/>
+
+	<open id="i040" x="3" y="4"/>
+	<open id="i041" x="4" y="4"/>	
+	<open id="i040" x="3" y="5"/>
+	<open id="i041" x="4" y="5"/>
 </items>
 </level>
