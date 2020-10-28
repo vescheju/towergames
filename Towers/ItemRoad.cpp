@@ -64,16 +64,18 @@ CItemRoad* CItemRoad::GetNeighbor(wstring direction)
 bool CItemRoad::SetNeighbor(CItemRoad* road)
 {
     // convert the Roads location to the column row coordinate
-    int rowThis = (GetY() - mTileLength / 2) / mTileLength;
-    int colThis = (GetX() - mTileLength / 2) / mTileLength;
+    double rowThis = (GetY() - mTileLength / 2) / mTileLength;
+    double colThis = (GetX() - mTileLength / 2) / mTileLength;
 
     // convert the potential neighbors location to column row coordinates
-    int rowRoad = (road->GetY() - mTileLength / 2) / mTileLength;
-    int colRoad = (road->GetX() - mTileLength / 2) / mTileLength;
+    double rowRoad = (road->GetY() - mTileLength / 2) / mTileLength;
+    double colRoad = (road->GetX() - mTileLength / 2) / mTileLength;
 
     // make sure we arent comparing the same road
-    if (rowThis == rowRoad && colThis == colRoad) return false;
+    //if (rowThis == rowRoad && colThis == colRoad) return false;
     
+    if (fabs(rowThis - rowRoad) < DBL_EPSILON && fabs(colThis - colRoad) < DBL_EPSILON) return false;
+
     if (rowThis == rowRoad)
     {
         // they are in the same row

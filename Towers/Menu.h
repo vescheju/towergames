@@ -43,7 +43,7 @@ public:
 
 	void Update(double elapsed) override;
 
-	std::shared_ptr<CTower> MenuHitTest(int x, int y);
+	std::shared_ptr<CTower> MenuHitTest(double x, double y);
 
 
 	/**

@@ -39,10 +39,10 @@ void CExplosion::Draw(Gdiplus::Graphics* graphics)
 	{
 		SolidBrush brush(Color(128, 0, 0));
 		graphics->FillEllipse(&brush, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
-			mRadius * 2, mRadius * 2);
+			(Gdiplus::REAL)mRadius * 2, (Gdiplus::REAL)mRadius * 2);
 		Pen pen(Color(128, 0, 0), 3);
 		graphics->DrawEllipse(&pen, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
-			mRadius * 2, mRadius * 2);
+			(Gdiplus::REAL)mRadius * 2, (Gdiplus::REAL)mRadius * 2);
 	}
 }
 

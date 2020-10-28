@@ -36,7 +36,7 @@ public:
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(double x, double y);
 
 	std::shared_ptr<Gdiplus::Bitmap> GetImage();
 

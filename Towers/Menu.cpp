@@ -109,7 +109,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		mGoButton->Draw(graphics);
 	}
 
-	if (mGame->GetDisplayEnd() == true)
+	if (mGame->GetDisplayEnd())
 	{
 
 		if (mTimeFreeze <= 0.00001 && mTimeFreeze >= -0.00001)
@@ -164,7 +164,7 @@ void CGameMenu::Update(double elapsed)
  * \param y the y coordinate
  * \returns nullptr if nothing was clicked on or the clicked object
  */
-shared_ptr<CTower> CGameMenu::MenuHitTest(int x, int y)
+shared_ptr<CTower> CGameMenu::MenuHitTest(double x, double y)
 {
 	if (mRing->HitTest(x, y)) 
 	{

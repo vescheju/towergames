@@ -34,6 +34,6 @@ void CRing::Draw(Gdiplus::Graphics* graphics)
 {
 	Pen pen(Color(255, 0, 0), 3);
 	graphics->DrawEllipse(&pen, (Gdiplus::REAL)(GetX() - mRadius), (Gdiplus::REAL)(GetY() - mRadius),
-		mRadius * 2, mRadius * 2);
+		(Gdiplus::REAL)mRadius * 2, (Gdiplus::REAL)mRadius * 2);
 }
 

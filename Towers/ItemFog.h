@@ -22,10 +22,10 @@ private:
 	int mRetreatSpeed = 40;
 
 	/// the initial x position of the fog
-	int initialX;
+	double initialX;
 
 	/// the initial y position of the fog
-	int initialY;
+	double initialY;
 
 public:
 
@@ -48,20 +48,20 @@ public:
 	* \param x the x position
 	* \param y the y position
 	*/
-	void SetInitialLocation(int x, int y) { initialX = x, initialY = y; }
+	void SetInitialLocation(double x, double y) { initialX = x, initialY = y; }
 
 	/**
 	* Getter for the initialX
 	* 
 	* \return intial x position
 	*/
-	int GetInitialX() { return initialX; }
+	double GetInitialX() { return initialX; }
 
 	/**
 	* Getter for the initialY
 	*
 	* \return intial y position
 	*/
-	int GetInitialY() { return initialY; }
+	double GetInitialY() { return initialY; }
 };
 

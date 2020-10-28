@@ -37,8 +37,8 @@ CBalloon::CBalloon(CGame* game, CItemRoad* road, std::wstring heading) : CItem(g
 */
 void CBalloon::UpdateLocation(double elapsed)
 {
-	int newX;
-	int newY;
+	double newX;
+	double newY;
 	if (mHeading == L"N")
 	{
 		newX = GetX();
@@ -46,7 +46,8 @@ void CBalloon::UpdateLocation(double elapsed)
 
 		// make sure the ballon is centered on the y-axis of the road
 		// add any excess location to the y direction
-		if (mRoad != nullptr && newX != mRoad->GetX())
+		if (mRoad != nullptr && !(fabs(newX - mRoad->GetX()) < DBL_EPSILON))
+		//if (mRoad != nullptr && newX != mRoad->GetX())
 		{
 			newY -= abs(newX - mRoad->GetX());
 			newX = mRoad->GetX();
@@ -66,10 +67,11 @@ void CBalloon::UpdateLocation(double elapsed)
 		newY = GetY() + mSpeed * elapsed;
 		// make sure the ballon is centered on the y-axis of the road
 		// add any excess location to the y direction
-		if (mRoad != nullptr && newX != mRoad->GetX())
+		if (mRoad != nullptr && !(fabs(newX - mRoad->GetX()) < DBL_EPSILON))
+		// if (mRoad != nullptr && newX != mRoad->GetX())
 		{
 			newY += abs(newX - mRoad->GetX());
-			newX = mRoad->GetX();
+			newX	= mRoad->GetX();
 		}
 		SetLocation(newX, newY);
 
@@ -85,7 +87,8 @@ void CBalloon::UpdateLocation(double elapsed)
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
 		// add any excess location to the x direction
-		if (mRoad != nullptr && newX != mRoad->GetY())
+		if (mRoad != nullptr && !(fabs(newX - mRoad->GetY()) < DBL_EPSILON))
+		// if (mRoad != nullptr && newX != mRoad->GetY())
 		{
 			newX += abs(newY - mRoad->GetY());
 			newY = mRoad->GetY();
@@ -104,7 +107,8 @@ void CBalloon::UpdateLocation(double elapsed)
 		newY = GetY();
 		// make sure the ballon is centered on the x-axis of the road
 		// add any excess location to the X direction
-		if (mRoad != nullptr && newX != mRoad->GetY())
+		if (mRoad != nullptr && !(fabs(newX - mRoad->GetY()) < DBL_EPSILON))
+		// if (mRoad != nullptr && newX != mRoad->GetY())
 		{
 			newX -= abs(newY - mRoad->GetY());
 			newY = mRoad->GetY();

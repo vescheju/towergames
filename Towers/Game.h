@@ -150,15 +150,15 @@ public:
     
     /// returns the xOffset
     /// \return level xOffset
-    int GetXOffset() { return mXOffset; }
+    float GetXOffset() { return mXOffset; }
 
     /// returns the yOffset
     /// \return level yOffset
-    int GetYOffset() { return mYOffset; }
+    float GetYOffset() { return mYOffset; }
 
     /// returns the scale of the game
     /// \return the scale
-    int GetScale() { return mScale; }
+    float GetScale() { return mScale; }
 
     /// returns the width of the level in pixels
     /// \return level width in pixels

@@ -44,7 +44,7 @@ std::shared_ptr<Gdiplus::Bitmap> CItem::GetImage()
 * \param x X location in the game to test
 * \param y Y location in the game to test
 * \return true if clicked on */
-bool CItem::HitTest(int x, int y)
+bool CItem::HitTest(double x, double y)
 {
     if (mItemImage == nullptr)
     {
