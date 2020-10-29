@@ -163,7 +163,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 void CGame::Load(const std::wstring& filename)
 {
     mButtonPressed = false;
-	mciSendString(L"open \"audio\\bensound-creepy.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+	mciSendString(L"open \"audio\\Monster Mash.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
     if (filename == L"level0.xml")
     {
         SetGameLevel(0);
