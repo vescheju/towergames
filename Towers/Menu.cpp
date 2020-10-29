@@ -54,9 +54,13 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	mLevel3StartText = unique_ptr<Bitmap>(Bitmap::FromFile(L"images/level3start.png"));
 	if (mLevel3StartText->GetLastStatus() != Ok)
 	{
-		AfxMessageBox(L"Failed to open images/trashcan.png");
+		AfxMessageBox(L"Failed to open images/level3start.png");
 	}
-
+	mLevel3EndText = unique_ptr<Bitmap>(Bitmap::FromFile(L"images/level3end.png"));
+	if (mLevel3StartText->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/level3end.png");
+	}
 }
 
 
@@ -97,7 +101,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	mEight->Draw(graphics);
 
 	
-
+	// Draws each game level text
 	if (mTimeSec < 2)
 	{
 		if (mGame->GetGameLevel() == 0)
@@ -114,6 +118,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		}
 		else
 		{
+			// Custom level 3 text
 			if (mLevel3StartText != nullptr)
 			{
 				double wid = mLevel3StartText->GetWidth();
@@ -132,7 +137,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	{
 		mGoButton->Draw(graphics);
 	}
-
+	// Displays the level complete
 	if (mGame->GetDisplayEnd())
 	{
 
@@ -140,10 +145,23 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		{
 			mTimeFreeze = mTimeSec;
 		}
-
+	
 		if (mTimeSec - mTimeFreeze < 2)
 		{
-			graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
+			// custom level complete image
+			if (mLevel3EndText != nullptr && mGame->GetGameLevel() == 3)
+			{
+				double wid = mLevel3EndText->GetWidth();
+				double hit = mLevel3EndText->GetHeight();
+				graphics->DrawImage(mLevel3EndText.get(),
+					PointX - 20, PointY - PointYOffset,
+					mLevel3EndText->GetWidth(), mLevel3EndText->GetHeight());
+			}
+			else 
+			{
+				graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
+			}
+			
 		}
 		else 
 		{

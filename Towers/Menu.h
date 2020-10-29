@@ -81,5 +81,6 @@ private:
 	/// Level 3 starting text image
 	std::unique_ptr<Gdiplus::Bitmap> mLevel3StartText;
 
-
+	/// Level 3 ending text image
+	std::unique_ptr<Gdiplus::Bitmap> mLevel3EndText;
 };
