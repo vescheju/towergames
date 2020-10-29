@@ -77,4 +77,9 @@ private:
 
 	/// boolean to see if game is finished.
 	bool mEndGame = false;
+	
+	/// Level 3 starting text image
+	std::unique_ptr<Gdiplus::Bitmap> mLevel3StartText;
+
+
 };

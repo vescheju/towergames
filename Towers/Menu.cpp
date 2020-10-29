@@ -19,6 +19,11 @@
 using namespace Gdiplus;
 using namespace std;
 
+const int PointX = 100;
+const int PointY = 450;
+const int PointYOffset = 200;
+const int PointXOffset = -55;
+
 /**
  * Menu constructor
  * \param game The game this menu is a part of
@@ -44,6 +49,14 @@ CGameMenu::CGameMenu(CGame* game) : CItem(game)
 	std::shared_ptr<CGoButton> gobutton(new CGoButton(game));
 	mGoButton = gobutton;
 	gobutton->SetLocation(1170, 900);
+
+	// Load level 3 text image
+	mLevel3StartText = unique_ptr<Bitmap>(Bitmap::FromFile(L"images/level3start.png"));
+	if (mLevel3StartText->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/trashcan.png");
+	}
+
 }
 
 
@@ -75,7 +88,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 		&font, PointF(1150, 150), &green);
 
 
-	Gdiplus::Font levelFont(&fontFamily, 135, FontStyleBold, UnitPixel);
+	Gdiplus::Font levelFont(&fontFamily, 100, FontStyleBold, UnitPixel);
 	SolidBrush brown(Color(139, 69, 19));
 
 	
@@ -89,19 +102,30 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	{
 		if (mGame->GetGameLevel() == 0)
 		{
-			graphics->DrawString(L"Level 0 Begin", -1, &levelFont, PointF(100, 450), &brown);
+			graphics->DrawString(L"Level 0 Begin", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
 		}
 		else if (mGame->GetGameLevel() == 1)
 		{
-			graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(100, 450), &brown);
+			graphics->DrawString(L"Level 1 Begin", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
 		}
 		else if (mGame->GetGameLevel() == 2)
 		{
-			graphics->DrawString(L"Level 2 Begin", -1, &levelFont, PointF(100, 450), &brown);
+			graphics->DrawString(L"Level 2 Begin", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
 		}
 		else
 		{
-			graphics->DrawString(L"Level 3 Begin", -1, &levelFont, PointF(100, 450), &brown);
+			if (mLevel3StartText != nullptr)
+			{
+				double wid = mLevel3StartText->GetWidth();
+				double hit = mLevel3StartText->GetHeight();
+				graphics->DrawImage(mLevel3StartText.get(),
+					PointX, PointY - PointYOffset,
+					mLevel3StartText->GetWidth(), mLevel3StartText->GetHeight());
+			}
+			else 
+			{
+				graphics->DrawString(L"Level 3 Begin", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
+			}
 		}
 	}
 	else if (mTimeSec > 2 && !mGame->GetButtonPressed())
@@ -119,7 +143,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 
 		if (mTimeSec - mTimeFreeze < 2)
 		{
-			graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(100, 450), &brown);
+			graphics->DrawString(L"Level Complete", -1, &levelFont, PointF(PointX - PointXOffset, PointY), &brown);
 		}
 		else 
 		{
