@@ -19,8 +19,11 @@
 #include "VisibilityUpdater.h"
 #include "LevelProgressor.h"
 
+#include <windows.h>
+#include <Mmsystem.h>
+#include <mciapi.h>
 #include <algorithm>
-
+#pragma comment(lib, "Winmm.lib")
 
 using namespace std;
 using namespace xmlnode;
@@ -160,30 +163,34 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 void CGame::Load(const std::wstring& filename)
 {
     mButtonPressed = false;
-
+	mciSendString(L"open \"audio\\bensound-creepy.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
     if (filename == L"level0.xml")
     {
         SetGameLevel(0);
         mLevel = L"Level 0";
         mLevelBalloons = 30;
+		mciSendString(L"stop mp3", NULL, 0, NULL);
     }
     else if (filename == L"level1.xml")
     {
         SetGameLevel(1);
         mLevel = L"Level 1";
         mLevelBalloons = 30;
+		mciSendString(L"stop mp3", NULL, 0, NULL);
     }
     else if (filename == L"level2.xml")
     {
         SetGameLevel(2);
         mLevel = L"Level 2";
         mLevelBalloons = 30;
+		mciSendString(L"stop mp3", NULL, 0, NULL);
     }
     else if (filename == L"level3.xml")
     {
         SetGameLevel(3);
         mLevel = L"Level 3";
         mLevelBalloons = 40;
+		mciSendString(L"play mp3", NULL, 0, NULL);
     }
 
     // Open the document with the xml loader class
