@@ -131,7 +131,7 @@ public:
 
     void Accept(CItemVisitor* visitor);
 
-    void InitializeStart();
+    void InitializeStart(bool pumpkin);
 
     std::shared_ptr<Gdiplus::Bitmap> GetImage(std::wstring filename);
 

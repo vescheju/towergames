@@ -6,23 +6,38 @@
 
 #include "pch.h"
 #include "GoVisitor.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 #include "TowerEight.h"
 #include "RingTower.h"
 
 
+/// Time in seconds for pumpkin bomb to detonate
+const double PumpkinDetonateTime = 10;
+
 
 /**
-* Visit a CBombTower object and initializes weapon
+* Visit a CRedBombTower object and initializes weapon
 * and set its detonation time
 * \param bomb BombTower we're visiting
 */
-void CGoVisitor::VisitBombTower(CBombTower* bomb)
+void CGoVisitor::VisitRedBombTower(CRedBombTower* bomb)
 {
 	bomb->InitializeWeapon();
 	bomb->SetTimeTillFire(mDetonateTime);
 	mDetonateTime += 3;
-	mTowers.push_back(bomb);
+}
+
+
+/**
+* Visit a CPumpkinTower object and initializes weapon
+* and set its detonation time
+* \param bomb BombTower we're visiting
+*/
+void CGoVisitor::VisitPumpkinTower(CPumpkinTower* bomb)
+{
+	bomb->InitializeWeapon();
+	bomb->SetTimeTillFire(PumpkinDetonateTime);
 }
 
 

@@ -24,7 +24,9 @@ public:
 
     virtual void VisitOpen(CItemOpen* open) override;
 
-    virtual void VisitBombTower(CBombTower* bomb) override;
+    virtual void VisitRedBombTower(CRedBombTower* bomb) override;
+
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) override;
 
     virtual void VisitRingTower(CRingTower* tower) override;
 

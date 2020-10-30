@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "ItemHouse.h"
 #include "ItemTree.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
 #include "RingTower.h"
 #include "TowerEight.h"
 #include "GrabVisitor.h"
@@ -41,8 +41,8 @@ namespace Testing
 				L"Testing empty game");
 
 
-			// Test Hit Test with bombs added
-			shared_ptr<CBombTower> bomb = make_shared<CBombTower>(&game);
+			// Test Hit Test with bombs & towers added
+			shared_ptr<CRedBombTower> bomb = make_shared<CRedBombTower>(&game);
 			bomb->SetLocation(200, 200);
 			game.Add(bomb);
 

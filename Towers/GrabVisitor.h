@@ -18,7 +18,9 @@ class CGrabVisitor :
 {
 public:
 
-    virtual void VisitBombTower(CBombTower* bomb) override;
+    virtual void VisitRedBombTower(CRedBombTower* bomb) override;
+
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) override;
 
     virtual void VisitTowerEight(CTowerEight* tower) override;
 

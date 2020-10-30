@@ -9,7 +9,8 @@
 #include "Game.h"
 #include "Item.h"
 #include "RingTower.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 #include "TowerEight.h"
 #include "GoButton.h"
 #include "GoVisitor.h"
@@ -29,14 +30,14 @@ const int PointXOffset = -55;
  * \param game The game this menu is a part of
  */
 CGameMenu::CGameMenu(CGame* game) : CItem(game)
-{
-	
+{	
+
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
 	ringtower->SetLocation(1170, 600);
 
 	
-	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
+	std::shared_ptr<CRedBombTower> bombtower(new CRedBombTower(game));
 	mBomb = bombtower;
 	bombtower->SetLocation(1170, 500);
 	
@@ -113,6 +114,11 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	mBomb->Draw(graphics);
 	mEight->Draw(graphics);
 
+	// only if we're on level 3
+	if (mGame->GetGameLevel() == 3)
+	{
+		mPumpkin->Draw(graphics);
+	}
 	
 	// Draws each game level text
 	if (mTimeSec < 2)
@@ -214,6 +220,18 @@ void CGameMenu::Update(double elapsed)
 
 
 /**
+ * Adds pumpkin bomb object to menu
+ * For use in level 3 only
+ */
+void CGameMenu::AddPumpkin()
+{
+	std::shared_ptr<CPumpkinTower> pumpkintower(new CPumpkinTower(mGame));
+	mPumpkin = pumpkintower;
+	pumpkintower->SetLocation(1170, 700);
+}
+
+
+/**
  * sees if an element of the menu was clicked on
  * \param x the x coordinate
  * \param y the y coordinate
@@ -233,7 +251,12 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(double x, double y)
 	}
 	else if (mBomb->HitTest(x, y))
 	{
-		std::shared_ptr<CBombTower> tower = std::make_shared<CBombTower>(mGame);
+		std::shared_ptr<CRedBombTower> tower = std::make_shared<CRedBombTower>(mGame);
+		return tower;
+	}
+	else if (mPumpkin != nullptr && mPumpkin->HitTest(x, y))
+	{
+		std::shared_ptr<CPumpkinTower> tower = std::make_shared<CPumpkinTower>(mGame);
 		return tower;
 	}
 	else if (mGoButton->HitTest(x, y))

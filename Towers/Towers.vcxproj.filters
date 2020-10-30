@@ -144,6 +144,12 @@
     <ClInclude Include="TileLocker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PumpkinTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RedBombTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -261,6 +267,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TileLocker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PumpkinTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RedBombTower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

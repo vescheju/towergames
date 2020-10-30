@@ -12,7 +12,8 @@
 #include "BalloonBoss.h"
 #include "TowerEight.h"
 #include "RingTower.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 
 /**
  * adds red balloons to a vector of they need to be removed
@@ -72,6 +73,8 @@ void CItemRemover::VisitExplosion(CExplosion* explosion)
 }
 
 
+
+
 void CItemRemover::VisitRingTower(CRingTower* tower)
 {
 	if (tower->GetTile() == nullptr && !tower->Grabbed())
@@ -84,13 +87,27 @@ void CItemRemover::VisitRingTower(CRingTower* tower)
  * adds bombs to a vector of they need to be removed
  * \param bomb the bomb being visited
  */
-void CItemRemover::VisitBombTower(CBombTower* bomb)
+void CItemRemover::VisitRedBombTower(CRedBombTower* bomb)
 {
 	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
 	{
 		mRemovedItems.push_back(bomb);
 	}
 }
+
+
+/**
+ * adds pumpkin bombs to a vector of they need to be removed
+ * \param bomb the bomb being visited
+ */
+void CItemRemover::VisitPumpkinTower(CPumpkinTower* bomb)
+{
+	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
+	{
+		mRemovedItems.push_back(bomb);
+	}
+}
+
 
 /**
 * adds the fog to the removed items list if its 

@@ -43,6 +43,8 @@ public:
 
 	void Update(double elapsed) override;
 
+	void AddPumpkin();
+
 	std::shared_ptr<CTower> MenuHitTest(double x, double y);
 
 
@@ -66,10 +68,15 @@ private:
 	std::shared_ptr<CTowerEight> mEight = nullptr;
 
 	/// pointer to Tower Bomb
-	std::shared_ptr<CBombTower> mBomb = nullptr;
+	std::shared_ptr<CRedBombTower> mBomb = nullptr;
+
+	/// pointer to Tower Pumpkin
+	std::shared_ptr<CPumpkinTower> mPumpkin = nullptr;
 
 	/// pointer to Tower Ring
 	std::shared_ptr<CRingTower> mRing = nullptr;
+
+
 
 	double mTimeSec = 0; ///< Time elapsed in seconds
 

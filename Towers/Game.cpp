@@ -114,8 +114,6 @@ void CGame::ToFrontOfScreen(std::shared_ptr<CItem> item)
 
 
 
-
-
 /**
  * Draw the game area
  * \param graphics The GDI+ graphics context to draw on
@@ -229,8 +227,16 @@ void CGame::Load(const std::wstring& filename)
     // Set the mItems to the new ones from the file
     mItems = xmlLoader.GetItems();
 
-
-    InitializeStart();
+    // If we're on level 3, include pumpkin bomb
+    if (mGameLevel == 3)
+    {
+        InitializeStart(true);
+    }
+    // Otherwise, do not
+    else
+    {
+        InitializeStart(false);
+    }
 
     // link all of the roads together
     CRoadLinker linker;
@@ -290,7 +296,7 @@ void CGame::Update(double elapsed)
     {
         item->Update(elapsed);
     }
-
+    
     if (mMenu != nullptr)
     {
         mMenu->Update(elapsed);
@@ -377,10 +383,14 @@ void CGame::Accept(CItemVisitor* visitor)
 /**
  * Sets all balloon and road items at the beginning of the level to start the game
  */
-void CGame::InitializeStart()
+void CGame::InitializeStart(bool pumpkin)
 {
     // create a menu for the game
     mMenu = make_shared<CGameMenu>(this);
+    if (pumpkin)
+    {
+        mMenu->AddPumpkin();
+    }
     // the starting y position of all starting roads
     int yStart = mStartY * mTileLength + mTileLength / 2;
     // the first starting x position

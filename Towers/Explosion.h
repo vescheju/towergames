@@ -44,7 +44,7 @@ public:
      * \return bool representing whether or not explosions been detonated
      */
     bool isDetonated() const { return mDetonated; }
-
+ 
     /** Getter function for mTimeDetonated member
      * \return double representing time left detonated
      */

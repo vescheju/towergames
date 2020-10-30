@@ -213,6 +213,8 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PumpkinTower.h" />
+    <ClInclude Include="RedBombTower.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Ring.h" />
     <ClInclude Include="RingTower.h" />
@@ -261,6 +263,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PumpkinTower.cpp" />
+    <ClCompile Include="RedBombTower.cpp" />
     <ClCompile Include="Ring.cpp" />
     <ClCompile Include="RingTower.cpp" />
     <ClCompile Include="RoadLinker.cpp" />

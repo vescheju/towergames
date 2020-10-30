@@ -23,7 +23,9 @@ public:
 
     virtual void VisitExplosion(CExplosion* explosion) override;
 
-    virtual void VisitBombTower(CBombTower* bomb) override;
+    virtual void VisitRedBombTower(CRedBombTower* bomb) override;
+
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) override;
 
     virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
 

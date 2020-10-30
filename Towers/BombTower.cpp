@@ -17,7 +17,6 @@
 */
 CBombTower::CBombTower(CGame* game) : CTower(game)
 {
-	SetImagePtr(mGame->GetImage(L"tower-bomb.png"));
 }
 
 
@@ -33,30 +32,11 @@ void CBombTower::Update(double elapsed)
 		UpdateTimeTillFire(elapsed);
 		if (GetFire())
 		{
+			AddWeapon();
 			// Fire explosion, set detonated to true for cleanup
 			mExplosion->Detonate();
 			mDetonated = true;
 			SetFire(false);
 		}
 	}
-
-}
-
-
-/**
- * Initialize Weapon function, initializes explosion in Bomb
- */
-void CBombTower::InitializeWeapon()
-{
-	std::shared_ptr<CExplosion> explosion = std::make_shared<CExplosion>(mGame);
-	explosion->SetLocation(GetX(), GetY());
-	mExplosion = explosion;
-}
-
-/**
- * Add Weapon function, adds explosion to game mItems
- */
-void CBombTower::AddWeapon()
-{
-	mGame->Add(mExplosion);
 }

@@ -6,16 +6,27 @@
 
 #include "pch.h"
 #include "GrabVisitor.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 #include "TowerEight.h"
 #include "RingTower.h"
 
 
 /**
-* Visit a CBombTower object and add to mTowers
+* Visit a CRedBombTower object and add to mTowers
 * \param bomb BombTower visiting
 */
-void CGrabVisitor::VisitBombTower(CBombTower* bomb)
+void CGrabVisitor::VisitRedBombTower(CRedBombTower* bomb)
+{
+	mTowers.push_back(bomb);
+}
+
+
+/**
+* Visit a CPumpkinTower object and add to mTowers
+* \param bomb BombTower visiting
+*/
+void CGrabVisitor::VisitPumpkinTower(CPumpkinTower* bomb)
 {
 	mTowers.push_back(bomb);
 }
