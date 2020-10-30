@@ -82,6 +82,11 @@ private:
     /// Check if the end should be displayed
     bool mDisplayEnd = false;
 
+    /// the check to see if the jump scare needs to be displayed
+    bool mScare = false;
+
+    // keeps track of how long to display the jumpscare image
+    double mScareTime = 0;
 public:
 
     /**
@@ -203,6 +208,13 @@ public:
     /// returns the number of items in the game
     /// \return size of mItems
     int GetItemNumber() { return mItems.size(); }
+
+    /**
+    * Setter for mScare
+    * 
+    * \param scare the value to set to mScare
+    */
+    void SetScare(bool scare) { mScare = scare; }
     
 
     

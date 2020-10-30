@@ -151,6 +151,32 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     {
         mMenu->Draw(graphics);
     }
+
+    // draw the jump scare for 2 seconds
+    if (mScare && mScareTime < 3)
+    {
+
+        std::shared_ptr<Gdiplus::Bitmap> scareImage = GetImage(L"scare.png");
+
+        double wid = scareImage->GetWidth();
+        double hit = scareImage->GetHeight();
+        graphics->DrawImage(scareImage.get(),
+            float(512 - wid / 2), float(512 - hit / 2),
+            (float)scareImage->GetWidth(), (float)scareImage->GetHeight());
+    }
+    else if(mScare && mScareTime > 3)
+    {
+        // kill jump scare noise
+        mciSendString(L"stop scare.mp3", NULL, 0, NULL);
+        mciSendString(L"close scare.mp3", NULL, 0, NULL);
+
+        // resume the monster mash
+        mciSendString(L"resume music.mp3", NULL, 0, NULL);
+
+        mScare = false;
+        mScareTime = 0;
+    }
+
 }
 
 /**
@@ -163,34 +189,34 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 void CGame::Load(const std::wstring& filename)
 {
     mButtonPressed = false;
-	mciSendString(L"open \"audio\\Monster Mash.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+	mciSendString(L"open \"audio\\Monster Mash.mp3\" type mpegvideo alias music.mp3", NULL, 0, NULL);
     if (filename == L"level0.xml")
     {
         SetGameLevel(0);
         mLevel = L"Level 0";
         mLevelBalloons = 30;
-		mciSendString(L"stop mp3", NULL, 0, NULL);
+		mciSendString(L"stop music.mp3", NULL, 0, NULL);
     }
     else if (filename == L"level1.xml")
     {
         SetGameLevel(1);
         mLevel = L"Level 1";
         mLevelBalloons = 30;
-		mciSendString(L"stop mp3", NULL, 0, NULL);
+		mciSendString(L"stop music.mp3", NULL, 0, NULL);
     }
     else if (filename == L"level2.xml")
     {
         SetGameLevel(2);
         mLevel = L"Level 2";
         mLevelBalloons = 30;
-		mciSendString(L"stop mp3", NULL, 0, NULL);
+		mciSendString(L"stop music.mp3", NULL, 0, NULL);
     }
     else if (filename == L"level3.xml")
     {
         SetGameLevel(3);
         mLevel = L"Level 3";
         mLevelBalloons = 40;
-		mciSendString(L"play mp3", NULL, 0, NULL);
+		mciSendString(L"play music.mp3 repeat", NULL, 0, NULL);
     }
 
     // Open the document with the xml loader class
@@ -268,6 +294,12 @@ void CGame::Update(double elapsed)
     if (mMenu != nullptr)
     {
         mMenu->Update(elapsed);
+    }
+
+    // add time to the scaretime counter
+    if (mScare)
+    {
+        mScareTime += elapsed;
     }
 
     // apply appropriate damage to the balloons
@@ -401,7 +433,30 @@ void CGame::InitializeStart()
         // create the balloon
         shared_ptr<CBalloonRed> balloon = make_shared<CBalloonRed>(this, road, heading);
         // set the image of the balloon
-        balloon->SetImagePtr(GetImage(L"red-balloon.png"));
+        if (mLevel == L"Level 3")
+        {
+            if (i % 4 == 0)
+            {
+                balloon->SetImagePtr(GetImage(L"dracula.png"));
+            }
+            else if (i % 3 == 0)
+            {
+                balloon->SetImagePtr(GetImage(L"werewolf.png"));
+            }
+            else if (i % 2 == 0)
+            {
+                balloon->SetImagePtr(GetImage(L"mummy.png"));
+            }
+            else
+            {
+                balloon->SetImagePtr(GetImage(L"frankenstein.png"));
+            }
+        }
+        else
+        {
+            balloon->SetImagePtr(GetImage(L"red-balloon.png"));
+        }
+        
         // set the location of the balloon
         balloon->SetLocation(balloonXPos, yStart);
         // add the balloon

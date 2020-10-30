@@ -51,5 +51,6 @@ private:
 
     /// the net change in the score
 	int mScoreChange = 0;
+
 };
 
