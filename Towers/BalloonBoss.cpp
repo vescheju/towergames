@@ -10,6 +10,13 @@
 #include "Game.h"
 #include "ItemFog.h"
 
+
+#include <windows.h>
+#include <Mmsystem.h>
+#include <mciapi.h>
+#include <algorithm>
+#pragma comment(lib, "Winmm.lib")
+
 using namespace std;
 using namespace Gdiplus;
  /**
@@ -70,7 +77,7 @@ void CBalloonBoss::Update(double elapsed)
 	}
 	if (mFog->GetX() < 516 && mGame->GetButtonPressed())
 	{
-		mFog->SetLocation(mFog->GetX() + 20 * elapsed, mFog->GetY());
+		mFog->SetLocation(mFog->GetX() + 22 * elapsed, mFog->GetY());
 	}
 	
 }
@@ -81,11 +88,18 @@ void CBalloonBoss::Update(double elapsed)
  */
 void CBalloonBoss::Pop()
 {
+
+	mciSendString(L"pause music.mp3", NULL, 0, NULL);
+	// PLAY THE JUMP SCARE SOUND
+	mciSendString(L"open \"audio\\scare.mp3\" type mpegvideo alias scare.mp3", NULL, 0, NULL);
+	mciSendString(L"play scare.mp3", NULL, 0, NULL);
+
 	for (auto balloon : mBalloons)
 	{
 		mGame->Add(balloon);
 	}
 	mGame->Add(mFog);
+	mGame->SetScare(true);
 }
 
 
