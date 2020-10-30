@@ -25,6 +25,8 @@ public:
 	/// Copy constructor (disabled)
 	CPumpkinTower(const CPumpkinTower&) = delete;
 
+	void Update(double elapsed) override;
+
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitPumpkinTower(this); }
@@ -32,5 +34,9 @@ public:
 	void InitializeWeapon() override;
 
 	void AddWeapon() override;
+
+private:
+
+	bool mLight = false;			///< bool represents whether or not pumpkin is lit up on tick
 };
 
