@@ -254,9 +254,10 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(double x, double y)
 		std::shared_ptr<CRedBombTower> tower = std::make_shared<CRedBombTower>(mGame);
 		return tower;
 	}
-	else if (mPumpkin != nullptr && mPumpkin->HitTest(x, y))
+	else if (mPumpkin != nullptr && !mGame->GetPumpkin() && mPumpkin->HitTest(x, y))
 	{
 		std::shared_ptr<CPumpkinTower> tower = std::make_shared<CPumpkinTower>(mGame);
+		mGame->SetPumpkin(true);
 		return tower;
 	}
 	else if (mGoButton->HitTest(x, y))

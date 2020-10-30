@@ -85,8 +85,12 @@ private:
     /// the check to see if the jump scare needs to be displayed
     bool mScare = false;
 
-    // keeps track of how long to display the jumpscare image
+    /// keeps track of how long to display the jumpscare image
     double mScareTime = 0;
+
+    /// whether or not pumpkin exists currently in game
+    bool mPumpkin = false;
+
 public:
 
     /**
@@ -95,6 +99,20 @@ public:
     * \return the current score
     */
 	int GetScore() { return mScore; };
+
+    /**
+    * getter for whether or not pumpkin in game
+    *
+    * \return bool value of mPumpkin
+    */
+    bool GetPumpkin() const { return mPumpkin; };
+
+    /**
+    * setter for whether or not pumpkin in game
+    *
+    * \param pumpkin bool value for mPumpkin
+    */
+    void SetPumpkin(bool pumpkin) { mPumpkin = pumpkin; };
 
     /**
     * getter for the display end

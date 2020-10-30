@@ -105,6 +105,7 @@ void CItemRemover::VisitPumpkinTower(CPumpkinTower* bomb)
 	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
 	{
 		mRemovedItems.push_back(bomb);
+		mPumpkin = true;
 	}
 }
 

@@ -187,6 +187,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 void CGame::Load(const std::wstring& filename)
 {
     mButtonPressed = false;
+    mPumpkin = false;
 	mciSendString(L"open \"audio\\Monster Mash.mp3\" type mpegvideo alias music.mp3", NULL, 0, NULL);
     if (filename == L"level0.xml")
     {
@@ -323,6 +324,12 @@ void CGame::Update(double elapsed)
 
     // incriment score based off of how the balloons were removed
 	mScore += remover.GetScoreChange();
+
+    // if pumpkin is removed, set mPumpkin to false
+    if (remover.PumpkinCollected())
+    {
+        mPumpkin = false;
+    }
 
     // update the visibility of the balloons
     CVisibilityUpdater updater;

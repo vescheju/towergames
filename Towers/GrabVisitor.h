@@ -33,7 +33,8 @@ public:
 
 private:
 
-    std::vector<CTower*> mTowers;          ///< Boolean value represents if visited CItem is a CTower
+    std::vector<CTower*> mTowers;          ///< Vector of towers collected
+
 };
 
 
