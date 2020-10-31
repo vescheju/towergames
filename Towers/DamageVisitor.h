@@ -29,7 +29,9 @@ private:
     /// vector containing the level's rings
     std::vector<CRing*> mLevelRings;
     /// vector containing the level's explosions
-    std::vector<CExplosion*> mLevelExplosions;
+    std::vector<CRedExplosion*> mLevelRedExplosions;
+    /// vector containing the level's explosions
+    std::vector<CPumpkinExplosion*> mLevelPumpkinExplosions;
     /// the score change as a result of the balloons being damaged
     int mScoreChange = 0;
 public:
@@ -42,7 +44,9 @@ public:
 
     virtual void VisitRing(CRing* ring) override;
 
-    virtual void VisitExplosion(CExplosion* explosion) override;
+    virtual void VisitRedExplosion(CRedExplosion* explosion) override;
+
+    virtual void VisitPumpkinExplosion(CPumpkinExplosion* explosion) override;
 
     virtual void DealDamage();
 

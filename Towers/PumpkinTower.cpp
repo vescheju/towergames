@@ -8,7 +8,7 @@
 #include "pch.h"
 #include "PumpkinTower.h"
 #include "Game.h"
-#include "Explosion.h"
+#include "PumpkinExplosion.h"
 
 /// Duration of each pumpkin tick in seconds
 const double TickDuration = 0.2;
@@ -59,7 +59,7 @@ void CPumpkinTower::Update(double elapsed)
  */
 void CPumpkinTower::InitializeWeapon()
 {
-	std::shared_ptr<CExplosion> explosion = std::make_shared<CExplosion>(mGame);
+	std::shared_ptr<CPumpkinExplosion> explosion = std::make_shared<CPumpkinExplosion>(mGame);
 	explosion->SetLocation(GetX(), GetY());
 	mExplosion = explosion;
 }

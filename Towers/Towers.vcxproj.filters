@@ -150,6 +150,12 @@
     <ClInclude Include="RedBombTower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RedExplosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PumpkinExplosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers.cpp">
@@ -273,6 +279,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RedBombTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RedExplosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PumpkinExplosion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

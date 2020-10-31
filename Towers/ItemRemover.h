@@ -21,7 +21,9 @@ class CItemRemover :
 public:
     virtual void VisitBalloonRed(CBalloonRed* balloon) override;
 
-    virtual void VisitExplosion(CExplosion* explosion) override;
+    virtual void VisitRedExplosion(CRedExplosion* explosion) override;
+
+    virtual void VisitPumpkinExplosion(CPumpkinExplosion* explosion) override;
 
     virtual void VisitRedBombTower(CRedBombTower* bomb) override;
 

@@ -8,7 +8,7 @@
 #include "pch.h"
 #include "RedBombTower.h"
 #include "Game.h"
-#include "Explosion.h"
+#include "RedExplosion.h"
 
 
 /**
@@ -25,7 +25,7 @@ CRedBombTower::CRedBombTower(CGame* game) : CBombTower(game)
  */
 void CRedBombTower::InitializeWeapon()
 {
-	std::shared_ptr<CExplosion> explosion = std::make_shared<CExplosion>(mGame);
+	std::shared_ptr<CRedExplosion> explosion = std::make_shared<CRedExplosion>(mGame);
 	explosion->SetLocation(GetX(), GetY());
 	mExplosion = explosion;
 }

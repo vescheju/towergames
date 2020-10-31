@@ -6,7 +6,8 @@
 
 #include "pch.h"
 #include "ItemRemover.h"
-#include "Explosion.h"
+#include "RedExplosion.h"
+#include "PumpkinExplosion.h"
 #include "BombTower.h"
 #include "BalloonRed.h"
 #include "BalloonBoss.h"
@@ -51,6 +52,11 @@ void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
 	}
 }
 
+
+/**
+* adds dart towers to a vector of they need to be removed
+* \param tower the tower being visited
+*/
 void CItemRemover::VisitTowerEight(CTowerEight* tower)
 {
 	if (tower->GetTile() == nullptr && !tower->Grabbed())
@@ -61,10 +67,22 @@ void CItemRemover::VisitTowerEight(CTowerEight* tower)
 
 
 /**
- * adds explosions to a vector of they need to be removed
+ * adds red explosions to a vector of they need to be removed
  * \param explosion the explosion being visited
  */
-void CItemRemover::VisitExplosion(CExplosion* explosion)
+void CItemRemover::VisitRedExplosion(CRedExplosion* explosion)
+{
+	if (explosion->GetTimeDetonated() <= 0)
+	{
+		mRemovedItems.push_back(explosion);
+	}
+}
+
+/**
+ * adds pumpkin explosions to a vector of they need to be removed
+ * \param explosion the explosion being visited
+ */
+void CItemRemover::VisitPumpkinExplosion(CPumpkinExplosion* explosion)
 {
 	if (explosion->GetTimeDetonated() <= 0)
 	{
@@ -73,8 +91,10 @@ void CItemRemover::VisitExplosion(CExplosion* explosion)
 }
 
 
-
-
+/**
+ * adds ring towers to a vector of they need to be removed
+ * \param tower the tower being visited
+ */
 void CItemRemover::VisitRingTower(CRingTower* tower)
 {
 	if (tower->GetTile() == nullptr && !tower->Grabbed())

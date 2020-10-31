@@ -9,7 +9,8 @@
 #include "BalloonRed.h"
 #include "Dart.h"
 #include "Ring.h"
-#include "Explosion.h"
+#include "RedExplosion.h"
+#include "PumpkinExplosion.h"
 
 
 /// Double representing how much time of detonation must be left for explosion to damage balloon
@@ -56,16 +57,30 @@ void CDamageVisitor::VisitRing(CRing* ring)
 }
 
 /**
-* Visit a CExplosion object and add it to the
-* mLevelExplosions vector
+* Visit a CRedExplosion object and add it to the
+* mLevelRedExplosions vector
 * \param explosion Explosion item we are visiting
 */
-void CDamageVisitor::VisitExplosion(CExplosion* explosion)
+void CDamageVisitor::VisitRedExplosion(CRedExplosion* explosion)
 {
     // Only add explosion if its been detonated for a maximum for 0.005 seconds
-    if (explosion->isDetonated() && explosion->GetTimeDetonated() >= MinTimeDetonatedLeft)
+    if (explosion->IsDetonated() && explosion->GetTimeDetonated() >= MinTimeDetonatedLeft)
     {
-        mLevelExplosions.push_back(explosion);
+        mLevelRedExplosions.push_back(explosion);
+    }
+}
+
+/**
+* Visit a CPumpkinExplosion object and add it to the
+* mLevelPumpkinExplosions vector
+* \param explosion Explosion item we are visiting
+*/
+void CDamageVisitor::VisitPumpkinExplosion(CPumpkinExplosion* explosion)
+{
+    // Only add explosion if its been detonated for a maximum for 0.005 seconds
+    if (explosion->IsDetonated() && explosion->GetTimeDetonated() >= MinTimeDetonatedLeft)
+    {
+        mLevelPumpkinExplosions.push_back(explosion);
     }
 }
 
@@ -120,7 +135,7 @@ void CDamageVisitor::DealDamage()
             
         }
 
-        for (auto explosion : mLevelExplosions)
+        for (auto explosion : mLevelRedExplosions)
         {
             // if the balloon is in the explosions area it is getting damage done
             // center of the explosion
@@ -148,6 +163,11 @@ void CDamageVisitor::DealDamage()
             {
                 balloon->RemoveActiveWeapon(explosion);
             }
+        }
+
+        for (auto explosion : mLevelPumpkinExplosions)
+        {
+            // todo add damages
         }
     }
 }
