@@ -13,7 +13,10 @@
 
 
 /// Time in seconds for pumpkin bomb to detonate
-const double PumpkinDetonateTime = 10;
+const double PumpkinDetonateTime = 15;
+
+/// Time in seconds for red bomb to detonate in increments
+const double RedDetonateTime = 3;
 
 
 /**
@@ -25,7 +28,7 @@ void CGoVisitor::VisitRedBombTower(CRedBombTower* bomb)
 {
 	bomb->InitializeWeapon();
 	bomb->SetTimeTillFire(mDetonateTime);
-	mDetonateTime += 3;
+	mDetonateTime += RedDetonateTime;
 }
 
 

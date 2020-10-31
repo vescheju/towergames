@@ -187,6 +187,10 @@ public:
     /// \return level width in pixels
     int GetGameWidth() { return mTileLength * mLevelWidth; }
 
+    /// returns the height of the level in pixels
+    /// \return level height in pixels
+    int GetGameHeight() { return mTileLength * mLevelHeight; }
+
     /// setter for the start x
     /// \param x the start x
     void SetStartX(int x) { mStartX = x; }

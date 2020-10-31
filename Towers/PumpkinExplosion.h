@@ -29,8 +29,13 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitPumpkinExplosion(this); }
 
+    /** Getter function for mWidth member
+     * \return double representing explosion width
+     */
+    double GetWidth() const { return mWidth; }
+
 private:
 
-    double mWidth = 100;        ///< Width of explosion lines
+    double mWidth = 120;        ///< Width of explosion lines
 };
 

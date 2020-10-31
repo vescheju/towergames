@@ -9,6 +9,10 @@
 
 using namespace Gdiplus;
 
+/**
+* explosion consturctor
+* \param game the whole game
+*/
 CRedExplosion::CRedExplosion(CGame* game) : CExplosion(game)
 {
 }

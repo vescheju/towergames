@@ -167,7 +167,33 @@ void CDamageVisitor::DealDamage()
 
         for (auto explosion : mLevelPumpkinExplosions)
         {
-            // todo add damages
+            // if the balloon is in the explosions area it is getting damage done
+            // center of the explosion
+            double explosionX = explosion->GetX();
+            double explosionY = explosion->GetY();
+
+            // center of the item
+            double balloonX = balloon->GetX();
+            double balloonY = balloon->GetY();
+
+            // if balloon is within bounds created by explosion
+            if ((balloonX > (explosionX - (explosion->GetWidth() / 2))
+                    && balloonX < (explosionX + (explosion->GetWidth() / 2))
+                || balloonY > (explosionY - (explosion->GetWidth() / 2))
+                    && balloonY < (explosionY + (explosion->GetWidth() / 2)))
+                && !balloon->IsActiveWeapon(explosion))
+            {
+                balloon->Damage(explosion->GetDamage());
+                balloon->AddActiveWeapon(explosion);
+                if (balloon->GetHealth() <= 0)
+                {
+                    mScoreChange += 4;
+                }
+            }
+            else
+            {
+                balloon->RemoveActiveWeapon(explosion);
+            }
         }
     }
 }

@@ -38,7 +38,6 @@ public:
 
 private:
 
-    /// radius of circle in pixels
-    double mRadius = 100;
+    double mRadius = 100;       ///< radius of circle in pixels
 };
 
