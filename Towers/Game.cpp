@@ -95,7 +95,7 @@ void CGame::TowersToFrontOfScreen(std::vector<CTower*> towers)
 }
 
 
-/*
+/**
 * Moves object to front of screen.
 * 
 * \param item Shared pointer to item moved to front of screen
@@ -354,6 +354,10 @@ void CGame::Update(double elapsed)
 
 }
 
+
+/**
+* updates the current level and loads it
+*/
 void CGame::ProgressLevel()
 {
     if (mLevel == L"Level 0")
@@ -389,6 +393,8 @@ void CGame::Accept(CItemVisitor* visitor)
 
 /**
  * Sets all balloon and road items at the beginning of the level to start the game
+ * 
+ * \param pumpkin a flag that signifies whether or not to set the pumpkin
  */
 void CGame::InitializeStart(bool pumpkin)
 {

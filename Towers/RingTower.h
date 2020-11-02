@@ -27,6 +27,12 @@ public:
 
 	void Update(double elapsed) override;
 
+
+	/**
+	* Getter for the ring object of the tower
+	* 
+	* \return pointer to the ring of the tower
+	*/
 	std::shared_ptr<CRing> GetRing() const { return mRing; }
 
 	/** Accept a visitor

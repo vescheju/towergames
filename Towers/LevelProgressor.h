@@ -26,7 +26,10 @@ public:
 	bool GetProgress();
 
 private:
+
+	/// the collection of balloons in the level
 	std::vector<CBalloonRed*> mNumRedBalloons;
+	/// the collection of the boss balloon(s) in the level
 	std::vector<CBalloonBoss*> mNumBossBalloons;
 };
 

@@ -26,7 +26,7 @@ public:
 
     virtual void VisitRingTower(CRingTower* tower) override;
 
-    /* Getter returns mTowers memmber
+    /** Getter returns mTowers memmber
     * \return vector of towers colleceted
     */
     std::vector<CTower*> GetTowers() const { return mTowers; }
