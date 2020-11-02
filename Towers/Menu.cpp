@@ -81,9 +81,7 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
 
 	FontFamily fontFamily(L"Arial");
-	FontFamily fontFamily2(L"Chiller");
 	Gdiplus::Font font(&fontFamily,	38, FontStyleBold, UnitPixel);
-	Gdiplus::Font font2(&fontFamily2, 50, FontStyleBold, UnitPixel);
 	SolidBrush green(Color(0, 200, 0));
 	SolidBrush orange(Color(200, 130, 0));
 
@@ -93,9 +91,9 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	if (mGame->GetGameLevel() == 3)
 	{
 		graphics->DrawString(L"Score: ", -1,
-			&font2, PointF(1100, 100), &orange);
+			&font, PointF(1100, 100), &orange);
 		graphics->DrawString(str.str().c_str(), -1,
-			&font2, PointF(1150, 150), &orange);
+			&font, PointF(1150, 150), &orange);
 	}
 	else
 	{
