@@ -181,6 +181,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  * Load the level from an XML file.
  *
  * passes the filename to the Xml Loader
+ * Add Monster Mash background music. https://www.youtube.com/watch?v=SOFCQ2bfmHw
  *
  * \param filename The filename of the level to load the level from.
  */
