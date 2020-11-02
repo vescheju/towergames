@@ -21,9 +21,13 @@ class CItemRemover :
 public:
     virtual void VisitBalloonRed(CBalloonRed* balloon) override;
 
-    virtual void VisitExplosion(CExplosion* explosion) override;
+    virtual void VisitRedExplosion(CRedExplosion* explosion) override;
 
-    virtual void VisitBombTower(CBombTower* bomb) override;
+    virtual void VisitPumpkinExplosion(CPumpkinExplosion* explosion) override;
+
+    virtual void VisitRedBombTower(CRedBombTower* bomb) override;
+
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) override;
 
     virtual void VisitBalloonBoss(CBalloonBoss* balloon) override;
 
@@ -32,6 +36,7 @@ public:
     virtual void VisitRingTower(CRingTower* tower) override;
 
     virtual void VisitFog(CItemFog* fog) override;
+
     /**
     * getter fot mRemovedItems
     *
@@ -46,11 +51,20 @@ public:
     */
 	int GetScoreChange() { return mScoreChange; };
 
+    /**
+    * Returns whether or not pumpkin was collected
+    *
+    * \return bool of whether or not pumpkin was collected
+    */
+    bool PumpkinCollected() const { return mPumpkin; }
+
 private:
     std::vector<CItem*> mRemovedItems; ///< holds the items that need to be removed
 
     /// the net change in the score
 	int mScoreChange = 0;
+
+    bool mPumpkin = false;   ///< bool represents whether or not pumpkin was removed
 
 };
 

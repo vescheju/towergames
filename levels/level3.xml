@@ -37,6 +37,8 @@
 	<house id="i053" image="gravestone2.png"/>
 	<house id="i054" image="h-house1.png"/>
 	<house id="i055" image="h-house2.png"/>
+	<house id="i056" image="eye1.png"/>
+	<house id="i057" image="eye2.png"/>
 </declarations>
 <items>
 	<road id="i001" x="0" y="6"/>
@@ -318,7 +320,7 @@
 
 	<open id="i040" x="3" y="4"/>
 	<open id="i041" x="4" y="4"/>	
-	<open id="i040" x="3" y="5"/>
-	<open id="i041" x="4" y="5"/>
+	<house id="i056" x="3" y="5"/>
+	<house id="i057" x="4" y="5"/>
 </items>
 </level>

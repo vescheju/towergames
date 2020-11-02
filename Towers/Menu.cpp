@@ -9,7 +9,8 @@
 #include "Game.h"
 #include "Item.h"
 #include "RingTower.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 #include "TowerEight.h"
 #include "GoButton.h"
 #include "GoVisitor.h"
@@ -29,14 +30,14 @@ const int PointXOffset = -55;
  * \param game The game this menu is a part of
  */
 CGameMenu::CGameMenu(CGame* game) : CItem(game)
-{
-	
+{	
+
 	std::shared_ptr<CRingTower> ringtower(new CRingTower(game));
 	mRing = ringtower;
 	ringtower->SetLocation(1170, 600);
 
 	
-	std::shared_ptr<CBombTower> bombtower(new CBombTower(game));
+	std::shared_ptr<CRedBombTower> bombtower(new CRedBombTower(game));
 	mBomb = bombtower;
 	bombtower->SetLocation(1170, 500);
 	
@@ -80,16 +81,29 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 {
 
 	FontFamily fontFamily(L"Arial");
+	FontFamily fontFamily2(L"Chiller");
 	Gdiplus::Font font(&fontFamily,	38, FontStyleBold, UnitPixel);
+	Gdiplus::Font font2(&fontFamily2, 50, FontStyleBold, UnitPixel);
 	SolidBrush green(Color(0, 200, 0));
+	SolidBrush orange(Color(200, 130, 0));
 
 	wstringstream str;
 	str << mGame->GetScore();
 
-	graphics->DrawString(L"Score: ", -1,
-		&font, PointF(1100, 100), &green);
-	graphics->DrawString(str.str().c_str(), -1,
-		&font, PointF(1150, 150), &green);
+	if (mGame->GetGameLevel() == 3)
+	{
+		graphics->DrawString(L"Score: ", -1,
+			&font2, PointF(1100, 100), &orange);
+		graphics->DrawString(str.str().c_str(), -1,
+			&font2, PointF(1150, 150), &orange);
+	}
+	else
+	{
+		graphics->DrawString(L"Score: ", -1,
+			&font, PointF(1100, 100), &green);
+		graphics->DrawString(str.str().c_str(), -1,
+			&font, PointF(1150, 150), &green);
+	}
 
 
 	Gdiplus::Font levelFont(&fontFamily, 100, FontStyleBold, UnitPixel);
@@ -100,6 +114,11 @@ void CGameMenu::Draw(Gdiplus::Graphics* graphics)
 	mBomb->Draw(graphics);
 	mEight->Draw(graphics);
 
+	// only if we're on level 3
+	if (mGame->GetGameLevel() == 3)
+	{
+		mPumpkin->Draw(graphics);
+	}
 	
 	// Draws each game level text
 	if (mTimeSec < 2)
@@ -201,6 +220,18 @@ void CGameMenu::Update(double elapsed)
 
 
 /**
+ * Adds pumpkin bomb object to menu
+ * For use in level 3 only
+ */
+void CGameMenu::AddPumpkin()
+{
+	std::shared_ptr<CPumpkinTower> pumpkintower(new CPumpkinTower(mGame));
+	mPumpkin = pumpkintower;
+	pumpkintower->SetLocation(1170, 700);
+}
+
+
+/**
  * sees if an element of the menu was clicked on
  * \param x the x coordinate
  * \param y the y coordinate
@@ -220,7 +251,13 @@ shared_ptr<CTower> CGameMenu::MenuHitTest(double x, double y)
 	}
 	else if (mBomb->HitTest(x, y))
 	{
-		std::shared_ptr<CBombTower> tower = std::make_shared<CBombTower>(mGame);
+		std::shared_ptr<CRedBombTower> tower = std::make_shared<CRedBombTower>(mGame);
+		return tower;
+	}
+	else if (mPumpkin != nullptr && !mGame->GetPumpkin() && mPumpkin->HitTest(x, y))
+	{
+		std::shared_ptr<CPumpkinTower> tower = std::make_shared<CPumpkinTower>(mGame);
+		mGame->SetPumpkin(true);
 		return tower;
 	}
 	else if (mGoButton->HitTest(x, y))

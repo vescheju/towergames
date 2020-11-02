@@ -3,7 +3,7 @@
  *
  * \author Hithesh Yedlapati
  *
- * Derived from CTower, explosion tower every 3 seconds
+ * Derived from CTower, abstract bomb class
  */
 
 #pragma once
@@ -27,22 +27,14 @@ public:
 	/// Copy constructor (disabled)
 	CBombTower(const CBombTower&) = delete;
 
-	void Update(double elapsed) override;
-
-	/** Accept a visitor
-	 * \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBombTower(this); }
-
 	/** Getter function for mDetonated member
 	 * \return bool representing whether or not bomb's been detonated
 	 */
 	bool IsDetonated() const { return mDetonated; }
 
-	void InitializeWeapon() override;
+	void Update(double elapsed) override;
 
-	void AddWeapon() override;
-
-private:
+protected:
 
 	std::shared_ptr<CExplosion> mExplosion;			///< Explosion object that tower detonates
 

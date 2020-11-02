@@ -7,7 +7,8 @@
 #include "pch.h"
 #include "TileLocker.h"
 #include "ItemOpen.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 #include "RingTower.h"
 #include "TowerEight.h"
 
@@ -29,11 +30,22 @@ void CTileLocker::VisitOpen(CItemOpen* open)
 }
 
 
+
 /**
-* Visit a CBombTower object and set mTower
+* Visit a CRedBombTower object and set mTower
 * \param bomb BombTower visiting
 */
-void CTileLocker::VisitBombTower(CBombTower* bomb)
+void CTileLocker::VisitRedBombTower(CRedBombTower* bomb)
+{
+	mTower = bomb;
+}
+
+
+/**
+* Visit a CPumpkinTower object and set mTower
+* \param bomb BombTower visiting
+*/
+void CTileLocker::VisitPumpkinTower(CPumpkinTower* bomb)
 {
 	mTower = bomb;
 }

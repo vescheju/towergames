@@ -41,6 +41,11 @@ public:
 	 */
 	void SetFire(bool fire) { mFire = fire; }
 
+	/** Getter function for mTimeTillFire member
+	 * \return double of mTimeTillFire
+	 */
+	double GetTimeTillFire() const { return mTimeTillFire; }
+
 	/** Setter function for mTimeTillFire member
 	 * \param time double to set mTimeTillFire to
 	 */

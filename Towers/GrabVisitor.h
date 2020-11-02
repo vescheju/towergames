@@ -18,7 +18,9 @@ class CGrabVisitor :
 {
 public:
 
-    virtual void VisitBombTower(CBombTower* bomb) override;
+    virtual void VisitRedBombTower(CRedBombTower* bomb) override;
+
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) override;
 
     virtual void VisitTowerEight(CTowerEight* tower) override;
 
@@ -31,7 +33,8 @@ public:
 
 private:
 
-    std::vector<CTower*> mTowers;          ///< Boolean value represents if visited CItem is a CTower
+    std::vector<CTower*> mTowers;          ///< Vector of towers collected
+
 };
 
 

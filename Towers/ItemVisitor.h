@@ -15,12 +15,14 @@ class CItemOpen;
 class CItemRoad;
 class CItemTree;
 class CBalloonRed;
-class CBombTower;
+class CRedBombTower;
+class CPumpkinTower;
 class CTowerEight;
 class CRingTower;
 class CRing;
 class CDart;
-class CExplosion;
+class CRedExplosion;
+class CPumpkinExplosion;
 class CGoButton;
 class CGameMenu;
 class CScoreboard;
@@ -64,10 +66,16 @@ public:
     virtual void VisitBalloonRed(CBalloonRed* balloon) {}
 
     /**
-     * Visit a CBombTower object
+     * Visit a CRedBombTower object
      * \param bomb Bomb tower we are visiting
      */
-    virtual void VisitBombTower(CBombTower* bomb) {}
+    virtual void VisitRedBombTower(CRedBombTower* bomb) {}
+
+    /**
+     * Visit a CPumpkinTower object
+     * \param bomb Bomb tower we are visiting
+     */
+    virtual void VisitPumpkinTower(CPumpkinTower* bomb) {}
 
     /**
      * Visit a CTowerEight object
@@ -94,10 +102,16 @@ public:
     virtual void VisitDart(CDart* dart) {}
 
     /**
-     * Visit a CExplosion object
+     * Visit a CRedExplosion object
      * \param explosion Explosion we are visiting
      */
-    virtual void VisitExplosion(CExplosion* explosion) {}
+    virtual void VisitRedExplosion(CRedExplosion* explosion) {}
+
+    /**
+     * Visit a CPumpkinExplosion object
+     * \param explosion Explosion we are visiting
+     */
+    virtual void VisitPumpkinExplosion(CPumpkinExplosion* explosion) {}
 
     /**
      * Visit a CGoButton object

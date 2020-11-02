@@ -6,13 +6,15 @@
 
 #include "pch.h"
 #include "ItemRemover.h"
-#include "Explosion.h"
+#include "RedExplosion.h"
+#include "PumpkinExplosion.h"
 #include "BombTower.h"
 #include "BalloonRed.h"
 #include "BalloonBoss.h"
 #include "TowerEight.h"
 #include "RingTower.h"
-#include "BombTower.h"
+#include "RedBombTower.h"
+#include "PumpkinTower.h"
 
 /**
  * adds red balloons to a vector of they need to be removed
@@ -50,6 +52,11 @@ void CItemRemover::VisitBalloonBoss(CBalloonBoss* balloon)
 	}
 }
 
+
+/**
+* adds dart towers to a vector of they need to be removed
+* \param tower the tower being visited
+*/
 void CItemRemover::VisitTowerEight(CTowerEight* tower)
 {
 	if (tower->GetTile() == nullptr && !tower->Grabbed())
@@ -60,10 +67,22 @@ void CItemRemover::VisitTowerEight(CTowerEight* tower)
 
 
 /**
- * adds explosions to a vector of they need to be removed
+ * adds red explosions to a vector of they need to be removed
  * \param explosion the explosion being visited
  */
-void CItemRemover::VisitExplosion(CExplosion* explosion)
+void CItemRemover::VisitRedExplosion(CRedExplosion* explosion)
+{
+	if (explosion->GetTimeDetonated() <= 0)
+	{
+		mRemovedItems.push_back(explosion);
+	}
+}
+
+/**
+ * adds pumpkin explosions to a vector of they need to be removed
+ * \param explosion the explosion being visited
+ */
+void CItemRemover::VisitPumpkinExplosion(CPumpkinExplosion* explosion)
 {
 	if (explosion->GetTimeDetonated() <= 0)
 	{
@@ -72,6 +91,10 @@ void CItemRemover::VisitExplosion(CExplosion* explosion)
 }
 
 
+/**
+ * adds ring towers to a vector of they need to be removed
+ * \param tower the tower being visited
+ */
 void CItemRemover::VisitRingTower(CRingTower* tower)
 {
 	if (tower->GetTile() == nullptr && !tower->Grabbed())
@@ -84,13 +107,28 @@ void CItemRemover::VisitRingTower(CRingTower* tower)
  * adds bombs to a vector of they need to be removed
  * \param bomb the bomb being visited
  */
-void CItemRemover::VisitBombTower(CBombTower* bomb)
+void CItemRemover::VisitRedBombTower(CRedBombTower* bomb)
 {
 	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
 	{
 		mRemovedItems.push_back(bomb);
 	}
 }
+
+
+/**
+ * adds pumpkin bombs to a vector of they need to be removed
+ * \param bomb the bomb being visited
+ */
+void CItemRemover::VisitPumpkinTower(CPumpkinTower* bomb)
+{
+	if (bomb->GetTile() == nullptr && !bomb->Grabbed() || bomb->IsDetonated())
+	{
+		mRemovedItems.push_back(bomb);
+		mPumpkin = true;
+	}
+}
+
 
 /**
 * adds the fog to the removed items list if its 
