@@ -12,7 +12,10 @@
 
 #include <vector>
 
-/* Is the grabbed item a tower */
+
+/**
+ * Is the grabbed item a tower
+ */
 class CGrabVisitor :
     public CItemVisitor
 {

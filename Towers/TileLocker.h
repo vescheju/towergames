@@ -15,7 +15,10 @@
 #include <vector>
 #include <memory>
 
-/* locks together tiles and tower */
+
+/**
+ * locks together tiles and tower
+ */
 class CTileLocker :
     public CItemVisitor
 {

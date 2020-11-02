@@ -46,7 +46,6 @@ private:
     /// if it is a road, then the road type if not then L""
     std::wstring mType;
 
-    // if it is a road then the lit boolean if not then false
-    bool mLit = false;
+    bool mLit = false; ///< if it is a road then the lit boolean if not then false
 };
 

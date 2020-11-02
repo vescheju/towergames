@@ -20,9 +20,13 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// X coordinate to fix game beginning font (virtual pixels)
 const int PointX = 100;
+/// Y coordinate to fix game beginning font (virtual pixels)
 const int PointY = 450;
+/// Y coordinate to fix game beginning font (virtual pixels)
 const int PointYOffset = 200;
+/// X coordinate to fix game beginning font (virtual pixels)
 const int PointXOffset = -55;
 
 /**
